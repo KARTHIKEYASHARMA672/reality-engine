@@ -150,7 +150,7 @@ export const ObjectSpawnerPalette: React.FC<ObjectSpawnerPaletteProps> = ({
         <div className="grid grid-cols-2 gap-3 text-xs">
           {/* Classical Bodies */}
           <button
-            onClick={() => spawnSphere(1.0, 0.45, '#30356F', 'Standard Sphere (1kg)')}
+            onClick={() => spawnSphere(1.0, 0.45, '#76283B', 'Standard Sphere (1kg)')}
             className="flex flex-col items-center justify-center p-4 rounded-xl bg-vanilla-50 border border-vanilla-400 hover:border-indigo-600 hover:bg-vanilla-200 transition-all text-center gap-2"
           >
             <div className="w-8 h-8 rounded-full bg-indigo-800 flex items-center justify-center text-vanilla-50">

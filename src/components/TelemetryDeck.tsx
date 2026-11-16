@@ -41,7 +41,7 @@ export const TelemetryDeck: React.FC<TelemetryDeckProps> = ({
           ctx.clearRect(0, 0, w, h);
 
           // Background Grid
-          ctx.strokeStyle = '#E4DDC9';
+          ctx.strokeStyle = '#E1CDBB';
           ctx.lineWidth = 1;
           for (let y = 20; y < h; y += 25) {
             ctx.beginPath();
@@ -65,8 +65,8 @@ export const TelemetryDeck: React.FC<TelemetryDeckProps> = ({
             const dx = w / (engine.maxHistoryLength - 1);
 
             if (activeTab === 'energy') {
-              // 1. Kinetic Energy Curve (Indigo Accent #30356F)
-              ctx.strokeStyle = '#30356F';
+              // 1. Kinetic Energy Curve (Wine Accent #76283B)
+              ctx.strokeStyle = '#76283B';
               ctx.lineWidth = 2.5;
               ctx.beginPath();
               history.forEach((pt, i) => {

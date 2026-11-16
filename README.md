@@ -1,8 +1,8 @@
 # 🔬 REALITY ENGINE — Physics-Based Virtual Laboratory
 
-> 📌 **REALITY ENGINE** is an interactive, authentic computational physics virtual laboratory engineered to bridge abstract mathematical physics formulas with tactile, real-time 3D experimental simulations. Built with **React 19, TypeScript 5.8+, Three.js WebGL2, and KaTeX**, it allows researchers, students, and engineers to observe, manipulate, and measure physical phenomena across four core numerical simulation engines, featuring an encyclopedia of **84 fundamental physics concepts** and synchronized real-time mathematical telemetry.
+> 📌 **REALITY ENGINE** is an interactive, authentic computational physics virtual laboratory engineered to bridge abstract mathematical physics formulas with tactile, real-time 3D experimental simulations. Built with **React 19, TypeScript 5.8+, Three.js WebGL2, and KaTeX**, it allows researchers, students, and engineers to observe, manipulate, and measure physical phenomena across four core numerical simulation engines, featuring an encyclopedia of **120 fundamental physics concepts** and synchronized real-time mathematical telemetry.
 > 
-> 🎨 **Color Identity:** Midnight Indigo & Warm Vanilla (`#30356F` Primary Accent / `#FBF5E6` Background / `#FFFCF4` Elevated Surface / `#E4DDC9` Sand Border / `#9B9FE3` Iris Accent) — Grounded, prestigious academic laboratory aesthetic with zero neon/sci-fi gimmicks.
+> 🎨 **Color Identity:** Wine & Warm Sandal (`#76283B` Primary Accent / `#F4E7D7` Background / `#FFF9F2` Elevated Surface / `#E1CDBB` Sandal Border / `#B78A63` Sandal Gold Accent) — Grounded, prestigious academic laboratory aesthetic with zero neon/sci-fi gimmicks.
 
 ---
 
@@ -18,7 +18,7 @@
 | **Numerical Solvers** | Symplectic Velocity-Verlet, Continuous Impulse-Momentum, Runge-Kutta 4th Order (RK4), SPH Fluid Engine |
 | **Live Formula Math** | KaTeX (`katex@0.16.21`) with real-time numeric variable substitution |
 | **Telemetry System** | Canvas 2D 120-Frame Sliding Ring Buffer (Energy Conservation & Momentum) |
-| **Concepts Catalog** | **84 Curated Academic Physics Concepts** with derivations and 1-click 3D apparatus presets |
+| **Concepts Catalog** | **120 Curated Academic Physics Concepts** with derivations and 1-click 3D apparatus presets |
 | **Test Coverage** | 9 / 9 Automated Tests Passed (Vitest Unit & Physics Conservation Checks) |
 
 ---
@@ -28,7 +28,7 @@
 - [1. Executive Overview](#1-executive-overview)
 - [2. 🖼️ Verified Visual UI Gallery](#2-️-verified-visual-ui-gallery)
 - [3. The Four Numerical Physics Solvers](#3-the-four-numerical-physics-solvers)
-- [4. The 84 Curated Physics Concepts Matrix](#4-the-84-curated-physics-concepts-matrix)
+- [4. The 120 Curated Physics Concepts Matrix](#4-the-120-curated-physics-concepts-matrix)
 - [5. Historic Guided Laboratory Walkthroughs](#5-historic-guided-laboratory-walkthroughs)
 - [6. Synchronized Telemetry Deck & Live Formula Inspector](#6-synchronized-telemetry-deck--live-formula-inspector)
 - [7. Verification, Tests & Numerical Integrity](#7-verification-tests--numerical-integrity)
@@ -47,7 +47,7 @@ Modern physics education often suffers from a cognitive disconnect between dry s
 * **Fluid Dynamics & Archimedes Buoyancy:** Particle-based Smoothed Particle Hydrodynamics (SPH) coupled with Archimedes buoyant forces ($F_b = \rho V g$) and Stokes viscous drag.
 * **Live Formula Inspector (KaTeX):** Equations dynamically substitute active numerical variables frame-by-frame, demonstrating how formulas translate into physical quantities.
 * **Rolling Telemetry Charts:** 120-frame rolling window plotting Kinetic Energy ($KE$), Potential Energy ($PE$), and Total Mechanical Energy ($E_{\text{total}}$) to visually prove conservation laws.
-* **84-Concept Academic Compendium:** Searchable encyclopedia of 84 core physics concepts, each featuring formal derivations and 1-click **"Load Preset"** buttons that mount the apparatus in 3D.
+* **120-Concept Academic Compendium:** Searchable encyclopedia of 120 core physics concepts, each featuring formal derivations and 1-click **"Load Preset"** buttons that mount the apparatus in 3D.
 
 ---
 
@@ -57,11 +57,11 @@ Every component, simulation state, and modal of REALITY ENGINE was visually audi
 
 | Experimental State | Visual Capture & Verification Details |
 | :--- | :--- |
-| **01. Laboratory Stage & N-Body Orbits** | ![Laboratory Stage](./screenshots/01_reality_engine_laboratory_view.png)<br><sub>*Full 3D WebGL2 laboratory viewport in Midnight Indigo & Warm Vanilla with central star, orbiting planetary bodies, dynamic 3D field arrows, and bottom telemetry deck.*</sub> |
+| **01. Laboratory Stage & N-Body Orbits** | ![Laboratory Stage](./screenshots/01_reality_engine_laboratory_view.png)<br><sub>*Full 3D WebGL2 laboratory viewport in Wine & Warm Sandal with central star, orbiting planetary bodies, dynamic 3D field arrows, and bottom telemetry deck.*</sub> |
 | **02. Lorentz Magnetic Cyclotron** | ![Lorentz Magnetic Cyclotron](./screenshots/02_lorentz_magnetic_cyclotron.png)<br><sub>*Electromagnetism domain showing opposite circular helical trajectories of positive ions and negative electrons in a 2.5 Tesla magnetic field governed by $\mathbf{F} = q(\mathbf{v} \times \mathbf{B})$.*</sub> |
 | **03. 3D Elastic Collisions & Momentum Relay** | ![3D Elastic Collisions](./screenshots/03_elastic_collisions_momentum_relay.png)<br><sub>*Multi-body elastic collision chain demonstrating linear momentum conservation ($p_i = p_f$) and Newton's Cradle impulse propagation with restitution $e = 0.95$.*</sub> |
 | **04. Archimedes Buoyancy & Fluid Dynamics** | ![Archimedes Buoyancy](./screenshots/04_archimedes_buoyancy_fluid_equilibrium.png)<br><sub>*Translucent fluid chamber simulating hydrostatic equilibrium, showing a low-density sphere floating at surface level and a dense metal sphere sinking with Stokes drag.*</sub> |
-| **05. 84-Concept Academic Compendium** | ![Concept Compendium](./screenshots/05_concept_compendium_84_encyclopedia.png)<br><sub>*Searchable left drawer displaying 84 physics concepts across 6 branches with difficulty tags, KaTeX formulas, expandable derivations, and 1-click apparatus testing.*</sub> |
+| **05. 120-Concept Academic Compendium** | ![Concept Compendium](./screenshots/05_concept_compendium_120_encyclopedia.png)<br><sub>*Searchable left drawer displaying 120 physics concepts across 6 branches with difficulty tags, KaTeX formulas, expandable derivations, and 1-click apparatus testing.*</sub> |
 | **06. Historic Guided Labs Dossier** | ![Historic Guided Labs](./screenshots/06_guided_historic_labs_dossier.png)<br><sub>*Interactive laboratory walkthrough modal with historical context, objectives, step-by-step procedures, and expected scientific observations for classic experiments.*</sub> |
 | **07. Live KaTeX Formula & Telemetry Deck** | ![Live Formula Telemetry](./screenshots/07_live_katex_formula_telemetry.png)<br><sub>*Dynamic mathematical formula inspector substituting real-time variables into KaTeX equations at 60 FPS, alongside rolling-buffer energy conservation curves.*</sub> |
 | **08. Laboratory Observation Report** | ![Laboratory Observation Report](./screenshots/08_laboratory_observation_report.png)<br><sub>*Institutional-grade experimental report with environmental parameter tables, active entity manifests, and 1-click Print / PDF and JSON state export.*</sub> |
@@ -107,19 +107,19 @@ $$F_b = \rho_{\text{fluid}} V_{\text{submerged}} g, \qquad \mathbf{F}_{\text{net
 
 ---
 
-## 4. The 84 Curated Physics Concepts Matrix
+## 4. The 120 Curated Physics Concepts Matrix
 
-To ensure REALITY ENGINE functions as a genuine university-grade laboratory instrument, it includes **84 comprehensively documented physics concepts** across 6 core branches. Every concept card features formal mathematical derivations, variable legends with SI units, real-world engineering applications, and a 1-click **"Test in Simulation"** preset button.
+To ensure REALITY ENGINE functions as a genuine university-grade laboratory instrument, it includes **120 comprehensively documented physics concepts** across 6 core branches. Every concept card features formal mathematical derivations, variable legends with SI units, real-world engineering applications, and a 1-click **"Test in Simulation"** preset button.
 
 | Branch | Count | Core Concepts Covered |
 | :--- | :---: | :--- |
-| **1. Classical Mechanics & Gravitation** | **16** | Newton's 1st/2nd/3rd Laws, Universal Gravitation, Kepler's 1st/2nd/3rd Laws, Gravitational Potential & Escape Velocity, Orbital Resonance, Lagrange Points (L1-L5), Centripetal Force, Coriolis Effect, Simple Harmonic Motion (Hooke's Law), Damped & Driven Oscillations (Resonance), Chaotic Double Pendulum, Conservation of Angular Momentum & Gyroscopic Precession. |
-| **2. Kinematics, Momentum & Collisions** | **15** | 1D & 2D Elastic Collisions, Inelastic Collisions & Dissipated Energy, Coefficient of Restitution ($e$), Impulse-Momentum Theorem, Center of Mass Frame, Newton's Cradle, Ballistic Pendulum, Oblique Impact, Static & Kinetic Friction, Rotational Kinetic Energy ($I$), Rolling Without Slipping, Torricelli's Efflux Theorem, Explosive Momentum Conservation & Recoil, Pendulum Large Angle Elliptic Correction. |
-| **3. Electromagnetism & Field Theory** | **18** | Coulomb's Law & Superposition, Electric Field Vectors, Gauss's Law & Flux Enclosure, Electric Potential Gradient ($-\nabla V$), Equipotential Surfaces, Capacitance & Dielectric Energy Density, Drift Velocity & Ohm's Law, Lorentz Force ($\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$), Cyclotron Frequency, Thomson $e/m$ Ratio, Magnetic Dipole Moment & Torque, Biot-Savart Law, Ampere's Law, Faraday's Law, Lenz's Law & Eddy Current Damping, Hall Effect, Helmholtz Coils Uniform Field, Poynting Vector. |
-| **4. Fluid Dynamics & Aerodynamics** | **13** | Archimedes' Principle of Buoyancy, Hydrostatic Pressure Depth Gradient, Pascal's Principle & Hydraulic Multiplication, Equation of Continuity ($A_1 v_1 = A_2 v_2$), Bernoulli's Principle, Poiseuille's Viscous Flow ($R^4$), Stokes' Drag Law, Reynolds Number & Turbulence Regimes, Terminal Velocity in Viscous Media, Surface Tension & Young-Laplace Capillarity, Venturi Effect, Magnus Effect Spin Lift, Navier-Stokes Advection-Diffusion. |
-| **5. Thermodynamics & Kinetic Theory** | **10** | Ideal Gas Law ($PV = N k_B T$), Maxwell-Boltzmann Velocity Distribution, Brownian Motion & Einstein Diffusion ($\langle x^2 \rangle = 2Dt$), Kinetic Interpretation of Temperature, Fourier's Law of Heat Conduction, Adiabatic Expansion ($P V^\gamma = \text{const}$), First Law of Thermodynamics, Second Law & Entropy Generation, Carnot Cycle Efficiency ($\eta = 1 - T_C/T_H$), Thermal Expansion & Internal Strain. |
-| **6. Wave Mechanics & Modern Physics** | **12** | Principle of Wave Superposition & Interference, Standing Waves & Harmonics ($f_n = n v / 2L$), 3D Doppler Effect, Snell's Law of Refraction & Fermat's Principle, Total Internal Reflection, Rutherford Alpha Scattering & Nuclear Cross-Section, Millikan Oil Drop Charge Quantization, Photoelectric Effect & Einstein's Work Function, De Broglie Matter Wavelength, Heisenberg Uncertainty Principle, Bohr Model Quantized Orbit Radii, Compton Scattering. |
-| **TOTAL CONCEPTS** | **84** | **100% Mathematically Rigorous & 3D Interactive** |
+| **1. Classical Mechanics & Gravitation** | **22** | Newton's 1st/2nd/3rd Laws, Universal Gravitation, Kepler's 1st/2nd/3rd Laws, Gravitational Potential & Escape Velocity, Orbital Resonance, Lagrange Points (L1-L5), Centripetal Force, Coriolis Effect, Simple Harmonic Motion (Hooke's Law), Damped & Driven Oscillations (Resonance), Chaotic Double Pendulum, Conservation of Angular Momentum & Gyroscopic Precession, Euler-Lagrange Equations, Hamiltonian Mechanics, Coupled Oscillators & Normal Modes, Gravitational Virial Theorem, Roche Limit & Tidal Disruption, Foucault Pendulum Precession. |
+| **2. Kinematics, Momentum & Collisions** | **20** | 1D & 2D Elastic Collisions, Inelastic Collisions & Dissipated Energy, Coefficient of Restitution ($e$), Impulse-Momentum Theorem, Center of Mass Frame, Newton's Cradle, Ballistic Pendulum, Oblique Impact, Static & Kinetic Friction, Rotational Kinetic Energy ($I$), Rolling Without Slipping, Torricelli's Efflux Theorem, Explosive Momentum Conservation & Recoil, Pendulum Large Angle Elliptic Correction, Gravitational Slingshot Assist, Relativistic 4-Momentum, Angular Impulse & Impact Torque, Viscoelastic Restitution $e(v_0)$, Granular Gas Cooling (Haff's Law). |
+| **3. Electromagnetism & Field Theory** | **24** | Coulomb's Law & Superposition, Electric Field Vectors, Gauss's Law & Flux Enclosure, Electric Potential Gradient ($-\nabla V$), Equipotential Surfaces, Capacitance & Dielectric Energy Density, Drift Velocity & Ohm's Law, Lorentz Force ($\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$), Cyclotron Frequency, Thomson $e/m$ Ratio, Magnetic Dipole Moment & Torque, Biot-Savart Law, Ampere's Law, Faraday's Law, Lenz's Law & Eddy Current Damping, Hall Effect, Helmholtz Coils Uniform Field, Poynting Vector, Maxwell-Ampère Displacement Current, Magnetic Dipole-Dipole Interaction, Skin Depth Penetration, EM Radiation Pressure, MHD Alfvén Waves, Synchrotron Radiation Power. |
+| **4. Fluid Dynamics & Aerodynamics** | **19** | Archimedes' Principle of Buoyancy, Hydrostatic Pressure Depth Gradient, Pascal's Principle & Hydraulic Multiplication, Equation of Continuity ($A_1 v_1 = A_2 v_2$), Bernoulli's Principle, Poiseuille's Viscous Flow ($R^4$), Stokes' Drag Law, Reynolds Number & Turbulence Regimes, Terminal Velocity in Viscous Media, Surface Tension & Young-Laplace Capillarity, Venturi Effect, Magnus Effect Spin Lift, Navier-Stokes Advection-Diffusion, Rayleigh-Taylor Instability, von Kármán Vortex Shedding, Jurin's Law of Capillarity, Hydrodynamic Cavitation & Rayleigh-Plesset, Rankine-Hugoniot Shock Jumps, Marangoni Surface Tension Convection. |
+| **5. Thermodynamics & Kinetic Theory** | **16** | Ideal Gas Law ($PV = N k_B T$), Maxwell-Boltzmann Velocity Distribution, Brownian Motion & Einstein Diffusion ($\langle x^2 \rangle = 2Dt$), Kinetic Interpretation of Temperature, Fourier's Law of Heat Conduction, Adiabatic Expansion ($P V^\gamma = \text{const}$), First Law of Thermodynamics, Second Law & Entropy Generation, Carnot Cycle Efficiency ($\eta = 1 - T_C/T_H$), Thermal Expansion & Internal Strain, Van der Waals Equation of State, Joule-Thomson Throttling & Inversion, Planck Blackbody Radiance, Otto Cycle Efficiency, Clausius-Clapeyron Phase Equilibrium, Equipartition Theorem. |
+| **6. Wave Mechanics & Modern Physics** | **19** | Principle of Wave Superposition & Interference, Standing Waves & Harmonics ($f_n = n v / 2L$), 3D Doppler Effect, Snell's Law of Refraction & Fermat's Principle, Total Internal Reflection, Rutherford Alpha Scattering & Nuclear Cross-Section, Millikan Oil Drop Charge Quantization, Photoelectric Effect & Einstein's Work Function, De Broglie Matter Wavelength, Heisenberg Uncertainty Principle, Bohr Model Quantized Orbit Radii, Compton Scattering, Quantum Tunneling Barrier Transmission, Stern-Gerlach Spin Quantization, Pair Production & Annihilation, Zeeman Spectral Splitting, Cherenkov Radiation Cone, Special Relativity Time Dilation ($\gamma$), Schwarzschild Black Hole Horizon. |
+| **TOTAL CONCEPTS** | **120** | **100% Mathematically Rigorous & 3D Interactive** |
 
 ---
 
@@ -145,7 +145,7 @@ REALITY ENGINE features 15+ pre-calibrated historic guided laboratory walkthroug
   * Lorentz Force: $\mathbf{F}_B = (2.00\,\mu\text{C})(4.50\text{ m/s} \times 2.50\text{ T}) = 22.50\,\mu\text{N} \implies r = \frac{mv}{|q|B} = 0.90\text{ m}$
   * Buoyancy Force: $F_b = (1000\text{ kg/m}^3)(0.001\text{ m}^3)(9.81\text{ m/s}^2) = 9.81\text{ N}$
 * **120-Frame Sliding Ring Buffer Canvas:**
-  * Plots Kinetic Energy (Deep Indigo), Potential Energy (Amber), and Total Mechanical Energy (Emerald dashed line) simultaneously to verify conservation.
+  * Plots Kinetic Energy (Rich Wine `#76283B`), Potential Energy (Warm Amber), and Total Mechanical Energy (Emerald dashed line) simultaneously to verify conservation.
   * Instant toggle to Linear Momentum and Velocity curve views.
 
 ---
@@ -164,7 +164,7 @@ npm test
 #   - Collisions: Strictly conserves linear momentum in 1D head-on impact
 #   - Lorentz: Verifies magnetic force is perpendicular to velocity (dW = 0)
 # ✓ src/__tests__/physicsConcepts.test.ts (6 tests)
-#   - Contains exactly 84 concepts across all 6 branches
+#   - Contains exactly 120 concepts across all 6 branches
 #   - Validates non-empty formulas, derivations (>100 chars), and preset configs
 # Test Files  2 passed (2)
 # Tests       9 passed (9)

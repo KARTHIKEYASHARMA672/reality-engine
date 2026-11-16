@@ -2,7 +2,7 @@
 
 > 📌 **Project:** REALITY ENGINE — Interactive Physics-Based Virtual Laboratory  
 > 🏷️ **Domain:** Computational Physics, 3D WebGL Scientific Simulation & Mathematical Telemetry  
-> 🎨 **Color Identity:** Midnight Indigo & Warm Vanilla (`#30356F` Primary / `#FBF5E6` Background / `#FFFCF4` Surface / `#E4DDC9` Border / `#9B9FE3` Accent)  
+> 🎨 **Color Identity:** Wine & Warm Sandal (`#76283B` Primary / `#F4E7D7` Background / `#FFF9F2` Surface / `#E1CDBB` Border / `#B78A63` Accent)  
 > 📅 **Date:** November 2026  
 > 👤 **Author:** Karthikeya Sharma & Antigravity Intelligence  
 
@@ -19,7 +19,7 @@
 | **3D Rendering** | Three.js WebGL2 (`three@0.175.0`), OrbitControls, Custom GLSL Shaders |
 | **Mathematical Rendering** | KaTeX (`katex@0.16.21`) with real-time numeric variable substitution |
 | **Charting & Telemetry** | Plotly / Canvas 2D high-speed ring buffers (Energy & Phase-Space) |
-| **Concepts Catalog** | 84 Curated Physics Concepts across 6 Branches (100% 3D Interactive) |
+| **Concepts Catalog** | 120 Curated Physics Concepts across 6 Branches (100% 3D Interactive) |
 | **Aesthetic Paradigm** | Editorial Scientific Instrument (Grounded, non-futuristic, high-contrast) |
 
 ---
@@ -31,7 +31,7 @@
 3. [Decision Log](#3-decision-log)
 4. [System Architecture & Module Boundaries](#4-system-architecture--module-boundaries)
 5. [The Four Numerical Physics Engines](#5-the-four-numerical-physics-engines)
-6. [Concept Compendium (84 Concepts Schema & Registry)](#6-concept-compendium-84-concepts-schema--registry)
+6. [Concept Compendium (120 Concepts Schema & Registry)](#6-concept-compendium-120-concepts-schema--registry)
 7. [Telemetry Deck & Live Formula Inspector](#7-telemetry-deck--live-formula-inspector)
 8. [UI Layout & Component Specifications](#8-ui-layout--component-specifications)
 9. [Edge Cases & Numerical Safety](#9-edge-cases--numerical-safety)
@@ -45,7 +45,7 @@
 
 Users observe and manipulate physical phenomena across classical mechanics, celestial gravity, elastic/inelastic collisions, electromagnetism (Coulomb & Lorentz forces), and fluid dynamics with Archimedes buoyancy. Alongside every experiment, dynamic KaTeX mathematical formula inspectors display real-time numerical variables step-by-step, while high-frequency telemetry charts plot energy conservation and phase-space trajectories.
 
-To establish genuine academic depth, the laboratory incorporates a comprehensive **Concept Compendium of 84 fundamental physics concepts**, each equipped with formal derivations and a 1-click preset that instantly mounts the corresponding apparatus in the 3D studio.
+To establish genuine academic depth, the laboratory incorporates a comprehensive **Concept Compendium of 120 fundamental physics concepts**, each equipped with formal derivations and a 1-click preset that instantly mounts the corresponding apparatus in the 3D studio.
 
 ---
 
@@ -64,7 +64,7 @@ To establish genuine academic depth, the laboratory incorporates a comprehensive
 ### Assumptions
 * Pure client-side execution (React 19 + TypeScript + Vite + Three.js) delivering 60 FPS without server dependencies.
 * Experiments and user presets persist locally via browser `localStorage` with JSON export/import.
-* Visuals strictly follow the **Midnight Indigo & Warm Vanilla** palette, embodying a prestigious, tactile scientific instrument aesthetic.
+* Visuals strictly follow the **Wine & Sandal** palette, embodying a prestigious, tactile scientific instrument aesthetic.
 
 ---
 
@@ -73,9 +73,9 @@ To establish genuine academic depth, the laboratory incorporates a comprehensive
 | # | Topic | Decision | Alternatives Considered | Rationale |
 | :--- | :--- | :--- | :--- | :--- |
 | **01** | Platform Architecture | **Pure Client-Side WebGL2 SPA** | Python WebSocket microservice, Electron desktop wrapper | Zero backend cold starts, 60 FPS deterministic simulation, instant Vercel deployment. |
-| **02** | Concept Compendium | **84 Curated Concepts across 6 Branches** | Static text glossary, minimal 5 presets | Fulfills user requirement for 50–100 authentic concepts; every concept has a 1-click 3D preset. |
+| **02** | Concept Compendium | **120 Curated Concepts across 6 Branches** | Static text glossary, minimal 5 presets | Fulfills user requirement for authentic concepts; every concept has a 1-click 3D preset. |
 | **03** | Numerical Solvers | **Multi-Solver Architecture (Verlet, RK4, SPH, Impulse)** | Single unified Euler solver, Rapier3D WASM | Symplectic Verlet prevents orbital decay; RK4 prevents magnetic field spirals from exploding; SPH handles fluid particles accurately. |
-| **04** | Visual Aesthetic | **Midnight Indigo & Warm Vanilla** | Neon sci-fi cyberpunk, default dark theme | Conforms to user rules: strictly non-futuristic, editorial, grounded academic instrument feel. |
+| **04** | Visual Aesthetic | **Wine & Sandal** | Neon sci-fi cyberpunk, default dark theme | Conforms to user rules: strictly non-futuristic, editorial, grounded academic instrument feel. |
 | **05** | Telemetry & Math | **Live KaTeX Dynamic Substitution + Canvas Graphs** | Static SVG formulas, external Python Plotly server | Zero-lag live numeric values updated at 60 FPS alongside energy conservation curves. |
 | **06** | Collision Physics | **Continuous Impulse-Momentum with $8\times$ Sub-stepping** | Discrete AABB overlap checks | Prevents high-speed tunneling through thin barriers and maintains momentum conservation. |
 | **07** | Numerical Safety | **Softening parameter $\epsilon = 0.05$ on $1/r^2$ forces** | Clamping maximum acceleration | Prevents infinite force singularity when two charges or masses pass within distance $r \to 0$. |
@@ -89,7 +89,7 @@ To establish genuine academic depth, the laboratory incorporates a comprehensive
 flowchart TD
     subgraph UI ["Presentation Layer (React 19 + Tailwind CSS)"]
         H[HeaderBar: Transport & Domain Selector]
-        C[ConceptCompendiumDrawer: 84 Concepts Catalog]
+        C[ConceptCompendiumDrawer: 120 Concepts Catalog]
         P[VariableTuningPanel: Mass, Charge, e, B, eta]
         S[ObjectSpawnerPalette: Spheres, Charges, Coils]
         T[TelemetryDeck: KaTeX Equations & Energy Graphs]
@@ -147,7 +147,7 @@ $$\mathbf{F}_{\text{net}} = \mathbf{F}_g + \mathbf{F}_b - 6\pi \eta r \mathbf{v}
 
 ---
 
-## 6. Concept Compendium (84 Concepts Schema & Registry)
+## 6. Concept Compendium (120 Concepts Schema & Registry)
 
 The Compendium is defined as a strongly typed TypeScript database spanning 6 branches:
 
@@ -166,12 +166,12 @@ export interface PhysicsConcept {
 ```
 
 ### Concept Distribution
-1. **Classical Mechanics & Gravitation (16 Concepts):** Newton's 3 Laws, Universal Gravitation, Kepler's 3 Laws, Gravitational Potential, Escape Velocity, Orbital Resonance, Lagrange Points, Coriolis Force, Centripetal Acceleration, Damped Harmonic Oscillator, Driven Resonance, Double Pendulum Chaos, Conservation of Angular Momentum, Moment of Inertia, Gyroscopic Precession, Hooke's Law.
-2. **Kinematics, Momentum & Collisions (15 Concepts):** Elastic Collisions in 1D/2D, Inelastic Collisions, Coefficient of Restitution, Impulse-Momentum Theorem, Center of Mass Frame, Newton's Cradle, Ballistic Pendulum, Kinetic Energy Dissipation, Oblique Impact, Friction (Static & Kinetic), Rotational Kinetic Energy, Rolling Without Slipping, Torricelli's Law, Conservation of Momentum in Explosions, Pendulum Period Independence.
-3. **Electromagnetism & Field Theory (18 Concepts):** Coulomb's Law, Electric Field Superposition, Gauss's Law, Electric Potential Gradient, Equipotential Surfaces, Capacitance & Energy Storage, Drift Velocity, Ohm's Law, Magnetic Force on Moving Charge (Lorentz), Cyclotron Frequency, Magnetic Dipole Moment, Biot-Savart Law, Ampere's Law, Faraday's Law of Induction, Lenz's Law, Thomson $e/m$ Ratio, Hall Effect, Electromagnetic Damping.
-4. **Fluid Dynamics & Aerodynamics (13 Concepts):** Archimedes' Principle of Buoyancy, Fluid Pressure & Depth, Pascal's Principle, Continuity Equation ($A_1 v_1 = A_2 v_2$), Bernoulli's Principle, Torricelli's Efflux Theorem, Poiseuille's Viscous Flow, Stokes' Drag Law, Reynolds Number & Turbulence, Terminal Velocity in Fluids, Surface Tension & Capillary Action, Venturi Effect, Magnus Effect.
-5. **Thermodynamics & Kinetic Theory (10 Concepts):** Ideal Gas Law ($PV = nRT$), Maxwell-Boltzmann Velocity Distribution, Brownian Motion, Kinetic Interpretation of Temperature, Heat Conduction (Fourier's Law), Adiabatic Expansion, First Law of Thermodynamics, Second Law & Entropy, Carnot Cycle Efficiency, Thermal Expansion.
-6. **Wave Mechanics & Modern Physics (12 Concepts):** Principle of Wave Superposition, Standing Waves & Harmonics, Doppler Effect in 3D, Snell's Law of Refraction, Total Internal Reflection, Rutherford Alpha Scattering, Millikan Oil Drop Charge Quantization, Photoelectric Effect, De Broglie Matter Wavelength, Heisenberg Uncertainty Principle, Bohr Model Orbital Radii, Compton Scattering.
+1. **Classical Mechanics & Gravitation (22 Concepts):** Newton's 3 Laws, Universal Gravitation, Kepler's 3 Laws, Gravitational Potential, Escape Velocity, Orbital Resonance, Lagrange Points, Coriolis Force, Centripetal Acceleration, Damped Harmonic Oscillator, Driven Resonance, Double Pendulum Chaos, Conservation of Angular Momentum, Moment of Inertia, Gyroscopic Precession, Hooke's Law, Euler-Lagrange Equations of Motion, Hamiltonian Mechanics & Canonical Equations, Coupled Harmonic Oscillators & Normal Modes, Gravitational Virial Theorem, Roche Limit & Tidal Disruption, Foucault Pendulum Precession.
+2. **Kinematics, Momentum & Collisions (20 Concepts):** Elastic Collisions in 1D/2D, Inelastic Collisions, Coefficient of Restitution, Impulse-Momentum Theorem, Center of Mass Frame, Newton's Cradle, Ballistic Pendulum, Kinetic Energy Dissipation, Oblique Impact, Friction (Static & Kinetic), Rotational Kinetic Energy, Rolling Without Slipping, Torricelli's Law, Conservation of Momentum in Explosions, Pendulum Period Independence, Gravitational Slingshot & Hyperbolic Assist, Relativistic Momentum & Energy-Momentum Invariant, Angular Impulse & Rigid Body Impact Torque, Viscoelastic Contact Mechanics & Velocity-Dependent Restitution, Granular Gas Cooling & Dissipative Clustering (Haff's Law).
+3. **Electromagnetism & Field Theory (24 Concepts):** Coulomb's Law, Electric Field Superposition, Gauss's Law, Electric Potential Gradient, Equipotential Surfaces, Capacitance & Energy Storage, Drift Velocity, Ohm's Law, Magnetic Force on Moving Charge (Lorentz), Cyclotron Frequency, Magnetic Dipole Moment, Biot-Savart Law, Ampere's Law, Faraday's Law of Induction, Lenz's Law, Thomson $e/m$ Ratio, Hall Effect, Electromagnetic Damping, Maxwell-Ampère Displacement Current, Magnetic Dipole-Dipole Force & Potential Energy, Skin Effect & High-Frequency Penetration Depth, Electromagnetic Radiation Pressure & Momentum Flux, Magnetohydrodynamic (MHD) Alfvén Waves, Synchrotron Radiation Power (Larmor Relativistic Generalization).
+4. **Fluid Dynamics & Aerodynamics (19 Concepts):** Archimedes' Principle of Buoyancy, Fluid Pressure & Depth, Pascal's Principle, Continuity Equation ($A_1 v_1 = A_2 v_2$), Bernoulli's Principle, Torricelli's Efflux Theorem, Poiseuille's Viscous Flow, Stokes' Drag Law, Reynolds Number & Turbulence, Terminal Velocity in Fluids, Surface Tension & Capillary Action, Venturi Effect, Magnus Effect, Rayleigh-Taylor Instability & Density Inversion, von Kármán Vortex Shedding & Strouhal Resonance, Jurin's Law & Capillary Meniscus Equilibrium, Hydrodynamic Cavitation & Rayleigh-Plesset Bubble Dynamics, Rankine-Hugoniot Normal Shock Wave Jump Conditions, Marangoni Effect & Surface Tension Gradient Convection.
+5. **Thermodynamics & Kinetic Theory (16 Concepts):** Ideal Gas Law ($PV = nRT$), Maxwell-Boltzmann Velocity Distribution, Brownian Motion, Kinetic Interpretation of Temperature, Heat Conduction (Fourier's Law), Adiabatic Expansion, First Law of Thermodynamics, Second Law & Entropy, Carnot Cycle Efficiency, Thermal Expansion, Van der Waals Equation of State for Real Gases, Joule-Thomson Effect & Porous Plug Throttling, Planck Blackbody Radiation Law & Spectral Radiance, Otto Cycle Thermodynamic Efficiency, Clausius-Clapeyron Phase Coexistence & Latent Heat, Equipartition Theorem & Molecular Degrees of Freedom.
+6. **Wave Mechanics & Modern Physics (19 Concepts):** Principle of Wave Superposition, Standing Waves & Harmonics, Doppler Effect in 3D, Snell's Law of Refraction, Total Internal Reflection, Rutherford Alpha Scattering, Millikan Oil Drop Charge Quantization, Photoelectric Effect, De Broglie Matter Wavelength, Heisenberg Uncertainty Principle, Bohr Model Orbital Radii, Compton Scattering, Quantum Tunneling & Rectangular Barrier Transmission, Stern-Gerlach Experiment & Spatial Spin Quantization, Electron-Positron Pair Production & Annihilation, Zeeman Effect & Magnetic Atomic Spectral Splitting, Cherenkov Radiation Cone & Superluminal Dielectric Shock, Relativistic Time Dilation & Lorentz Factor ($\gamma$), Schwarzschild Radius & Black Hole Event Horizon.
 
 ---
 
@@ -190,15 +190,15 @@ export interface PhysicsConcept {
 
 ## 8. UI Layout & Component Specifications
 
-* **Palette Tokens (Midnight Indigo & Warm Vanilla):**
-  * Primary Accent: `#30356F` (Deep Indigo)
-  * Primary Hover: `#222650` (Dark Navy Indigo)
-  * Surface Background: `#FBF5E6` (Warm Vanilla Cream)
-  * Elevated Card Surface: `#FFFCF4` (Crisp Alabaster)
-  * Borders & Dividers: `#E4DDC9` (Sand Beige)
-  * Deep Ink Typography: `#171A35` (Midnight Ink)
-  * Secondary Text: `#5E5E70` (Muted Slate)
-  * Accent Highlighter: `#9B9FE3` (Soft Iris)
+* **Palette Tokens (Wine & Warm Sandal):**
+  * Primary Accent: `#76283B` (Rich Deep Wine)
+  * Primary Hover: `#5B1D2D` (Vintage Bordeaux)
+  * Surface Background: `#F4E7D7` (Warm Sandal Cream)
+  * Elevated Card Surface: `#FFF9F2` (Crisp Alabaster)
+  * Borders & Dividers: `#E1CDBB` (Sandal Border)
+  * Deep Ink Typography: `#321922` (Deep Ink Wine)
+  * Secondary Text: `#665751` (Warm Earth Muted)
+  * Accent Highlighter: `#B78A63` (Sandal Gold Accent)
 * **Responsive Layout:**
   * Top Bar: Transport, domain switcher, experiment preset picker, reset, screenshot export.
   * Left Drawer: Searchable Concept Compendium (84 cards) + 15 Guided Laboratory Walkthroughs.

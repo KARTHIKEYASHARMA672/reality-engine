@@ -54,11 +54,11 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
 
     // 1. Scene
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#FBF5E6'); // Warm Vanilla Background
+    scene.background = new THREE.Color('#F4E7D7'); // Warm Sandal Background
     sceneRef.current = scene;
 
     // Subtle atmospheric fog
-    scene.fog = new THREE.FogExp2('#FBF5E6', 0.015);
+    scene.fog = new THREE.FogExp2('#F4E7D7', 0.015);
 
     // 2. Camera
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
@@ -91,7 +91,7 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
     const ambientLight = new THREE.AmbientLight('#FFFFFF', 0.7);
     scene.add(ambientLight);
 
-    const mainLight = new THREE.DirectionalLight('#FFFDF7', 1.2);
+    const mainLight = new THREE.DirectionalLight('#FFF9F2', 1.2);
     mainLight.position.set(12, 20, 10);
     mainLight.castShadow = true;
     mainLight.shadow.mapSize.width = 2048;
@@ -99,14 +99,14 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
     mainLight.shadow.bias = -0.0001;
     scene.add(mainLight);
 
-    const fillLight = new THREE.DirectionalLight('#9B9FE3', 0.4);
+    const fillLight = new THREE.DirectionalLight('#B78A63', 0.4);
     fillLight.position.set(-10, 10, -10);
     scene.add(fillLight);
 
     // 6. Laboratory Floor & Precision Grid
     const floorGeo = new THREE.PlaneGeometry(60, 60);
     const floorMat = new THREE.MeshStandardMaterial({
-      color: '#F4ECE0',
+      color: '#EBD8C6',
       roughness: 0.85,
       metalness: 0.1,
     });
@@ -116,8 +116,8 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
     floor.receiveShadow = true;
     scene.add(floor);
 
-    // Primary & secondary grid lines
-    const grid = new THREE.GridHelper(30, 30, '#30356F', '#E4DDC9');
+    // Primary & secondary grid lines (Wine & Sandal)
+    const grid = new THREE.GridHelper(30, 30, '#76283B', '#E1CDBB');
     grid.position.y = 0.01;
     scene.add(grid);
 
@@ -260,7 +260,7 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
               });
             } else {
               mat = new THREE.MeshStandardMaterial({
-                color: body.color || '#30356F',
+                color: body.color || '#76283B',
                 roughness: 0.35,
                 metalness: 0.5,
               });
@@ -280,7 +280,7 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
           // Highlight selected body
           const isSelected = selectedBody?.id === body.id;
           if (mesh.material instanceof THREE.MeshStandardMaterial) {
-            mesh.material.emissive.set(isSelected ? '#9B9FE3' : (body.charge > 0 ? '#991B1B' : (body.charge < 0 ? '#1E40AF' : '#000000')));
+            mesh.material.emissive.set(isSelected ? '#B78A63' : (body.charge > 0 ? '#991B1B' : (body.charge < 0 ? '#1E40AF' : '#000000')));
             mesh.material.emissiveIntensity = isSelected ? 0.6 : (Math.abs(body.charge) > 1e-6 ? 0.35 : 0.0);
           }
 
@@ -292,7 +292,7 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
             if (!trailLine) {
               const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
               const lineMat = new THREE.LineBasicMaterial({
-                color: body.color || '#9B9FE3',
+                color: body.color || '#B78A63',
                 transparent: true,
                 opacity: 0.5,
                 linewidth: 2,
@@ -351,8 +351,8 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
                   const arrowDir = new THREE.Vector3(normDir.x, normDir.y, normDir.z);
                   const arrowOrigin = new THREE.Vector3(samplePos.x, samplePos.y, samplePos.z);
                   
-                  // Color mapped by field intensity
-                  const color = activeDomain === 'electromagnetism' ? '#818CF8' : '#30356F';
+                  // Color mapped by field intensity (Wine & Sandal Palette)
+                  const color = activeDomain === 'electromagnetism' ? '#C85B75' : '#76283B';
                   const arrow = new THREE.ArrowHelper(arrowDir, arrowOrigin, arrowLength, color, 0.25, 0.15);
                   vectorArrowsGroupRef.current.add(arrow);
                 }

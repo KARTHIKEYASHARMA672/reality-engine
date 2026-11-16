@@ -5,8 +5,8 @@
 
 @layer base {
   body {
-    background-color: #FBF5E6;
-    color: #171A35;
+    background-color: #F4E7D7;
+    color: #321922;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
 }
@@ -18,16 +18,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #F3E8CE;
+  background: #EBD8C6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C8BEA3;
+  background: #C2AE9A;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9D937B;
+  background: #968370;
 }
 
 /* KaTeX custom styles */
@@ -37,19 +37,19 @@
   overflow-y: hidden;
 }
 
-/* Glassmorphism & Tactile Laboratory Panels */
+/* Glassmorphism & Tactile Laboratory Panels (Wine & Sandal) */
 .glass-panel {
-  background: rgba(255, 252, 244, 0.88);
+  background: rgba(255, 249, 242, 0.90);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid #E4DDC9;
+  border: 1px solid #E1CDBB;
 }
 
 .glass-panel-dark {
-  background: rgba(23, 26, 53, 0.92);
+  background: rgba(50, 25, 34, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(155, 159, 227, 0.2);
+  border: 1px solid rgba(183, 138, 99, 0.25);
 }
 
 .tactile-btn {

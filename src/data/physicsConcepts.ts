@@ -1,6 +1,6 @@
 /**
  * REALITY ENGINE — Comprehensive Physics Concept Compendium
- * 84 Curated Fundamental Physics Concepts across 6 Branches
+ * Exactly 120 Curated Fundamental & Advanced Academic Physics Concepts across 6 Branches
  * 
  * Fully typed, mathematically validated, with KaTeX formulas, derivations,
  * SI variable definitions, real-world engineering applications, and 3D apparatus presets.
@@ -44,48 +44,48 @@ export const BRANCH_METADATA: Record<PhysicsBranch, BranchInfo> = {
   mechanics: {
     id: 'mechanics',
     name: 'Classical Mechanics & Celestial Gravitation',
-    count: 16,
-    description: 'Newtonian dynamics, orbital Keplerian laws, potential wells, resonances, and non-linear oscillations.',
+    count: 22,
+    description: 'Newtonian dynamics, orbital Keplerian laws, Lagrangian mechanics, Hamiltonian phase space, and non-linear oscillations.',
     icon: 'Orbit',
     defaultDomain: 'mechanics'
   },
   collisions: {
     id: 'collisions',
     name: 'Kinematics, Momentum & Collisions',
-    count: 15,
-    description: '1D/2D elastic/inelastic collisions, restitution, impulse theorems, and rolling mechanics.',
+    count: 20,
+    description: '1D/2D elastic/inelastic collisions, restitution, impulse theorems, relativistic kinematics, and granular cooling.',
     icon: 'Activity',
     defaultDomain: 'collisions'
   },
   electromagnetism: {
     id: 'electromagnetism',
     name: 'Electromagnetism & Field Theory',
-    count: 18,
-    description: 'Coulomb potentials, Lorentz trajectories, cyclotron acceleration, and Maxwell electrodynamics.',
+    count: 24,
+    description: 'Coulomb potentials, Lorentz trajectories, cyclotron acceleration, Maxwell displacement current, and synchrotron radiation.',
     icon: 'Zap',
     defaultDomain: 'electromagnetism'
   },
   fluids: {
     id: 'fluids',
     name: 'Fluid Dynamics & Aerodynamics',
-    count: 13,
-    description: 'Archimedes buoyancy, Bernoulli stream tubes, Poiseuille viscous flow, and aerodynamic lift.',
+    count: 19,
+    description: 'Archimedes buoyancy, Bernoulli stream tubes, Poiseuille viscous flow, Rayleigh-Taylor instability, and Rankine-Hugoniot shocks.',
     icon: 'Droplets',
     defaultDomain: 'fluids'
   },
   thermodynamics: {
     id: 'thermodynamics',
     name: 'Thermodynamics & Kinetic Theory',
-    count: 10,
-    description: 'Ideal gas behavior, Maxwell-Boltzmann velocity statistics, entropy, and Carnot heat engines.',
+    count: 16,
+    description: 'Van der Waals real gases, Joule-Thomson expansion, Maxwell-Boltzmann velocity statistics, Planck blackbody law, and heat engines.',
     icon: 'Flame',
     defaultDomain: 'fluids'
   },
   modern: {
     id: 'modern',
     name: 'Wave Mechanics & Modern/Quantum Foundations',
-    count: 12,
-    description: 'Wave interference, photoelectric emission, de Broglie duality, Bohr orbits, and Compton scattering.',
+    count: 19,
+    description: 'Quantum tunneling, Stern-Gerlach spin, photoelectric effect, pair production, Zeeman splitting, Cherenkov light, and Schwarzschild metrics.',
     icon: 'Atom',
     defaultDomain: 'mechanics'
   }
@@ -879,6 +879,298 @@ export const PHYSICS_CONCEPTS: PhysicsConcept[] = [
     }
   },
   {
+    "id": "euler-lagrange-action-principle",
+    "title": "Euler-Lagrange Mechanics & Principle of Least Action",
+    "branch": "mechanics",
+    "tag": "Analytical Mechanics",
+    "difficulty": "Advanced",
+    "formulaLatex": "\\delta S = \\delta \\int_{t_1}^{t_2} L(q, \\dot{q}, t)\\,dt = 0 \\implies \\frac{d}{dt}\\left(\\frac{\\partial L}{\\partial \\dot{q}_i}\\right) - \\frac{\\partial L}{\\partial q_i} = 0",
+    "summary": "Stationary action principle stating that true physical trajectories extremize the action integral S of the Lagrangian L = T - V. Yields coordinate-independent equations of motion for complex constrained mechanical systems.",
+    "derivation": "Given the action functional S[q] = \\int_{t_1}^{t_2} L(q, \\dot{q}, t)\\,dt, consider a variation q(t) \\to q(t) + \\epsilon \\eta(t) with fixed endpoints \\eta(t_1) = \\eta(t_2) = 0. The first variation is \\delta S = \\int_{t_1}^{t_2} \\left[ \\frac{\\partial L}{\\partial q} \\eta + \\frac{\\partial L}{\\partial \\dot{q}} \\dot{\\eta} \\right] dt. Integrating the second term by parts: \\int_{t_1}^{t_2} \\frac{\\partial L}{\\partial \\dot{q}} \\frac{d\\eta}{dt} dt = \\left[\\frac{\\partial L}{\\partial \\dot{q}}\\eta\\right]_{t_1}^{t_2} - \\int_{t_1}^{t_2} \\frac{d}{dt}\\left(\\frac{\\partial L}{\\partial \\dot{q}}\\right) \\eta\\,dt. The boundary term vanishes identically. Thus, \\delta S = \\int_{t_1}^{t_2} \\left[ \\frac{\\partial L}{\\partial q} - \\frac{d}{dt}\\left(\\frac{\\partial L}{\\partial \\dot{q}}\\right) \\right] \\eta(t)\\,dt = 0. By the fundamental lemma of the calculus of variations, the bracketed term must vanish for all arbitrary variations \\eta(t), yielding the Euler-Lagrange equations.",
+    "realWorldApplication": "Robotics dynamics and multi-body aerospace structures: Inverted pendulums, robotic manipulator arms, and satellite solar array deployment dynamics are derived using generalized Lagrangian coordinates without calculating internal constraint reaction forces.",
+    "variables": [
+      {
+        "symbol": "S",
+        "label": "Hamilton's Action Integral",
+        "unit": "J·s"
+      },
+      {
+        "symbol": "L",
+        "label": "Lagrangian (T - V)",
+        "unit": "J"
+      },
+      {
+        "symbol": "q_i",
+        "label": "Generalized Coordinates",
+        "unit": "m or rad"
+      },
+      {
+        "symbol": "\\dot{q}_i",
+        "label": "Generalized Velocities",
+        "unit": "m/s or rad/s"
+      }
+    ],
+    "presetConfig": {
+      "domain": "mechanics",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "generalizedMass": 2.5,
+        "springPotential": 40.0
+      },
+      "description": "Double-spring constrained Lagrangian mass exhibiting coupled phase-space trajectory.",
+      "apparatusType": "lagrangian_slider"
+    }
+  },
+  {
+    "id": "hamiltons-canonical-equations",
+    "title": "Hamiltonian Mechanics & Canonical Phase Space",
+    "branch": "mechanics",
+    "tag": "Phase Space & Liouville",
+    "difficulty": "Advanced",
+    "formulaLatex": "\\dot{q}_i = \\frac{\\partial H}{\\partial p_i}, \\quad \\dot{p}_i = -\\frac{\\partial H}{\\partial q_i}, \\quad H(q, p, t) = \\sum p_i \\dot{q}_i - L",
+    "summary": "Reformulation of classical mechanics into first-order symmetric differential equations on symplectic phase space. Total energy H generates time evolution, with phase space volume conserved by Liouville's theorem.",
+    "derivation": "Perform a Legendre transformation on the Lagrangian L(q, \\dot{q}, t) from velocities \\dot{q} to generalized canonical momenta p_i \\equiv \\frac{\\partial L}{\\partial \\dot{q}_i}. The Hamiltonian is defined as H(q, p, t) = \\sum_i p_i \\dot{q}_i - L(q, \\dot{q}, t). Taking the total differential: dH = \\sum_i (\\dot{q}_i dp_i + p_i d\\dot{q}_i) - \\sum_i \\left(\\frac{\\partial L}{\\partial q_i}dq_i + \\frac{\\partial L}{\\partial \\dot{q}_i}d\\dot{q}_i\\right) - \\frac{\\partial L}{\\partial t}dt. Substituting p_i = \\frac{\\partial L}{\\partial \\dot{q}_i} cancels the d\\dot{q}_i terms, leaving dH = \\sum_i (\\dot{q}_i dp_i - \\dot{p}_i dq_i) - \\frac{\\partial L}{\\partial t}dt. Comparing this with the natural differential dH = \\sum_i \\left(\\frac{\\partial H}{\\partial p_i}dp_i + \\frac{\\partial H}{\\partial q_i}dq_i\\right) + \\frac{\\partial H}{\\partial t}dt$ yields Hamilton's canonical equations.",
+    "realWorldApplication": "Astrodynamics and particle accelerator beam physics: Beam emittance in the Large Hadron Collider (LHC) and long-term solar system orbital stability simulations rely strictly on Hamiltonian symplectic integration to preserve energy invariants.",
+    "variables": [
+      {
+        "symbol": "H",
+        "label": "Hamiltonian (Total Energy)",
+        "unit": "J"
+      },
+      {
+        "symbol": "p",
+        "label": "Canonical Momentum",
+        "unit": "kg·m/s"
+      },
+      {
+        "symbol": "q",
+        "label": "Generalized Coordinate",
+        "unit": "m"
+      },
+      {
+        "symbol": "t",
+        "label": "Time",
+        "unit": "s"
+      }
+    ],
+    "presetConfig": {
+      "domain": "mechanics",
+      "cameraPosition": [
+        0,
+        10,
+        18
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "symplecticDt": 0.005,
+        "totalEnergy": 12.5
+      },
+      "description": "Harmonic oscillator phase space orbital loop verifying energy surface conservation.",
+      "apparatusType": "phase_space_integrator"
+    }
+  },
+  {
+    "id": "coupled-harmonic-oscillators-normal-modes",
+    "title": "Coupled Harmonic Oscillators & Normal Modes",
+    "branch": "mechanics",
+    "tag": "Vibrational Dynamics",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\mathbf{M}\\ddot{\\mathbf{x}} + \\mathbf{K}\\mathbf{x} = \\mathbf{0} \\implies \\det(\\mathbf{K} - \\omega^2 \\mathbf{M}) = 0",
+    "summary": "Two or more oscillating bodies connected by elastic coupling exchange energy periodically. The motion can be decomposed into linearly independent normal modes oscillating at characteristic eigenfrequencies without cross-talk.",
+    "derivation": "Consider two identical masses m connected to fixed walls and each other by three springs with constants k_1, k_{12}, k_2. The equations of motion are m \\ddot{x}_1 = -k_1 x_1 + k_{12}(x_2 - x_1) and m \\ddot{x}_2 = -k_2 x_2 - k_{12}(x_2 - x_1). In matrix notation: \\mathbf{M}\\ddot{\\mathbf{x}} + \\mathbf{K}\\mathbf{x} = \\mathbf{0}, where \\mathbf{M} = \\text{diag}(m, m) and \\mathbf{K} = \\begin{bmatrix} k_1+k_{12} & -k_{12} \\\\ -k_{12} & k_2+k_{12} \\end{bmatrix}. Assuming harmonic solutions \\mathbf{x}(t) = \\mathbf{A} e^{i\\omega t}, substitution yields (-\\omega^2 \\mathbf{M} + \\mathbf{K})\\mathbf{A} = \\mathbf{0}. For non-trivial amplitudes \\mathbf{A} \\ne \\mathbf{0}, the secular determinant must vanish: \\det(\\mathbf{K} - \\omega^2 \\mathbf{M}) = 0. Solving this characteristic quadratic yields the symmetric in-phase mode \\omega_1 = \\sqrt{k/m} and anti-symmetric out-of-phase mode \\omega_2 = \\sqrt{(k + 2k_{12})/m}.",
+    "realWorldApplication": "Civil seismic dampers and molecular spectroscopy: Tuned mass dampers in skyscrapers (Taipei 101) absorb earthquake resonance frequencies; infrared vibrational modes of CO2 and methane molecules reveal greenhouse absorption lines.",
+    "variables": [
+      {
+        "symbol": "\\omega_i",
+        "label": "Eigenfrequency Normal Mode",
+        "unit": "rad/s"
+      },
+      {
+        "symbol": "\\mathbf{M}",
+        "label": "Mass Matrix",
+        "unit": "kg"
+      },
+      {
+        "symbol": "\\mathbf{K}",
+        "label": "Stiffness Coupling Matrix",
+        "unit": "N/m"
+      },
+      {
+        "symbol": "\\mathbf{x}",
+        "label": "Displacement Vector",
+        "unit": "m"
+      }
+    ],
+    "presetConfig": {
+      "domain": "mechanics",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "mass1": 1.5,
+        "mass2": 1.5,
+        "couplingK": 8.0
+      },
+      "description": "Two coupled oscillators demonstrating beat frequency energy transfer.",
+      "apparatusType": "coupled_pendulums"
+    }
+  },
+  {
+    "id": "gravitational-virial-theorem",
+    "title": "The Virial Theorem & Gravitational Equilibrium",
+    "branch": "mechanics",
+    "tag": "Astrophysical Mechanics",
+    "difficulty": "Advanced",
+    "formulaLatex": "2\\langle K \\rangle + \\langle U \\rangle = 0 \\implies E_{\\text{total}} = -\\langle K \\rangle = \\frac{1}{2}\\langle U \\rangle",
+    "summary": "For a stable, gravitationally bound system of N bodies interacting via inverse-square forces, the time-averaged kinetic energy K is exactly equal to half the absolute value of the time-averaged potential energy U.",
+    "derivation": "Define the scalar moment of inertia / virial function G \\equiv \\sum_i \\mathbf{p}_i \\cdot \\mathbf{r}_i = \\frac{1}{2} \\frac{d}{dt} \\sum_i m_i r_i^2. Differentiating with respect to time: \\frac{dG}{dt} = \\sum_i \\mathbf{p}_i \\cdot \\dot{\\mathbf{r}}_i + \\sum_i \\dot{\\mathbf{p}}_i \\cdot \\mathbf{r}_i = 2K + \\sum_i \\mathbf{F}_i \\cdot \\mathbf{r}_i. For pairwise central gravitational forces \\mathbf{F}_{ij} = -G \\frac{m_i m_j}{r_{ij}^3}\\mathbf{r}_{ij}, Euler's theorem for homogeneous potentials of degree k = -1 yields \\sum_i \\mathbf{F}_i \\cdot \\mathbf{r}_i = - \\sum_{i<j} \\frac{G m_i m_j}{r_{ij}} = U. Taking the long-term time average \\langle \\dots \\rangle = \\lim_{T \\to \\infty} \\frac{1}{T}\\int_0^T \\dots dt: \\left\\langle \\frac{dG}{dt} \\right\\rangle = \\lim_{T \\to \\infty} \\frac{G(T) - G(0)}{T} = 0 for bounded motion. Therefore, 2\\langle K \\rangle + \\langle U \\rangle = 0, giving E = K + U = -K = \\frac{1}{2}U.",
+    "realWorldApplication": "Dark matter discovery: Fritz Zwicky applied the Virial Theorem to the Coma galaxy cluster in 1933, proving the cluster's kinetic velocities required 400x more gravitational mass than visible stellar luminous matter.",
+    "variables": [
+      {
+        "symbol": "\\langle K \\rangle",
+        "label": "Time-Averaged Kinetic Energy",
+        "unit": "J"
+      },
+      {
+        "symbol": "\\langle U \\rangle",
+        "label": "Time-Averaged Gravitational Potential",
+        "unit": "J"
+      },
+      {
+        "symbol": "E_{\\text{total}}",
+        "label": "Total Bound System Energy",
+        "unit": "J"
+      },
+      {
+        "symbol": "G",
+        "label": "Gravitational Constant",
+        "unit": "N·m²/kg²"
+      }
+    ],
+    "presetConfig": {
+      "domain": "mechanics",
+      "cameraPosition": [
+        0,
+        16,
+        28
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "numStars": 8,
+        "clusterRadius": 10.0,
+        "totalMass": 40.0
+      },
+      "description": "N-body bound stellar cluster settling into Virial equilibrium 2K + U = 0.",
+      "apparatusType": "n_body_cluster"
+    }
+  },
+  {
+    "id": "roche-limit-tidal-disruption",
+    "title": "Roche Limit & Gravitational Tidal Disruption",
+    "branch": "mechanics",
+    "tag": "Planetary Gravitation",
+    "difficulty": "Intermediate",
+    "formulaLatex": "d_{\\text{Roche}} = R_M \\left( 2 \\frac{\\rho_M}{\\rho_m} \\right)^{1/3} \\approx 2.44 R_M \\left(\\frac{\\rho_M}{\\rho_m}\\right)^{1/3}",
+    "summary": "The minimum orbital orbital distance at which a celestial body held together purely by self-gravitation can orbit a primary massive body without being torn apart by differential gravitational tidal forces.",
+    "derivation": "Consider a small spherical satellite of mass m and radius r orbiting a primary body of mass M and radius R_M at distance d. A test particle of mass \\mu on the satellite's surface facing the planet experiences two competing forces: 1. Outward tidal differential force: F_{\\text{tidal}} \\approx \\frac{d}{dd}\\left(\\frac{G M \\mu}{d^2}\\right) r = \\frac{2 G M \\mu r}{d^3}. 2. Inward self-gravitational binding force of the satellite: F_{\\text{grav}} = \\frac{G m \\mu}{r^2}. Tidal disruption occurs when F_{\\text{tidal}} \\ge F_{\\text{grav}}, meaning \\frac{2 G M \\mu r}{d^3} \\ge \\frac{G m \\mu}{r^2} \\implies d^3 \\le 2 \\frac{M}{m} r^3. Expressing masses in terms of average densities M = \\frac{4}{3}\\pi R_M^3 \\rho_M and m = \\frac{4}{3}\\pi r^3 \\rho_m: d^3 \\le 2 \\left(\\frac{R_M^3 \\rho_M}{r^3 \\rho_m}\\right) r^3 = 2 R_M^3 \\left(\\frac{\\rho_M}{\\rho_m}\\right). Taking cube roots yields the rigid Roche limit d_{\\text{Roche}} = R_M \\left(2 \\frac{\\rho_M}{\\rho_m}\\right)^{1/3}.",
+    "realWorldApplication": "Planetary rings and exoplanetary destruction: Saturn's rings reside entirely within its Roche limit, formed from shredded cometary ice moons; tidal disruption events (TDEs) when stars pass too close to supermassive black holes.",
+    "variables": [
+      {
+        "symbol": "d_{\\text{Roche}}",
+        "label": "Roche Disruption Distance",
+        "unit": "m"
+      },
+      {
+        "symbol": "R_M",
+        "label": "Primary Body Radius",
+        "unit": "m"
+      },
+      {
+        "symbol": "\\rho_M",
+        "label": "Primary Density",
+        "unit": "kg/m³"
+      },
+      {
+        "symbol": "\\rho_m",
+        "label": "Satellite Density",
+        "unit": "kg/m³"
+      }
+    ],
+    "presetConfig": {
+      "domain": "mechanics",
+      "cameraPosition": [
+        0,
+        14,
+        24
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "primaryMass": 60.0,
+        "satelliteRadius": 1.2,
+        "orbitDistance": 4.5
+      },
+      "description": "Satellite crossing Roche boundary experiencing structural tidal shearing.",
+      "apparatusType": "tidal_shearing_orbit"
+    }
+  },
+  {
+    "id": "foucault-pendulum-precession",
+    "title": "Foucault Pendulum & Earth's Diurnal Rotation",
+    "branch": "mechanics",
+    "tag": "Non-Inertial Coriolis",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\omega_{\\text{prec}} = \\Omega_{\\text{Earth}} \\sin \\phi, \\quad T_{\\text{prec}} = \\frac{24\\,\\text{h}}{\\sin \\phi}",
+    "summary": "A spherical pendulum suspended on a low-friction universal pivot rotates its vertical oscillation plane due to Coriolis acceleration in Earth's rotating frame, directly proving planetary rotation without astronomical observation.",
+    "derivation": "In a local coordinate frame at latitude \\phi with vertical z-axis pointing outward, Earth's angular velocity is \\boldsymbol{\\Omega} = (0, \\Omega \\cos\\phi, \\Omega \\sin\\phi). The equation of motion for a pendulum of length L is \\ddot{\\mathbf{r}} = -\\frac{g}{L}\\mathbf{r} - 2(\\boldsymbol{\\Omega} \\times \\dot{\\mathbf{r}}). Neglecting small vertical velocity (\\dot{z} \\approx 0), the horizontal component equations are \\ddot{x} + \\omega_0^2 x = 2 \\Omega \\sin\\phi\\, \\dot{y} and \\ddot{y} + \\omega_0^2 y = -2 \\Omega \\sin\\phi\\, \\dot{x}, where \\omega_0 = \\sqrt{g/L}. Introducing the complex variable \\xi(t) = x(t) + i y(t), the coupled equations combine into \\ddot{\\xi} + 2 i (\\Omega \\sin\\phi) \\dot{\\xi} + \\omega_0^2 \\xi = 0. Substituting \\xi(t) = u(t) e^{-i (\\Omega \\sin\\phi) t} eliminates the cross Coriolis velocity term, proving that the oscillation plane rotates clockwise (in the Northern hemisphere) at angular frequency \\omega_{\\text{prec}} = \\Omega \\sin\\phi.",
+    "realWorldApplication": "Inertial navigation gyroscopes: Ring laser and fiber-optic gyroscopes (FOG) in modern civil aircraft and nuclear submarines calibrate Earth's rotation vector using the exact Coriolis angular rate mechanism discovered by Léon Foucault in 1851.",
+    "variables": [
+      {
+        "symbol": "\\omega_{\\text{prec}}",
+        "label": "Plane Precession Rate",
+        "unit": "rad/s"
+      },
+      {
+        "symbol": "\\Omega_{\\text{Earth}}",
+        "label": "Planetary Rotation Rate",
+        "unit": "rad/s"
+      },
+      {
+        "symbol": "\\phi",
+        "label": "Geographic Latitude",
+        "unit": "degrees"
+      },
+      {
+        "symbol": "T_{\\text{prec}}",
+        "label": "Complete Precession Period",
+        "unit": "hours"
+      }
+    ],
+    "presetConfig": {
+      "domain": "mechanics",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.5,
+      "parameters": {
+        "latitude": 48.8,
+        "pendulumLength": 12.0,
+        "bobMass": 5.0
+      },
+      "description": "Foucault pendulum precessing clockwise against floor markers in rotating frame.",
+      "apparatusType": "foucault_rig"
+    }
+  },
+  {
     "id": "elastic-collisions-1d",
     "title": "1D Perfectly Elastic Collisions",
     "branch": "collisions",
@@ -1621,6 +1913,249 @@ export const PHYSICS_CONCEPTS: PhysicsConcept[] = [
       },
       "description": "Dual pendulum comparison contrasting small-angle isochronous oscillation with large-angle elliptic delay.",
       "apparatusType": "dual_angle_pendulum_stand"
+    }
+  },
+  {
+    "id": "gravitational-slingshot-hyperbolic-assist",
+    "title": "Gravitational Slingshot & Hyperbolic Orbital Assist",
+    "branch": "collisions",
+    "tag": "Orbital Elastic Relays",
+    "difficulty": "Advanced",
+    "formulaLatex": "v_f \\approx v_i + 2 v_{\\text{planet}} \\cos \\theta, \\quad \\Delta E_{\\text{kin}} = 2 m v_i v_{\\text{planet}}",
+    "summary": "Gravitational encounter modeled as an elastic collision between a small spacecraft and a massive moving celestial body. In the planet's frame speed is invariant, but in the heliocentric frame momentum transfer grants massive velocity boost.",
+    "derivation": "Let a spacecraft of mass m approach a planet of mass M \\gg m moving at heliocentric velocity \\mathbf{V}_P. Transform into the planet-centric frame: initial relative velocity is \\mathbf{u}_i = \\mathbf{v}_i - \\mathbf{V}_P. The hyperbolic flyby is governed purely by conservative gravitational force; by energy conservation in the planet's rest frame, the exit speed equals the entrance speed: |\\mathbf{u}_f| = |\\mathbf{u}_i| = u. The trajectory is deflected by angle \\delta = 2 \\arcsin\\left(\\frac{1}{1 + \\frac{r_p u^2}{G M}}\\right). Transforming back into the heliocentric rest frame: \\mathbf{v}_f = \\mathbf{u}_f + \\mathbf{V}_P. For a head-on encounter where the deflection rotates \\mathbf{u} by 180 degrees (\\mathbf{u}_f = -\\mathbf{u}_i = \\mathbf{V}_P - \\mathbf{v}_i): \\mathbf{v}_f = (\\mathbf{V}_P - \\mathbf{v}_i) + \\mathbf{V}_P = 2\\mathbf{V}_P - \\mathbf{v}_i. For approaching from behind, the spacecraft gains up to \\Delta v = 2 V_P, transferring planetary orbital momentum.",
+    "realWorldApplication": "Interplanetary trajectory design: NASA's Cassini mission utilized two Venus assists, one Earth assist, and one Jupiter assist to reach Saturn without requiring an impossibly large launch booster; Voyager 2 visited Jupiter, Saturn, Uranus, and Neptune.",
+    "variables": [
+      {
+        "symbol": "v_f",
+        "label": "Final Heliocentric Speed",
+        "unit": "km/s"
+      },
+      {
+        "symbol": "v_i",
+        "label": "Initial Heliocentric Speed",
+        "unit": "km/s"
+      },
+      {
+        "symbol": "v_{\\text{planet}}",
+        "label": "Orbital Velocity of Planet",
+        "unit": "km/s"
+      },
+      {
+        "symbol": "\\delta",
+        "label": "Hyperbolic Turn Angle",
+        "unit": "rad"
+      }
+    ],
+    "presetConfig": {
+      "domain": "collisions",
+      "cameraPosition": [
+        0,
+        12,
+        22
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "planetMass": 80.0,
+        "planetSpeed": 6.0,
+        "probeSpeed": 3.0
+      },
+      "description": "Probe entering moving planet's gravitational well receiving +2V momentum assist.",
+      "apparatusType": "gravity_assist_arena"
+    }
+  },
+  {
+    "id": "relativistic-momentum-conservation",
+    "title": "Relativistic Collisions & 4-Momentum Conservation",
+    "branch": "collisions",
+    "tag": "High-Energy Collisions",
+    "difficulty": "Advanced",
+    "formulaLatex": "P^\\mu = \\left(\\frac{E}{c}, \\mathbf{p}\\right), \\quad \\sum P^\\mu_{\\text{initial}} = \\sum P^\\mu_{\\text{final}}, \\quad E^2 = (pc)^2 + (m_0 c^2)^2",
+    "summary": "In relativistic kinematics near lightspeed c, energy and linear momentum combine into invariant four-momentum vectors P^mu whose sum is strictly conserved in all Lorentz frames, enabling mass-energy conversion.",
+    "derivation": "In special relativity, the four-momentum is defined as P^\\mu = m_0 U^\\mu = (\\gamma m_0 c, \\gamma m_0 \\mathbf{v}) = (E/c, \\mathbf{p}), where \\gamma = 1/\\sqrt{1 - v^2/c^2}. The Minkowski norm is a Lorentz invariant scalar: P^\\mu P_\\mu = -(E/c)^2 + \\mathbf{p}^2 = -(m_0 c)^2, yielding the relativistic energy-momentum invariant E^2 = (pc)^2 + (m_0 c^2)^2. For an inelastic collision where particles 1 and 2 merge to form composite particle 3: P_1^\\mu + P_2^\\mu = P_3^\\mu. The invariant mass of the resulting particle is M_3^2 c^2 = -(P_1^\\mu + P_2^\\mu)^2 = m_1^2 c^2 + m_2^2 c^2 + 2\\left(\\frac{E_1 E_2}{c^2} - \\mathbf{p}_1 \\cdot \\mathbf{p}_2\\right). In the center-of-momentum frame where \\mathbf{p}_1 + \\mathbf{p}_2 = \\mathbf{0}, the threshold center-of-mass energy \\sqrt{s} = E_1 + E_2 is directly available for particle creation.",
+    "realWorldApplication": "Collider physics: CERN's Large Hadron Collider collides protons at 13.6 TeV center-of-mass energy, transforming kinetic momentum directly into rest mass to discover massive bosons (Higgs, W/Z).",
+    "variables": [
+      {
+        "symbol": "P^\\mu",
+        "label": "Four-Momentum Vector",
+        "unit": "kg·m/s"
+      },
+      {
+        "symbol": "E",
+        "label": "Total Relativistic Energy",
+        "unit": "J or GeV"
+      },
+      {
+        "symbol": "m_0",
+        "label": "Invariant Rest Mass",
+        "unit": "kg"
+      },
+      {
+        "symbol": "c",
+        "label": "Speed of Light",
+        "unit": "m/s"
+      }
+    ],
+    "presetConfig": {
+      "domain": "collisions",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 0.5,
+      "parameters": {
+        "gammaFactor": 2.5,
+        "restMass": 1.0
+      },
+      "description": "Relativistic particle impact demonstrating velocity saturation and mass conversion.",
+      "apparatusType": "relativistic_chamber"
+    }
+  },
+  {
+    "id": "angular-impulse-momentum-theorem",
+    "title": "Angular Impulse & Rigid Body Impact Torque",
+    "branch": "collisions",
+    "tag": "Rotational Collisions",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\mathbf{J}_\\theta = \\int_{t_1}^{t_2} \\boldsymbol{\\tau}_{\\text{ext}}(t)\\,dt = \\mathbf{I}\\boldsymbol{\\omega}_2 - \\mathbf{I}\\boldsymbol{\\omega}_1 = \\mathbf{r} \\times \\mathbf{J}_{\\text{linear}}",
+    "summary": "An off-center impulsive collision generates both a linear impulse changing center-of-mass translation and an angular impulse changing rigid body rotational spin about the moment of inertia tensor.",
+    "derivation": "Euler's rotational equation of motion is \\boldsymbol{\\tau}_{\\text{net}} = \\frac{d\\mathbf{L}}{dt} = \\frac{d(\\mathbf{I}\\boldsymbol{\\omega})}{dt}. Integrating over the collision duration \\Delta t = t_2 - t_1: \\int_{t_1}^{t_2} \\boldsymbol{\\tau}_{\\text{net}}\\,dt = \\mathbf{L}(t_2) - \\mathbf{L}(t_1) = \\mathbf{I}\\boldsymbol{\\omega}_2 - \\mathbf{I}\\boldsymbol{\\omega}_1. For an off-center contact force \\mathbf{F}(t) applied at displacement vector \\mathbf{r} from the center of mass, torque is \\boldsymbol{\\tau} = \\mathbf{r} \\times \\mathbf{F}(t). Because \\mathbf{r} remains essentially constant over the sub-millisecond impact interval: \\mathbf{J}_\\theta = \\int_{t_1}^{t_2} (\\mathbf{r} \\times \\mathbf{F})\\,dt = \\mathbf{r} \\times \\int_{t_1}^{t_2} \\mathbf{F}\\,dt = \\mathbf{r} \\times \\mathbf{J}_{\\text{linear}}. Combining this with linear momentum conservation \\mathbf{J} = m(\\mathbf{v}_2 - \\mathbf{v}_1) completely determines post-impact rotational and translational states.",
+    "realWorldApplication": "Automotive crash reconstruction and sports biomechanics: Off-center vehicle collisions induce violent yaw spin calculated via angular impulse; golf club head sweet-spot impacts eliminate shaft twisting.",
+    "variables": [
+      {
+        "symbol": "\\mathbf{J}_\\theta",
+        "label": "Angular Impulse Vector",
+        "unit": "N·m·s"
+      },
+      {
+        "symbol": "\\mathbf{I}",
+        "label": "Moment of Inertia Tensor",
+        "unit": "kg·m²"
+      },
+      {
+        "symbol": "\\boldsymbol{\\omega}",
+        "label": "Angular Velocity Vector",
+        "unit": "rad/s"
+      },
+      {
+        "symbol": "\\mathbf{r}",
+        "label": "Impact Lever Arm Vector",
+        "unit": "m"
+      }
+    ],
+    "presetConfig": {
+      "domain": "collisions",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "barLength": 4.0,
+        "impactOffset": 1.5,
+        "bulletSpeed": 8.0
+      },
+      "description": "High-speed projectile striking free floating rod off-center, initiating spin and drift.",
+      "apparatusType": "angular_impact_rig"
+    }
+  },
+  {
+    "id": "viscoelastic-collision-damping",
+    "title": "Viscoelastic Collisions & Contact Damping",
+    "branch": "collisions",
+    "tag": "Hertzian Contact",
+    "difficulty": "Advanced",
+    "formulaLatex": "F_{\\text{contact}} = k x^{3/2} + \\lambda x^{3/2} \\dot{x} \\implies e(v_0) \\approx 1 - c\\, v_0^{1/5}",
+    "summary": "Real-world solid collisions deviate from constant coefficient of restitution e. Hertzian elastic contact combined with internal material viscous dissipation shows restitution decays systematically at higher impact velocities.",
+    "derivation": "Hertz contact theory for two elastic spheres shows non-linear elastic restoring force F_{\\text{elastic}} = k x^{3/2}, where indentation is x = R_1 + R_2 - d and stiffness k = \\frac{4}{3}E^* \\sqrt{R^*}. Kuwabara and Kono added dissipative internal friction damping: F = k x^{3/2} + \\lambda x^{3/2} \\dot{x}, where \\lambda is the material viscosity parameter. The equation of relative motion during contact is m^* \\ddot{x} + k x^{3/2} + \\lambda x^{3/2} \\dot{x} = 0. Integrating the energy loss \\Delta E = \\int \\lambda x^{3/2} \\dot{x}^2 dt over the compression and rebound cycle via perturbation analysis yields the fractional energy dissipation \\frac{\\Delta E}{E_0} \\propto v_0^{1/5}. Since e = \\sqrt{E_{\\text{rebound}} / E_0} = \\sqrt{1 - \\Delta E/E_0} \\approx 1 - \\frac{1}{2}\\frac{\\Delta E}{E_0}, the coefficient of restitution follows e(v_0) \\approx 1 - c v_0^{1/5}.",
+    "realWorldApplication": "Aerospace docking mechanisms and seismic isolation: Spacecraft docking collars incorporate tuned viscoelastic elastomeric bumpers to prevent rebounding and lock docking latches reliably on first contact.",
+    "variables": [
+      {
+        "symbol": "F_{\\text{contact}}",
+        "label": "Normal Contact Force",
+        "unit": "N"
+      },
+      {
+        "symbol": "x",
+        "label": "Surface Indentation Depth",
+        "unit": "m"
+      },
+      {
+        "symbol": "k",
+        "label": "Hertzian Contact Stiffness",
+        "unit": "N/m^(3/2)"
+      },
+      {
+        "symbol": "e(v_0)",
+        "label": "Velocity-Dependent Restitution",
+        "unit": "dimensionless"
+      }
+    ],
+    "presetConfig": {
+      "domain": "collisions",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 0.8,
+      "parameters": {
+        "viscosityCoeff": 0.15,
+        "hertzK": 120.0
+      },
+      "description": "Viscoelastic sphere bouncing with velocity-dependent energy dissipation.",
+      "apparatusType": "viscoelastic_drop_test"
+    }
+  },
+  {
+    "id": "granular-cooling-haffs-law",
+    "title": "Granular Gas Collisions & Haff's Cooling Law",
+    "branch": "collisions",
+    "tag": "Statistical Collisions",
+    "difficulty": "Advanced",
+    "formulaLatex": "T_g(t) = \\frac{T_0}{\\left(1 + \\frac{t}{\\tau_0}\\right)^2}, \\quad \\tau_0 = \\frac{2\\sqrt{\\pi} d}{3(1-e^2)\\sqrt{T_0/m}}",
+    "summary": "In an unforced assembly of macroscopic particles undergoing inelastic collisions (granular gas), kinetic temperature T_g decays algebraically with time according to Haff's cooling law, leading to spontaneous spatial clustering.",
+    "derivation": "In a granular gas of spherical grains with mass m, diameter d, and restitution e < 1, the granular temperature is defined by random velocity variance: \\frac{3}{2} T_g = \\frac{1}{2}m \\langle v^2 \\rangle. In each binary collision, the fractional energy lost is \\Delta E_{\\text{coll}} = \\frac{1-e^2}{4} m v_{\\text{rel}}^2. The collision frequency per particle in Enskog kinetic theory is \\omega_{\\text{coll}} \\approx 4 n d^2 \\chi \\sqrt{\\pi T_g/m}, where n is number density and \\chi is the pair correlation function. The time rate of change of granular energy density is \\frac{d}{dt}\\left(\\frac{3}{2} n T_g\\right) = -\\frac{1}{2} n \\omega_{\\text{coll}} \\langle \\Delta E_{\\text{coll}} \\rangle = -\\frac{3}{2} n \\frac{T_g}{\\tau(T_g)}, where \\tau(T_g) \\propto T_g^{-1/2}. This yields the differential equation \\frac{dT_g}{dt} = -A T_g^{3/2}. Separating variables: \\int_{T_0}^{T_g} T^{-3/2} dT = -A t \\implies -2(T_g^{-1/2} - T_0^{-1/2}) = -A t. Rearranging yields Haff's law: T_g(t) = T_0 / (1 + t/\\tau_0)^2.",
+    "realWorldApplication": "Protoplanetary accretion and planetary ring dynamics: In Saturn's rings and pre-solar dust clouds, granular cooling drives localized density clustering that triggers planetesimal gravitational collapse.",
+    "variables": [
+      {
+        "symbol": "T_g(t)",
+        "label": "Granular Kinetic Temperature",
+        "unit": "J or m²/s²"
+      },
+      {
+        "symbol": "e",
+        "label": "Grain Restitution Coefficient",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "\\tau_0",
+        "label": "Characteristic Inelastic Cooling Time",
+        "unit": "s"
+      },
+      {
+        "symbol": "d",
+        "label": "Particle Diameter",
+        "unit": "m"
+      }
+    ],
+    "presetConfig": {
+      "domain": "collisions",
+      "cameraPosition": [
+        0,
+        10,
+        18
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "numGrains": 24,
+        "restitution": 0.82,
+        "initialVelocity": 5.0
+      },
+      "description": "24 inelastic particles in container cooling down and forming dense clusters.",
+      "apparatusType": "granular_gas_box"
     }
   },
   {
@@ -2535,6 +3070,296 @@ export const PHYSICS_CONCEPTS: PhysicsConcept[] = [
     }
   },
   {
+    "id": "maxwell-ampere-displacement-current",
+    "title": "Maxwell-Ampère Law & Displacement Current",
+    "branch": "electromagnetism",
+    "tag": "Electrodynamics",
+    "difficulty": "Advanced",
+    "formulaLatex": "\\nabla \\times \\mathbf{B} = \\mu_0 \\mathbf{J} + \\mu_0 \\epsilon_0 \\frac{\\partial \\mathbf{E}}{\\partial t}, \\quad I_D = \\epsilon_0 \\frac{d\\Phi_E}{dt}",
+    "summary": "James Clerk Maxwell's resolution of the Ampère circuital paradox for charging capacitors. A time-varying electric field generates a curling magnetic field via displacement current, predicting electromagnetic wave propagation at light speed.",
+    "derivation": "Taking the divergence of the original Ampère law \\nabla \\times \\mathbf{B} = \\mu_0 \\mathbf{J}: \\nabla \\cdot (\\nabla \\times \\mathbf{B}) = \\mu_0 (\\nabla \\cdot \\mathbf{J}) = 0. However, the charge continuity equation states \\nabla \\cdot \\mathbf{J} = -\\frac{\\partial \\rho}{\\partial t}. These equations contradict unless \\frac{\\partial \\rho}{\\partial t} = 0. Using Gauss's law \\nabla \\cdot \\mathbf{E} = \\frac{\\rho}{\\epsilon_0}, we differentiate with respect to time: \\frac{\\partial \\rho}{\\partial t} = \\epsilon_0 \\nabla \\cdot \\left(\\frac{\\partial \\mathbf{E}}{\\partial t}\\right). Substituting into continuity: \\nabla \\cdot \\left(\\mathbf{J} + \\epsilon_0 \\frac{\\partial \\mathbf{E}}{\\partial t}\\right) = 0. Maxwell defined the displacement current density \\mathbf{J}_D \\equiv \\epsilon_0 \\frac{\\partial \\mathbf{E}}{\\partial t}. Modifying Ampère's law to \\nabla \\times \\mathbf{B} = \\mu_0 (\\mathbf{J} + \\mathbf{J}_D) restores mathematical consistency and leads directly to the electromagnetic wave equation with speed c = 1/\\sqrt{\\mu_0 \\epsilon_0}.",
+    "realWorldApplication": "High-frequency RF capacitors and antennas: Wireless communication, 5G cellular arrays, and radar transmitters radiate signals purely through displacement current between conductor plates.",
+    "variables": [
+      {
+        "symbol": "\\mathbf{B}",
+        "label": "Magnetic Flux Density",
+        "unit": "T"
+      },
+      {
+        "symbol": "\\mathbf{E}",
+        "label": "Electric Field Vector",
+        "unit": "V/m"
+      },
+      {
+        "symbol": "I_D",
+        "label": "Displacement Current",
+        "unit": "A"
+      },
+      {
+        "symbol": "\\epsilon_0",
+        "label": "Vacuum Permittivity",
+        "unit": "F/m"
+      }
+    ],
+    "presetConfig": {
+      "domain": "electromagnetism",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "plateVoltage": 100.0,
+        "frequencyHz": 50.0
+      },
+      "description": "Parallel plate capacitor demonstrating curling magnetic field generated by dE/dt.",
+      "apparatusType": "capacitor_displacement_field"
+    }
+  },
+  {
+    "id": "magnetic-dipole-dipole-interaction",
+    "title": "Magnetic Dipole-Dipole Interaction & Force",
+    "branch": "electromagnetism",
+    "tag": "Magnetic Fields",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\mathbf{B}_{\\text{dip}}(\\mathbf{r}) = \\frac{\\mu_0}{4\\pi}\\left[\\frac{3(\\mathbf{m}\\cdot\\hat{\\mathbf{r}})\\hat{\\mathbf{r}} - \\mathbf{m}}{r^3}\\right], \\quad \\mathbf{F} = \\nabla(\\mathbf{m}_2 \\cdot \\mathbf{B}_1)",
+    "summary": "The mutual force and torque between two localized magnetic dipole moments. Unlike electric charges where like charges repel, magnetic dipole orientation determines whether interaction is strongly attractive, repulsive, or rotational.",
+    "derivation": "The vector potential of a magnetic dipole \\mathbf{m}_1 located at the origin is \\mathbf{A}(\\mathbf{r}) = \\frac{\\mu_0}{4\\pi}\\frac{\\mathbf{m}_1 \\times \\mathbf{r}}{r^3}. The resulting magnetic B-field is \\mathbf{B}_1 = \\nabla \\times \\mathbf{A} = \\frac{\\mu_0}{4\\pi r^3}[3(\\mathbf{m}_1 \\cdot \\hat{\\mathbf{r}})\\hat{\\mathbf{r}} - \\mathbf{m}_1]. When a second dipole \\mathbf{m}_2 is placed in this field at position \\mathbf{r}, its interaction potential energy is U = -\\mathbf{m}_2 \\cdot \\mathbf{B}_1. The force experienced by dipole 2 is \\mathbf{F} = -\\nabla U = \\nabla(\\mathbf{m}_2 \\cdot \\mathbf{B}_1). For two dipoles aligned co-axially along the z-axis (\\mathbf{m}_1 \\parallel \\mathbf{m}_2 \\parallel \\hat{\\mathbf{z}}): U(z) = -\\frac{\\mu_0}{2\\pi}\\frac{m_1 m_2}{z^3}, producing an attractive inverse-quartic force F_z = -\\frac{dU}{dz} = -\\frac{3\\mu_0 m_1 m_2}{2\\pi z^4}.",
+    "realWorldApplication": "Magnetic levitation and Atomic Force Microscopy (AFM): Magnetic Force Microscopy (MFM) tips map nanoscale magnetic domains on computer hard drives by measuring dipole-dipole gradient forces.",
+    "variables": [
+      {
+        "symbol": "\\mathbf{m}",
+        "label": "Magnetic Dipole Moment",
+        "unit": "A·m² or J/T"
+      },
+      {
+        "symbol": "\\mathbf{B}",
+        "label": "Magnetic Field",
+        "unit": "T"
+      },
+      {
+        "symbol": "\\mathbf{F}",
+        "label": "Inter-Dipole Force Vector",
+        "unit": "N"
+      },
+      {
+        "symbol": "r",
+        "label": "Separation Distance",
+        "unit": "m"
+      }
+    ],
+    "presetConfig": {
+      "domain": "electromagnetism",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "moment1": 5.0,
+        "moment2": 5.0,
+        "distance": 2.5
+      },
+      "description": "Two magnetic dipoles experiencing mutual torque alignment and inverse 1/r^4 force.",
+      "apparatusType": "dipole_compass_bench"
+    }
+  },
+  {
+    "id": "skin-effect-ac-penetration",
+    "title": "Skin Effect & High-Frequency Eddy Current Exclusion",
+    "branch": "electromagnetism",
+    "tag": "AC Electromagnetism",
+    "difficulty": "Advanced",
+    "formulaLatex": "\\delta = \\sqrt{\\frac{2\\rho}{\\omega \\mu}} = \\frac{1}{\\sqrt{\\pi f \\mu \\sigma}}, \\quad J(x) = J_0 e^{-x/\\delta} e^{-i x/\\delta}",
+    "summary": "Alternating current in a metallic conductor is expelled from the central core and concentrated in a thin outer layer of skin depth delta due to opposing eddy currents induced by self-inductance.",
+    "derivation": "Starting with Maxwell's equations inside an ohmic conductor with conductivity \\sigma: \\nabla \\times \\mathbf{E} = -\\frac{\\partial \\mathbf{B}}{\\partial t} and \\nabla \\times \\mathbf{B} = \\mu \\mathbf{J} = \\mu \\sigma \\mathbf{E}. Taking the curl of the electric equation: \\nabla \\times (\\nabla \\times \\mathbf{E}) = \\nabla(\\nabla \\cdot \\mathbf{E}) - \\nabla^2 \\mathbf{E} = -\\mu \\sigma \\frac{\\partial \\mathbf{E}}{\\partial t}. For an uncharged conductor (\\nabla \\cdot \\mathbf{E} = 0), this simplifies to the diffusion equation \\nabla^2 \\mathbf{E} = \\mu \\sigma \\frac{\\partial \\mathbf{E}}{\\partial t}. In a 1D planar conductor with alternating surface field E_y(0, t) = E_0 e^{i\\omega t}: \\frac{\\partial^2 E_y}{\\partial x^2} = i \\omega \\mu \\sigma E_y. The solution is E_y(x, t) = E_0 e^{-k x} e^{i\\omega t}, where k = \\sqrt{i \\omega \\mu \\sigma} = (1 + i)\\sqrt{\\frac{\\omega \\mu \\sigma}{2}} = \\frac{1+i}{\\delta}. The skin depth is defined as \\delta = \\sqrt{\\frac{2}{\\omega \\mu \\sigma}} = \\sqrt{\\frac{2\\rho}{\\omega \\mu}}, at which current density drops to 1/e (36.8%) of its surface value.",
+    "realWorldApplication": "Power transmission and induction cooktops: Litz wire (thousands of individually insulated fine strands) minimizes skin effect losses in switch-mode power supplies; RF coaxial cables use silver-plated copper cores.",
+    "variables": [
+      {
+        "symbol": "\\delta",
+        "label": "Skin Depth Penetration",
+        "unit": "m"
+      },
+      {
+        "symbol": "\\rho",
+        "label": "Material Resistivity",
+        "unit": "Ω·m"
+      },
+      {
+        "symbol": "\\omega",
+        "label": "Angular AC Frequency",
+        "unit": "rad/s"
+      },
+      {
+        "symbol": "\\mu",
+        "label": "Magnetic Permeability",
+        "unit": "H/m"
+      }
+    ],
+    "presetConfig": {
+      "domain": "electromagnetism",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "frequencyKhz": 100.0,
+        "copperSigma": 58000000.0
+      },
+      "description": "Cylindrical conductor cross-section showing exponential current decay toward center.",
+      "apparatusType": "skin_depth_cylinder"
+    }
+  },
+  {
+    "id": "radiation-pressure-electromagnetic",
+    "title": "Radiation Pressure & Electromagnetic Momentum",
+    "branch": "electromagnetism",
+    "tag": "Radiation Dynamics",
+    "difficulty": "Intermediate",
+    "formulaLatex": "P_{\\text{rad}} = \\frac{(1 + R)\\langle S \\rangle}{c} = \\frac{(1 + R)I}{c}, \\quad \\mathbf{p}_{\\text{photon}} = \\frac{E}{c}\\hat{\\mathbf{k}}",
+    "summary": "Electromagnetic waves carry physical linear momentum density p = S/c^2. When striking a surface, momentum transfer exerts a measurable macroscopic radiation pressure doubled upon perfect reflection.",
+    "derivation": "Maxwell's stress tensor shows electromagnetic fields carry momentum volume density \\mathbf{g} = \\epsilon_0 (\\mathbf{E} \\times \\mathbf{B}) = \\frac{\\mathbf{S}}{c^2}, where \\mathbf{S} is the Poynting vector. Consider a beam of light with average intensity I = \\langle S \\rangle normal to a surface of area A. The electromagnetic momentum per unit time incident on the surface is \\frac{dp_{\\text{in}}}{dt} = \\frac{I A}{c}. If the surface has reflection coefficient R (R = 0 for perfect absorption, R = 1 for a perfect mirror), the reflected momentum per unit time is \\frac{dp_{\\text{out}}}{dt} = -R \\frac{I A}{c}. By Newton's second law, the net force on the surface is F = \\frac{\\Delta p}{\\Delta t} = \\frac{I A}{c} - \\left(-R \\frac{I A}{c}\\right) = (1 + R)\\frac{I A}{c}. Dividing by area A yields the radiation pressure P_{\\text{rad}} = \\frac{F}{A} = \\frac{(1 + R)I}{c}.",
+    "realWorldApplication": "Solar sails and laser optical tweezers: The Planetary Society's LightSail 2 propelled itself in Earth orbit entirely via solar radiation pressure; Nobel-winning optical tweezers trap single biological cells with focused laser beams.",
+    "variables": [
+      {
+        "symbol": "P_{\\text{rad}}",
+        "label": "Radiation Pressure",
+        "unit": "N/m² or Pa"
+      },
+      {
+        "symbol": "I",
+        "label": "Poynting Irradiance Flux",
+        "unit": "W/m²"
+      },
+      {
+        "symbol": "c",
+        "label": "Speed of Light",
+        "unit": "m/s"
+      },
+      {
+        "symbol": "R",
+        "label": "Surface Reflectance",
+        "unit": "0 to 1"
+      }
+    ],
+    "presetConfig": {
+      "domain": "electromagnetism",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "laserIntensity": 1000000.0,
+        "mirrorReflectance": 1.0
+      },
+      "description": "High-powered laser beam deflecting a reflective solar sail foil in vacuum.",
+      "apparatusType": "solar_sail_chamber"
+    }
+  },
+  {
+    "id": "magnetohydrodynamic-alfven-waves",
+    "title": "Magnetohydrodynamics (MHD) & Alfvén Waves",
+    "branch": "electromagnetism",
+    "tag": "Plasma Physics",
+    "difficulty": "Advanced",
+    "formulaLatex": "v_A = \\frac{B_0}{\\sqrt{\\mu_0 \\rho_{\\text{plasma}}}}, \\quad \\frac{\\partial^2 \\mathbf{b}}{\\partial t^2} = v_A^2 \\frac{\\partial^2 \\mathbf{b}}{\\partial z^2}",
+    "summary": "Transverse magnetosonic wave propagating in an electrically conducting magnetized plasma. Magnetic field lines behave like taut elastic strings, while plasma mass provides inertial resistance.",
+    "derivation": "In ideal magnetohydrodynamics (MHD), the magnetic field is frozen into the fluid (Alfvén's theorem). Combine the linearized momentum equation \\rho_0 \\frac{\\partial \\mathbf{v}}{\\partial t} = \\mathbf{J} \\times \\mathbf{B}_0 = \\frac{1}{\\mu_0}(\\nabla \\times \\mathbf{b}) \\times \\mathbf{B}_0 and the induction equation \\frac{\\partial \\mathbf{b}}{\\partial t} = \\nabla \\times (\\mathbf{v} \\times \\mathbf{B}_0). For a uniform background field \\mathbf{B}_0 = B_0 \\hat{\\mathbf{z}} and transverse perturbations \\mathbf{v} = v_x(z, t)\\hat{\\mathbf{x}} and \\mathbf{b} = b_x(z, t)\\hat{\\mathbf{x}}: \\rho_0 \\frac{\\partial v_x}{\\partial t} = \\frac{B_0}{\\mu_0}\\frac{\\partial b_x}{\\partial z} and \\frac{\\partial b_x}{\\partial t} = B_0 \\frac{\\partial v_x}{\\partial z}. Differentiating the first equation with respect to time and substituting the second: \\rho_0 \\frac{\\partial^2 v_x}{\\partial t^2} = \\frac{B_0^2}{\\mu_0}\\frac{\\partial^2 v_x}{\\partial z^2} \\implies \\frac{\\partial^2 v_x}{\\partial t^2} = v_A^2 \\frac{\\partial^2 v_x}{\\partial z^2}, where the Alfvén wave speed is v_A = \\frac{B_0}{\\sqrt{\\mu_0 \\rho_0}}.",
+    "realWorldApplication": "Solar coronal heating and tokamak fusion stability: Alfvén waves transport magnetic energy from the solar photosphere to heat the Sun's corona to 1-3 million Kelvin; in ITER tokamaks, Alfvén eigenmodes govern fast-ion alpha particle confinement.",
+    "variables": [
+      {
+        "symbol": "v_A",
+        "label": "Alfvén Wave Velocity",
+        "unit": "m/s"
+      },
+      {
+        "symbol": "B_0",
+        "label": "Ambient Magnetic Field",
+        "unit": "T"
+      },
+      {
+        "symbol": "\\rho_{\\text{plasma}}",
+        "label": "Plasma Mass Density",
+        "unit": "kg/m³"
+      },
+      {
+        "symbol": "\\mu_0",
+        "label": "Vacuum Permeability",
+        "unit": "H/m"
+      }
+    ],
+    "presetConfig": {
+      "domain": "electromagnetism",
+      "cameraPosition": [
+        0,
+        10,
+        20
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "bFieldZ": 4.0,
+        "plasmaDensity": 0.25
+      },
+      "description": "Magnetic field lines oscillating transversely with frozen-in plasma fluid particles.",
+      "apparatusType": "alfven_plasma_column"
+    }
+  },
+  {
+    "id": "synchrotron-radiation-power",
+    "title": "Synchrotron Radiation & Relativistic Larmor Power",
+    "branch": "electromagnetism",
+    "tag": "Relativistic Electrodynamics",
+    "difficulty": "Advanced",
+    "formulaLatex": "P_{\\text{sync}} = \\frac{e^2 c}{6\\pi \\epsilon_0} \\frac{\\gamma^4}{\\rho_{\\text{orbit}}^2} = \\frac{e^4 \\gamma^2 B^2}{6\\pi \\epsilon_0 m_e^2 c}",
+    "summary": "Charged particles moving at relativistic speeds perpendicular to a magnetic field emit intense, forward-beamed electromagnetic radiation across infrared to hard X-rays due to transverse centripetal acceleration.",
+    "derivation": "In classical electrodynamics, Larmor's formula for the power radiated by a non-relativistic accelerated charge is P = \\frac{q^2 a^2}{6\\pi \\epsilon_0 c^3}. The relativistic covariant generalization using four-acceleration a^\\mu is P = -\\frac{q^2}{6\\pi \\epsilon_0 c} a^\\mu a_\\mu = \\frac{q^2 \\gamma^6}{6\\pi \\epsilon_0 c} \\left[ (\\dot{\\mathbf{v}})^2 - \\left(\\frac{\\mathbf{v} \\times \\dot{\\mathbf{v}}}{c}\\right)^2 \\right]. For circular motion in a magnetic field where velocity is perpendicular to acceleration (\\mathbf{v} \\cdot \\dot{\\mathbf{v}} = 0), centripetal acceleration is a = \\frac{v^2}{\\rho_{\\text{orbit}}} \\approx \\frac{c^2}{\\rho}. The cross-product term becomes |\\mathbf{v} \\times \\dot{\\mathbf{v}}|^2 = v^2 a^2, leaving (\\dot{\\mathbf{v}})^2 [1 - v^2/c^2] = a^2 / \\gamma^2. Substituting into the relativistic power: P_{\\text{sync}} = \\frac{q^2 \\gamma^6}{6\\pi \\epsilon_0 c} \\frac{a^2}{\\gamma^2} = \\frac{q^2 \\gamma^4 a^2}{6\\pi \\epsilon_0 c} = \\frac{q^2 c}{6\\pi \\epsilon_0} \\frac{\\gamma^4}{\\rho_{\\text{orbit}}^2}. The \\gamma^4 scaling causes extreme radiation loss for light leptons (electrons).",
+    "realWorldApplication": "Synchrotron light sources and pulsar astrophysics: National Synchrotron Light Source (NSLS-II) and ESRF produce ultra-brilliant X-ray pulses to image viral protein structures and lithium battery phase transitions at atomic resolution.",
+    "variables": [
+      {
+        "symbol": "P_{\\text{sync}}",
+        "label": "Emitted Radiated Power",
+        "unit": "W or keV/turn"
+      },
+      {
+        "symbol": "\\gamma",
+        "label": "Lorentz Factor (E / m_0 c²)",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "\\rho_{\\text{orbit}}",
+        "label": "Bending Magnet Orbital Radius",
+        "unit": "m"
+      },
+      {
+        "symbol": "B",
+        "label": "Magnetic Bending Field",
+        "unit": "T"
+      }
+    ],
+    "presetConfig": {
+      "domain": "electromagnetism",
+      "cameraPosition": [
+        0,
+        10,
+        18
+      ],
+      "timeDilation": 0.5,
+      "parameters": {
+        "gammaFactor": 5.0,
+        "magFieldZ": 2.5,
+        "radius": 4.0
+      },
+      "description": "Relativistic electron orbiting in magnetic field with tangential radiation emission cones.",
+      "apparatusType": "synchrotron_storage_ring"
+    }
+  },
+  {
     "id": "archimedes-buoyancy",
     "title": "Archimedes' Principle of Buoyancy",
     "branch": "fluids",
@@ -3199,6 +4024,297 @@ export const PHYSICS_CONCEPTS: PhysicsConcept[] = [
     }
   },
   {
+    "id": "rayleigh-taylor-instability",
+    "title": "Rayleigh-Taylor Instability & Interfacial Mixing",
+    "branch": "fluids",
+    "tag": "Hydrodynamic Stability",
+    "difficulty": "Advanced",
+    "formulaLatex": "\\gamma_{\\text{growth}} = \\sqrt{At \\cdot g k - \\frac{\\sigma k^3}{\\rho_1 + \\rho_2}}, \\quad At = \\frac{\\rho_2 - \\rho_1}{\\rho_2 + \\rho_1}",
+    "summary": "Instability occurring at the perturbed interface when a heavy fluid of density rho_2 is supported against gravity by a lighter fluid of density rho_1. Small perturbations grow exponentially into mushroom-shaped fingers.",
+    "derivation": "Consider an interface between fluid 1 (density \\rho_1, below) and fluid 2 (density \\rho_2, above) in an effective gravitational field g pointing downward (-z). Linearize the Navier-Stokes equations for inviscid, incompressible flow with velocity potential \\phi. The kinematic boundary condition at the interface \\eta(x, t) is \\frac{\\partial \\eta}{\\partial t} = \\frac{\\partial \\phi_1}{\\partial z} = \\frac{\\partial \\phi_2}{\\partial z}. Dynamic pressure continuity across the interface including surface tension \\sigma gives P_1 - P_2 = -\\sigma \\frac{\\partial^2 \\eta}{\\partial x^2}. Expressing perturbations as normal modes \\eta(x, t) = \\eta_0 e^{\\gamma t} \\cos(kx): the dispersion relation becomes \\gamma^2 = g k \\left(\\frac{\\rho_2 - \\rho_1}{\\rho_2 + \\rho_1}\\right) - \\frac{\\sigma k^3}{\\rho_1 + \\rho_2}. When \\rho_2 > \\rho_1 (heavy fluid on top), \\gamma^2 > 0 for wavenumbers k < k_{\\text{cutoff}} = \\sqrt{(\\rho_2 - \\rho_1)g/\\sigma}, meaning perturbations grow exponentially in time as e^{\\gamma t}.",
+    "realWorldApplication": "Inertial Confinement Fusion (ICF) and Supernova explosions: In fusion implosions at the National Ignition Facility (NIF), Rayleigh-Taylor spikes at the fuel-capsule interface prematurely quench ignition hot spots; Type Ia supernovae explode via RT finger turbulence.",
+    "variables": [
+      {
+        "symbol": "\\gamma",
+        "label": "Instability Growth Rate",
+        "unit": "1/s"
+      },
+      {
+        "symbol": "At",
+        "label": "Atwood Number",
+        "unit": "dimensionless (0 to 1)"
+      },
+      {
+        "symbol": "g",
+        "label": "Gravitational Acceleration",
+        "unit": "m/s²"
+      },
+      {
+        "symbol": "k",
+        "label": "Perturbation Wavenumber (2pi / lambda)",
+        "unit": "rad/m"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 0.8,
+      "parameters": {
+        "densityRatio": 2.5,
+        "perturbationAmp": 0.1
+      },
+      "description": "Heavy fluid layer over light fluid forming iconic mushroom-shaped downward fingers.",
+      "apparatusType": "density_interface_tank"
+    }
+  },
+  {
+    "id": "vortex-shedding-von-karman",
+    "title": "Kármán Vortex Street & Strouhal Frequency",
+    "branch": "fluids",
+    "tag": "Unsteady Viscous Flow",
+    "difficulty": "Intermediate",
+    "formulaLatex": "St = \\frac{f_s D}{v} \\approx 0.198\\left(1 - \\frac{19.7}{Re}\\right), \\quad F_L(t) = \\frac{1}{2} C_L \\rho v^2 A \\sin(2\\pi f_s t)",
+    "summary": "Periodic alternating shedding of counter-rotating vortices behind a bluff body in crossflow, creating an oscillating transverse aerodynamic lift force that can trigger destructive aeroelastic resonance.",
+    "derivation": "When fluid flows past a circular cylinder of diameter D at Reynolds numbers 47 < Re < 10^5, boundary layer separation occurs alternately from the upper and lower surfaces. The shear layers roll into discrete counter-rotating vortices that convect downstream in a staggered double row known as a von Kármán vortex street. By dimensional analysis, the non-dimensional shedding frequency is governed by the Strouhal number St \\equiv \\frac{f_s D}{v}. Empirically across the subcritical laminar vortex regime: St \\approx 0.198(1 - 19.7/Re). Each detached vortex induces an asymmetric circulation \\Gamma around the cylinder, generating a fluctuating transverse lift force via the Kutta-Joukowski theorem F_L = \\rho v \\Gamma, oscillating sinusoidally at shedding frequency f_s.",
+    "realWorldApplication": "Suspension bridges and industrial smokestacks: The 1940 Tacoma Narrows bridge collapse was accelerated by vortex-shedding lock-in; tall chimneys feature helical strakes to disrupt coherent vortex correlation.",
+    "variables": [
+      {
+        "symbol": "St",
+        "label": "Strouhal Number",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "f_s",
+        "label": "Vortex Shedding Frequency",
+        "unit": "Hz"
+      },
+      {
+        "symbol": "D",
+        "label": "Bluff Cylinder Diameter",
+        "unit": "m"
+      },
+      {
+        "symbol": "v",
+        "label": "Free-Stream Flow Velocity",
+        "unit": "m/s"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        8,
+        18
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "cylinderD": 1.5,
+        "flowSpeed": 4.0,
+        "fluidViscosity": 0.05
+      },
+      "description": "Viscous flow past cylinder shedding alternating clockwise and counter-clockwise vortices.",
+      "apparatusType": "wind_tunnel_cylinder"
+    }
+  },
+  {
+    "id": "jurins-law-capillary-rise",
+    "title": "Jurin's Law of Capillary Meniscus Elevation",
+    "branch": "fluids",
+    "tag": "Interfacial Mechanics",
+    "difficulty": "Intermediate",
+    "formulaLatex": "h = \\frac{2\\gamma \\cos \\theta}{\\rho g r}, \\quad \\Delta P_{\\text{Laplace}} = \\frac{2\\gamma}{r_{\\text{meniscus}}} = \\rho g h",
+    "summary": "Elevation of liquid inside a narrow cylindrical tube against gravity driven by liquid-solid adhesion and surface tension. The meniscus height is inversely proportional to tube radius r.",
+    "derivation": "At the interface between a liquid of surface tension \\gamma, density \\rho, and a vertical tube of inner radius r, the liquid meets the tube wall at equilibrium contact angle \\theta (Young-Dupré equation). The total vertical upward capillary force exerted along the wetted circumference is F_{\\text{capillary}} = \\gamma \\cdot (2\\pi r) \\cos\\theta. This upward force supports the gravitational weight of the elevated liquid column of height h: W_{\\text{gravity}} = m g = (\\rho V) g = \\rho (\\pi r^2 h) g. In static equilibrium, equating upward capillary traction to column weight: 2\\pi r \\gamma \\cos\\theta = \\pi r^2 \\rho g h. Solving for column elevation h yields Jurin's law: h = \\frac{2\\gamma \\cos\\theta}{\\rho g r}. For wetting liquids with contact angle \\theta < 90 deg (water on clean glass, \\theta \\approx 0), cos\\theta > 0 and the liquid rises.",
+    "realWorldApplication": "Plant xylem transpiration and paper microfluidics: Redwood trees pull water over 100 meters upward using capillary cohesion and negative xylem pressure; lateral-flow COVID-19 rapid test strips wick analyte via micro-capillaries.",
+    "variables": [
+      {
+        "symbol": "h",
+        "label": "Capillary Rise Height",
+        "unit": "m"
+      },
+      {
+        "symbol": "\\gamma",
+        "label": "Liquid Surface Tension",
+        "unit": "N/m"
+      },
+      {
+        "symbol": "\\theta",
+        "label": "Solid-Liquid Contact Angle",
+        "unit": "degrees"
+      },
+      {
+        "symbol": "r",
+        "label": "Capillary Tube Radius",
+        "unit": "m"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "tubeRadiusMm": 1.0,
+        "surfaceTension": 0.0728,
+        "contactAngle": 15.0
+      },
+      "description": "Glass capillary tube immersed in liquid displaying curved meniscus and vertical rise.",
+      "apparatusType": "capillary_tube_rack"
+    }
+  },
+  {
+    "id": "cavitation-vapor-pressure",
+    "title": "Hydrodynamic Cavitation & Rayleigh-Plesset Collapse",
+    "branch": "fluids",
+    "tag": "Multiphase Flow",
+    "difficulty": "Advanced",
+    "formulaLatex": "\\sigma_{\\text{cav}} = \\frac{P - P_v}{\\frac{1}{2}\\rho v^2}, \\quad R\\ddot{R} + \\frac{3}{2}\\dot{R}^2 = \\frac{1}{\\rho}\\left[P_v - P_\\infty(t) - \\frac{2\\gamma}{R} - \\frac{4\\eta\\dot{R}}{R}\\right]",
+    "summary": "Formation and violent explosive collapse of micro-scale vapor bubbles in a liquid when local static pressure falls below saturation vapor pressure P_v, generating destructive gigapascal microjets and shockwaves.",
+    "derivation": "By Bernoulli's principle, fluid acceleration through a constricting nozzle or past a spinning propeller blade causes static pressure to plummet: P + \\frac{1}{2}\\rho v^2 = P_0. When local pressure P drops below the liquid vapor pressure P_v(T), phase change occurs and vapor cavities spontaneously nucleate. The cavitation number is defined as \\sigma_{\\text{cav}} = \\frac{P_\\infty - P_v}{\\frac{1}{2}\\rho v^2}. Cavitation initiates when \\sigma_{\\text{cav}} < \\sigma_{\\text{crit}} \\approx 1. When these bubbles convect into downstream high-pressure zones, they collapse spherically according to the Rayleigh-Plesset equation. The collapsing bubble wall accelerates inward up to 1,000 m/s; asphericity near solid surfaces turns the bubble into a high-speed liquid microjet producing localized water-hammer pressures of 1 to 5 GPa, eroding hardened stainless steel.",
+    "realWorldApplication": "Marine propeller erosion and ultrasonic kidney lithotripsy: Submarine torpedo and propeller designs eliminate tip-vortex cavitation to prevent acoustic sonar detection; medical lithotripters focus cavitation shockwaves to pulverize kidney stones.",
+    "variables": [
+      {
+        "symbol": "\\sigma_{\\text{cav}}",
+        "label": "Cavitation Inception Number",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "P_v",
+        "label": "Saturation Vapor Pressure",
+        "unit": "Pa"
+      },
+      {
+        "symbol": "R",
+        "label": "Cavitation Bubble Radius",
+        "unit": "m or μm"
+      },
+      {
+        "symbol": "\\rho",
+        "label": "Fluid Density",
+        "unit": "kg/m³"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 0.5,
+      "parameters": {
+        "flowVelocity": 18.0,
+        "ambientPressure": 101325,
+        "vaporPressure": 2338
+      },
+      "description": "Venturi throat displaying rapid vapor bubble nucleation and downstream collapse shockwaves.",
+      "apparatusType": "cavitation_venturi_tunnel"
+    }
+  },
+  {
+    "id": "compressible-rankine-hugoniot-shock",
+    "title": "Rankine-Hugoniot Normal Shock Wave Jump Conditions",
+    "branch": "fluids",
+    "tag": "Compressible Aerodynamics",
+    "difficulty": "Advanced",
+    "formulaLatex": "\\frac{\\rho_2}{\\rho_1} = \\frac{(\\gamma+1)M_1^2}{(\\gamma-1)M_1^2 + 2}, \\quad \\frac{P_2}{P_1} = 1 + \\frac{2\\gamma}{\\gamma+1}(M_1^2 - 1), \\quad M_2^2 = \\frac{(\\gamma-1)M_1^2 + 2}{2\\gamma M_1^2 - (\\gamma-1)}",
+    "summary": "Jump discontinuities across a zero-thickness normal shock wave in supersonic gas flow (M_1 > 1). Governed by simultaneous conservation of mass, normal momentum, and total energy, yielding irreversible entropy increase.",
+    "derivation": "Consider a stationary 1D shock wave separating upstream supersonic state 1 from downstream subsonic state 2. The fundamental conservation equations across the shock are: 1. Mass: \\rho_1 u_1 = \\rho_2 u_2. 2. Momentum: P_1 + \\rho_1 u_1^2 = P_2 + \\rho_2 u_2^2. 3. Energy: h_1 + \\frac{1}{2}u_1^2 = h_2 + \\frac{1}{2}u_2^2, where enthalpy is h = \\frac{\\gamma}{\\gamma-1}\\frac{P}{\\rho}. Introducing the Mach number M = u / a = u / \\sqrt{\\gamma R T}: eliminate u_2 using mass conservation to express density ratio: \\frac{\\rho_2}{\\rho_1} = \\frac{(\\gamma+1)M_1^2}{(\\gamma-1)M_1^2 + 2}. Substituting into the momentum balance yields the pressure jump \\frac{P_2}{P_1} = 1 + \\frac{2\\gamma}{\\gamma+1}(M_1^2 - 1). The second law of thermodynamics requires entropy change \\Delta s = c_v \\ln(P_2/P_1) - c_p \\ln(\\rho_2/\\rho_1) \\ge 0, which holds exclusively for compressive supersonic shocks M_1 \\ge 1.",
+    "realWorldApplication": "Supersonic Concorde flight and spacecraft atmospheric re-entry: Spacecraft heat shields (Orion, SpaceX Starship) dissipate immense kinetic energy into shock-heated plasma gas during hypersonic atmospheric entry.",
+    "variables": [
+      {
+        "symbol": "M_1",
+        "label": "Upstream Supersonic Mach Number",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "P_2 / P_1",
+        "label": "Shock Static Pressure Jump Ratio",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "\\rho_2 / \\rho_1",
+        "label": "Shock Density Jump Ratio",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "\\gamma",
+        "label": "Specific Heat Ratio (1.4 for air)",
+        "unit": "dimensionless"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "machNumber": 2.2,
+        "gammaAir": 1.4
+      },
+      "description": "Supersonic wedge in gas flow forming sharp oblique shock discontinuity.",
+      "apparatusType": "supersonic_shock_tunnel"
+    }
+  },
+  {
+    "id": "marangoni-convection-tears-of-wine",
+    "title": "Marangoni Effect & Surface Tension Gradient Flow",
+    "branch": "fluids",
+    "tag": "Interfacial Fluidics",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\tau_{\\text{shear}} = \\frac{d\\gamma}{dx} = \\frac{\\partial \\gamma}{\\partial T}\\frac{dT}{dx} + \\frac{\\partial \\gamma}{\\partial c}\\frac{dc}{dx}, \\quad Ma = \\frac{-\\frac{d\\gamma}{dT} \\Delta T L}{\\eta \\alpha}",
+    "summary": "Mass transfer along an interface between two phases driven by surface tension gradients. Liquid flows vigorously away from regions of low surface tension toward regions of high surface tension, forming tears-of-wine beads.",
+    "derivation": "At a free liquid interface, surface tension \\gamma depends sensitively on temperature T and solute concentration c. If spatial gradients \\frac{dT}{dx} or \\frac{dc}{dx} exist, the surface tension varies along the interface. The balance of tangential stresses at the free surface requires that viscous shear stress in the liquid match the surface tension gradient: \\tau_{\\text{shear}} = \\left. \\eta \\frac{\\partial u}{\\partial z}\\right|_{z=\\text{interface}} = \\frac{d\\gamma}{dx} = \\frac{\\partial \\gamma}{\\partial T}\\frac{dT}{dx} + \\frac{\\partial \\gamma}{\\partial c}\\frac{dc}{dx}. In a glass of wine, alcohol has lower surface tension than water and evaporates faster from the thin meniscus film wetting the glass wall. This leaves a water-rich, high-surface-tension zone near the top. Capillary action pulls alcohol-rich liquid upward into the film; once gravitational mass accumulates, it drips back downward in beads known as tears of wine.",
+    "realWorldApplication": "Silicon crystal semiconductor pulling and microgravity welding: Marangoni thermocapillary convection governs molten silicon melt flow in Czochralski wafer growth furnaces, controlling impurity distributions.",
+    "variables": [
+      {
+        "symbol": "\\tau_{\\text{shear}}",
+        "label": "Interfacial Marangoni Shear Stress",
+        "unit": "N/m² or Pa"
+      },
+      {
+        "symbol": "\\gamma",
+        "label": "Surface Tension",
+        "unit": "N/m"
+      },
+      {
+        "symbol": "Ma",
+        "label": "Marangoni Number",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "\\eta",
+        "label": "Dynamic Viscosity",
+        "unit": "Pa·s"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "alcoholPercent": 14.0,
+        "evaporationRate": 0.02
+      },
+      "description": "Thin liquid film climbing glass surface and coalescing into teardrop beads.",
+      "apparatusType": "wine_glass_meniscus"
+    }
+  },
+  {
     "id": "ideal-gas-law",
     "title": "Ideal Gas Law & Equation of State",
     "branch": "thermodynamics",
@@ -3713,6 +4829,294 @@ export const PHYSICS_CONCEPTS: PhysicsConcept[] = [
       },
       "description": "Bimetallic composite strip warping under heat and constrained bridge expansion joint.",
       "apparatusType": "bimetallic_expansion_bench"
+    }
+  },
+  {
+    "id": "van-der-waals-real-gas",
+    "title": "Van der Waals Equation of Real Gases & Co-Volume",
+    "branch": "thermodynamics",
+    "tag": "Real Gas Thermodynamics",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\left(P + \\frac{a n^2}{V^2}\\right)(V - n b) = n R T, \\quad T_c = \\frac{8a}{27 R b}, \\quad P_c = \\frac{a}{27 b^2}",
+    "summary": "Non-ideal equation of state correcting the Ideal Gas Law for finite molecular volume (excluded volume parameter b) and attractive intermolecular London dispersion forces (intermolecular attraction parameter a).",
+    "derivation": "The ideal gas law PV = nRT assumes point-like particles with zero volume and no intermolecular forces. 1. Finite molecular volume: molecules cannot occupy the entire geometric volume V; the available free volume is V - n b, where b is four times the hard-sphere volume of one mole of molecules. 2. Attractive intermolecular forces: molecules near the container wall experience a net inward attractive pull from bulk molecules, reducing wall pressure impact. The pressure reduction is proportional to (density)^2 = (n/V)^2, meaning true kinetic pressure is P_{\\text{kinetic}} = P + a(n/V)^2. Substituting these corrections into the ideal gas equation yields: (P + a n^2 / V^2)(V - n b) = n R T. At the thermodynamic critical point where liquid and vapor become indistinguishable, the isotherm exhibits an inflection point \\frac{\\partial P}{\\partial V} = \\frac{\\partial^2 P}{\\partial V^2} = 0, which uniquely yields the critical constants T_c, P_c, and V_c = 3 n b.",
+    "realWorldApplication": "Cryogenic gas liquefaction and LNG transport: Van der Waals corrections govern the liquefaction of methane, nitrogen, and helium in industrial Joule-Thomson refrigeration cycles.",
+    "variables": [
+      {
+        "symbol": "P",
+        "label": "Absolute Gas Pressure",
+        "unit": "Pa"
+      },
+      {
+        "symbol": "V",
+        "label": "Total Gas Volume",
+        "unit": "m³"
+      },
+      {
+        "symbol": "a",
+        "label": "Intermolecular Attraction Coeff",
+        "unit": "Pa·m⁶/mol²"
+      },
+      {
+        "symbol": "b",
+        "label": "Excluded Molecular Co-Volume",
+        "unit": "m³/mol"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "gasA": 0.364,
+        "gasB": 4.27e-05,
+        "temperatureK": 320.0
+      },
+      "description": "High-density real gas container displaying attractive intermolecular clustering.",
+      "apparatusType": "piston_cylinder_real_gas"
+    }
+  },
+  {
+    "id": "joule-thomson-throttling-expansion",
+    "title": "Joule-Thomson Throttling Expansion & Inversion Curve",
+    "branch": "thermodynamics",
+    "tag": "Isenthalpic Expansion",
+    "difficulty": "Advanced",
+    "formulaLatex": "\\mu_{JT} \\equiv \\left(\\frac{\\partial T}{\\partial P}\\right)_H = \\frac{1}{C_p}\\left[T\\left(\\frac{\\partial V}{\\partial T}\\right)_P - V\\right], \\quad T_{\\text{inv}} \\approx \\frac{2a}{R b}",
+    "summary": "Isenthalpic expansion of a real gas through a porous plug or throttling valve without external work or heat transfer. The gas cools upon expansion if its initial temperature is below the maximum Joule-Thomson inversion temperature.",
+    "derivation": "Consider steady-state flow of a gas across a throttle from pressure P_1 to P_2 < P_1 in an adiabatic pipe (q = 0, w = 0). The first law of thermodynamics for open systems requires constant enthalpy: H_1 = H_2. The differential of enthalpy is dH = C_p dT + \\left[V - T\\left(\\frac{\\partial V}{\\partial T}\\right)_P\\right] dP = 0. Setting dH = 0 gives the Joule-Thomson coefficient \\mu_{JT} \\equiv \\left(\\frac{\\partial T}{\\partial P}\\right)_H = \\frac{1}{C_p}\\left[T\\left(\\frac{\\partial V}{\\partial T}\\right)_P - V\\right]. For an ideal gas V = RT/P, so T(\\partial V/\\partial T)_P - V = T(R/P) - V = 0, meaning \\mu_{JT} = 0 (ideal gases undergo zero temperature change). For a Van der Waals real gas: \\mu_{JT} \\approx \\frac{1}{C_p}\\left(\\frac{2a}{RT} - b\\right). If T < T_{\\text{inv}} = 2a/(Rb), then \\mu_{JT} > 0: because dP < 0, dT < 0 and the gas cools on expansion.",
+    "realWorldApplication": "Linde-Hampson air liquefaction and domestic refrigerators: Commercial refrigerators throttle high-pressure liquid Freon/R134a through an expansion valve into an evaporator coil to produce sub-zero cooling.",
+    "variables": [
+      {
+        "symbol": "\\mu_{JT}",
+        "label": "Joule-Thomson Coefficient",
+        "unit": "K/Pa"
+      },
+      {
+        "symbol": "H",
+        "label": "Enthalpy",
+        "unit": "J"
+      },
+      {
+        "symbol": "C_p",
+        "label": "Isobaric Heat Capacity",
+        "unit": "J/(mol·K)"
+      },
+      {
+        "symbol": "T_{\\text{inv}}",
+        "label": "Maximum Inversion Temperature",
+        "unit": "K"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "upstreamPressureBar": 50.0,
+        "downstreamPressureBar": 1.0
+      },
+      "description": "High-pressure gas throttling through porous membrane showing sudden temperature drop.",
+      "apparatusType": "throttling_valve_tube"
+    }
+  },
+  {
+    "id": "plancks-blackbody-radiation-law",
+    "title": "Planck's Law of Blackbody Spectral Radiance",
+    "branch": "thermodynamics",
+    "tag": "Quantum Thermodynamics",
+    "difficulty": "Advanced",
+    "formulaLatex": "B_\\lambda(\\lambda, T) = \\frac{2hc^2}{\\lambda^5} \\frac{1}{e^{\\frac{hc}{\\lambda k_B T}} - 1}, \\quad \\lambda_{\\text{max}} T = b_{\\text{Wien}} \\approx 2.898 \\times 10^{-3}\\,\\text{m}\\cdot\\text{K}",
+    "summary": "Max Planck's 1900 quantum hypothesis resolving the classical Rayleigh-Jeans ultraviolet catastrophe. Energy in electromagnetic cavity modes is quantized in discrete packets E = h*nu, predicting peak blackbody emission wavelength.",
+    "derivation": "Classical equipartition assigned average energy k_B T to each electromagnetic cavity standing wave mode, yielding the Rayleigh-Jeans formula u_\\nu d\\nu = \\frac{8\\pi \\nu^2}{c^3} k_B T d\\nu, which diverges to infinity as \\nu \\to \\infty (the Ultraviolet Catastrophe). Planck hypothesized that microscopic atomic oscillators can only absorb or emit energy in discrete quanta \\epsilon = n h \\nu, where n \\in \\{0, 1, 2, \\dots\\}. The thermal average energy of a mode at temperature T is governed by the Boltzmann distribution: \\langle E \\rangle = \\frac{\\sum_{n=0}^\\infty (n h \\nu) e^{-n h \\nu / k_B T}}{\\sum_{n=0}^\\infty e^{-n h \\nu / k_B T}} = \\frac{h \\nu}{e^{h \\nu / k_B T} - 1}. Multiplying this mean energy by the density of photonic states per unit volume g(\\nu) = \\frac{8\\pi \\nu^2}{c^3} yields Planck's spectral energy density u_\\nu(\\nu, T) = \\frac{8\\pi h \\nu^3}{c^3} \\frac{1}{e^{h\\nu/k_BT} - 1}. Differentiating with respect to wavelength \\lambda yields Wien's Displacement Law \\lambda_{\\text{max}} T = \\text{const}.",
+    "realWorldApplication": "Astrophysical stellar temperature classification and thermal imaging: The 2.725 K Cosmic Microwave Background (CMB) spectrum matches Planck's blackbody curve to 1 part in 100,000; optical pyrometers measure molten steel temperatures.",
+    "variables": [
+      {
+        "symbol": "B_\\lambda",
+        "label": "Spectral Radiance",
+        "unit": "W/(m²·sr·m)"
+      },
+      {
+        "symbol": "h",
+        "label": "Planck's Constant",
+        "unit": "6.626e-34 J·s"
+      },
+      {
+        "symbol": "\\lambda",
+        "label": "Radiation Wavelength",
+        "unit": "m or nm"
+      },
+      {
+        "symbol": "T",
+        "label": "Absolute Temperature",
+        "unit": "K"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "temperatureKelvin": 5778.0
+      },
+      "description": "Cavity emitter radiating continuous blackbody spectrum matching the solar surface.",
+      "apparatusType": "blackbody_cavity"
+    }
+  },
+  {
+    "id": "internal-combustion-otto-cycle",
+    "title": "Otto Thermodynamic Cycle & Compression Ratio",
+    "branch": "thermodynamics",
+    "tag": "Engineering Cycles",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\eta_{\\text{Otto}} = 1 - \\frac{1}{r^{\\gamma - 1}}, \\quad r = \\frac{V_{\\text{max}}}{V_{\\text{min}}} = \\frac{V_1}{V_2}",
+    "summary": "Ideal thermodynamic cycle modeling four-stroke spark-ignition internal combustion engines. Consists of isentropic compression, isochoric heat addition, isentropic expansion, and isochoric heat rejection.",
+    "derivation": "The air-standard Otto cycle comprises four reversible processes on a P-V indicator diagram: 1 \\to 2: Reversible adiabatic (isentropic) compression: T_1 V_1^{\\gamma-1} = T_2 V_2^{\\gamma-1} \\implies T_2 = T_1 r^{\\gamma-1}. 2 \\to 3: Constant-volume (isochoric) heat addition from fuel combustion: Q_{\\text{in}} = m c_v (T_3 - T_2). 3 \\to 4: Reversible adiabatic expansion (power stroke): T_3 V_3^{\\gamma-1} = T_4 V_4^{\\gamma-1} \\implies T_4 = T_3 (1/r)^{\\gamma-1}. 4 \\to 1: Constant-volume heat rejection (exhaust blowdown): Q_{\\text{out}} = m c_v (T_4 - T_1). The thermal efficiency is \\eta = \\frac{W_{\\text{net}}}{Q_{\\text{in}}} = 1 - \\frac{Q_{\\text{out}}}{Q_{\\text{in}}} = 1 - \\frac{T_4 - T_1}{T_3 - T_2}. Substituting temperatures in terms of compression ratio r = V_1/V_2: \\eta_{\\text{Otto}} = 1 - \\frac{T_1(r^{\\gamma-1} - 1)}{T_2(r^{\\gamma-1} - 1)} \\implies \\eta_{\\text{Otto}} = 1 - \\frac{1}{r^{\\gamma-1}}.",
+    "realWorldApplication": "Automotive engine design: Modern gasoline engines operate at compression ratios r = 10:1 to 14:1, achieving theoretical thermal efficiencies of 60% before mechanical friction and combustion losses.",
+    "variables": [
+      {
+        "symbol": "\\eta_{\\text{Otto}}",
+        "label": "Ideal Otto Cycle Thermal Efficiency",
+        "unit": "0 to 1"
+      },
+      {
+        "symbol": "r",
+        "label": "Engine Compression Ratio",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "\\gamma",
+        "label": "Specific Heat Ratio (c_p / c_v)",
+        "unit": "1.4 for air"
+      },
+      {
+        "symbol": "V_1, V_2",
+        "label": "Cylinder Maximum and Clearance Volume",
+        "unit": "m³"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "compressionRatio": 10.5,
+        "heatRatio": 1.4
+      },
+      "description": "Reciprocating piston tracing closed Otto PV loop through 4 engine strokes.",
+      "apparatusType": "piston_otto_indicator"
+    }
+  },
+  {
+    "id": "clausius-clapeyron-phase-coexistence",
+    "title": "Clausius-Clapeyron Relation & Latent Heat Coexistence",
+    "branch": "thermodynamics",
+    "tag": "Phase Transitions",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\frac{dP}{dT} = \\frac{L}{T \\Delta v} \\implies \\ln\\left(\\frac{P_2}{P_1}\\right) = -\\frac{\\Delta H_{\\text{vap}}}{R}\\left(\\frac{1}{T_2} - \\frac{1}{T_1}\\right)",
+    "summary": "Governs the slope of coexistence boundaries between phases of matter on a P-T diagram. Connects saturation vapor pressure exponential rise to the latent heat of vaporization or fusion.",
+    "derivation": "Along a phase coexistence boundary (e.g. liquid-gas equilibrium), the specific Gibbs free energies of the two phases must be equal: g_1(T, P) = g_2(T, P). For a differential step (dT, dP) along the coexistence curve: dg_1 = dg_2. The fundamental relation for specific Gibbs energy is dg = -s dT + v dP, where s is specific entropy and v is specific volume. Thus: -s_1 dT + v_1 dP = -s_2 dT + v_2 dP \\implies (v_2 - v_1) dP = (s_2 - s_1) dT. The slope of the phase boundary is \\frac{dP}{dT} = \\frac{s_2 - s_1}{v_2 - v_1} = \\frac{\\Delta s}{\\Delta v}. Because a reversible phase change at constant temperature T has latent heat L = T \\Delta s: \\frac{dP}{dT} = \\frac{L}{T \\Delta v}. For vaporization where vapor volume dominates (v_{\\text{gas}} \\gg v_{\\text{liquid}} \\approx RT/P): \\frac{dP}{dT} = \\frac{L P}{R T^2}. Separating variables and integrating yields the integrated Clausius-Clapeyron relation \\ln(P_2/P_1) = -\\frac{L}{R}(1/T_2 - 1/T_1).",
+    "realWorldApplication": "Meteorology and high-altitude cooking: Water boils at 86 °C on Mount Everest (8,848 m) due to reduced atmospheric pressure (34 kPa); boiling water autoclaves sterilize surgical instruments at 121 °C under 2 bar pressure.",
+    "variables": [
+      {
+        "symbol": "dP/dT",
+        "label": "Vapor Pressure Curve Slope",
+        "unit": "Pa/K"
+      },
+      {
+        "symbol": "L",
+        "label": "Latent Heat of Transformation",
+        "unit": "J/kg or J/mol"
+      },
+      {
+        "symbol": "\\Delta v",
+        "label": "Specific Volume Change (v2 - v1)",
+        "unit": "m³/kg"
+      },
+      {
+        "symbol": "T",
+        "label": "Phase Transition Temperature",
+        "unit": "K"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "latentHeatJ": 40660.0,
+        "currentTempK": 373.15
+      },
+      "description": "Sealed boiler demonstrating saturation vapor pressure rising exponentially with heat.",
+      "apparatusType": "phase_equilibrium_autoclave"
+    }
+  },
+  {
+    "id": "equipartition-of-energy-theorem",
+    "title": "Equipartition Theorem & Molecular Degrees of Freedom",
+    "branch": "thermodynamics",
+    "tag": "Statistical Mechanics",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\langle E \\rangle = \\frac{f}{2} k_B T, \\quad C_v = \\frac{f}{2} R, \\quad \\gamma = \\frac{C_p}{C_v} = 1 + \\frac{2}{f}",
+    "summary": "In classical thermal equilibrium, every quadratic degree of freedom in the Hamiltonian contributes exactly (1/2)*k_B*T of thermal energy per particle, directly explaining heat capacities of monatomic, diatomic, and polyatomic gases.",
+    "derivation": "In classical statistical mechanics, the thermal expectation value of a coordinate or momentum component x_i appearing quadratically in Hamiltonian H = \\alpha x_i^2 + H' is: \\langle x_i \\frac{\\partial H}{\\partial x_i} \\rangle = \\frac{\\int x_i \\frac{\\partial H}{\\partial x_i} e^{-\\beta H} d\\Gamma}{\\int e^{-\\beta H} d\\Gamma}. Integrating by parts with respect to x_i: \\int_{-\\infty}^\\infty x_i \\frac{\\partial H}{\\partial x_i} e^{-\\beta H} dx_i = \\left[ -x_i \\frac{1}{\\beta} e^{-\\beta H} \\right]_{-\\infty}^\\infty + \\frac{1}{\\beta}\\int_{-\\infty}^\\infty e^{-\\beta H} dx_i = k_B T \\int_{-\\infty}^\\infty e^{-\\beta H} dx_i. Since \\frac{\\partial H}{\\partial x_i} = 2 \\alpha x_i, we obtain \\langle 2 \\alpha x_i^2 \\rangle = k_B T \\implies \\langle \\alpha x_i^2 \\rangle = \\frac{1}{2} k_B T. For a gas molecule with f quadratic degrees of freedom (3 translational for monatomic; 3 translational + 2 rotational for diatomic like N2; plus 2 vibrational modes active at high T), the total mean internal energy is U = \\frac{f}{2} N k_B T = \\frac{f}{2} n R T.",
+    "realWorldApplication": "Atmospheric acoustics and gas turbine design: Speed of sound in planetary atmospheres c = \\sqrt{\\gamma R T / M} depends directly on the adiabatic index \\gamma = 1 + 2/f, differing between Earth (N2/O2, \\gamma=1.4) and Mars/Venus (CO2, \\gamma=1.29).",
+    "variables": [
+      {
+        "symbol": "f",
+        "label": "Active Degrees of Freedom",
+        "unit": "integer (3, 5, 7)"
+      },
+      {
+        "symbol": "k_B",
+        "label": "Boltzmann Constant",
+        "unit": "1.381e-23 J/K"
+      },
+      {
+        "symbol": "C_v",
+        "label": "Molar Isochoric Heat Capacity",
+        "unit": "J/(mol·K)"
+      },
+      {
+        "symbol": "\\gamma",
+        "label": "Adiabatic Expansion Index",
+        "unit": "dimensionless"
+      }
+    ],
+    "presetConfig": {
+      "domain": "fluids",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "dof": 5,
+        "gasTemp": 300.0
+      },
+      "description": "Diatomic molecules exchanging translational and rotational kinetic energy.",
+      "apparatusType": "molecular_dof_chamber"
     }
   },
   {
@@ -4336,6 +5740,343 @@ export const PHYSICS_CONCEPTS: PhysicsConcept[] = [
       },
       "description": "Relativistic photon-electron elastic scattering chamber recording wavelength elongation and electron recoil.",
       "apparatusType": "compton_spectrometer_chamber"
+    }
+  },
+  {
+    "id": "quantum-tunneling-finite-barrier",
+    "title": "Quantum Tunneling & WKB Barrier Penetration",
+    "branch": "modern",
+    "tag": "Quantum Mechanics",
+    "difficulty": "Advanced",
+    "formulaLatex": "T \\approx e^{-2 \\kappa d}, \\quad \\kappa = \\frac{\\sqrt{2m(V_0 - E)}}{\\hbar}, \\quad \\psi(x) = \\psi_0 e^{-\\kappa x}",
+    "summary": "Quantum mechanical phenomenon where a particle penetrates and traverses a potential energy barrier V_0 higher than its kinetic energy E. The probability amplitude decays exponentially inside the classically forbidden region.",
+    "derivation": "The 1D time-independent Schrödinger equation is -\\frac{\\hbar^2}{2m}\\frac{d^2\\psi}{dx^2} + V(x)\\psi = E\\psi. Consider a rectangular potential barrier of height V_0 and width d: V(x) = V_0 for 0 \\le x \\le d, and V(x) = 0 elsewhere. For energy E < V_0, inside the barrier (Region II): \\frac{d^2\\psi}{dx^2} = \\kappa^2 \\psi, where \\kappa \\equiv \\frac{\\sqrt{2m(V_0 - E)}}{\\hbar} \\in \\mathbb{R}. The wave function solution is evanescent: \\psi_{II}(x) = B e^{-\\kappa x} + C e^{\\kappa x}. Applying continuity of \\psi and \\psi' at the boundaries x = 0 and x = d yields the exact transmission coefficient T = \\left[ 1 + \\frac{V_0^2 \\sinh^2(\\\\kappa d)}{4 E (V_0 - E)} \\right]^{-1}. For thick or high barriers where \\kappa d \\gg 1, \\sinh(\\kappa d) \\approx \\frac{1}{2} e^{\\kappa d}, which simplifies to the Gamow tunneling probability T \\approx 16 \\frac{E(V_0 - E)}{V_0^2} e^{-2\\kappa d} \\propto e^{-2\\kappa d}.",
+    "realWorldApplication": "Scanning Tunneling Microscopy (STM) and nuclear alpha decay: STM tips hover 0.5 nm above conducting samples, measuring quantum tunneling current to resolve individual atomic lattices; solar core proton-proton fusion occurs via tunneling through the Coulomb barrier.",
+    "variables": [
+      {
+        "symbol": "T",
+        "label": "Tunneling Transmission Probability",
+        "unit": "0 to 1"
+      },
+      {
+        "symbol": "\\kappa",
+        "label": "Evanescent Decay Constant",
+        "unit": "1/m"
+      },
+      {
+        "symbol": "d",
+        "label": "Barrier Physical Width",
+        "unit": "m or nm"
+      },
+      {
+        "symbol": "V_0 - E",
+        "label": "Barrier Energy Deficit",
+        "unit": "eV or J"
+      }
+    ],
+    "presetConfig": {
+      "domain": "mechanics",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 0.8,
+      "parameters": {
+        "barrierHeight": 5.0,
+        "particleEnergy": 3.2,
+        "barrierWidth": 1.2
+      },
+      "description": "Matter wavepacket impacting square potential barrier, showing transmitted wave.",
+      "apparatusType": "quantum_tunneling_barrier"
+    }
+  },
+  {
+    "id": "stern-gerlach-spatial-quantization",
+    "title": "Stern-Gerlach Experiment & Spatial Spin Quantization",
+    "branch": "modern",
+    "tag": "Quantum Spin",
+    "difficulty": "Advanced",
+    "formulaLatex": "F_z = -\\frac{\\partial U}{\\partial z} = \\mu_z \\frac{\\partial B_z}{\\partial z} = g_s \\mu_B m_s \\frac{\\partial B_z}{\\partial z}, \\quad m_s = \\pm \\frac{1}{2}",
+    "summary": "Otto Stern and Walther Gerlach's 1922 experiment sending silver atoms through an inhomogeneous magnetic field. The beam splits into exactly two discrete spots, experimentally proving intrinsic electron spin angular momentum quantization.",
+    "derivation": "An atom with magnetic dipole moment \\mathbf{\\mu} placed in an inhomogeneous magnetic field \\mathbf{B} experiences potential energy U = -\\mathbf{\\mu} \\cdot \\mathbf{B}. If the field gradient is primarily along the z-axis (\\frac{\\partial B_z}{\\partial z} \\ne 0): the net deflecting force is F_z = -\\frac{\\partial U}{\\partial z} = \\mu_z \\frac{\\partial B_z}{\\partial z}. Under classical electrodynamics, atomic magnetic moments would have random spatial orientations \\theta \\in [0, \\pi], resulting in \\mu_z = \\mu \\cos\\theta covering a continuous spectrum from -\\mu to +\\mu, creating a continuous smear on the detection plate. In the experiment, neutral silver atoms (ground state 5s^1 with zero orbital angular momentum L = 0) split into exactly two discrete deflected trajectories. This proved that electrons carry intrinsic spin angular momentum S = \\hbar/2 with quantized projection S_z = m_s \\hbar = \\pm \\frac{1}{2}\\hbar, giving \\mu_z = \\mp g_s \\mu_B / 2.",
+    "realWorldApplication": "Quantum computing qubits and MRI: Nuclear Magnetic Resonance (NMR) and medical MRI image hydrogen proton spin precession; superconducting transmon qubits and trapped ion quantum computers manipulate spin superposition states.",
+    "variables": [
+      {
+        "symbol": "F_z",
+        "label": "Inhomogeneous Deflecting Force",
+        "unit": "N"
+      },
+      {
+        "symbol": "\\mu_B",
+        "label": "Bohr Magneton (e·hbar / 2m_e)",
+        "unit": "9.274e-24 J/T"
+      },
+      {
+        "symbol": "m_s",
+        "label": "Spin Magnetic Quantum Number",
+        "unit": "±1/2"
+      },
+      {
+        "symbol": "\\partial B_z / \\partial z",
+        "label": "Magnetic Field Gradient",
+        "unit": "T/m"
+      }
+    ],
+    "presetConfig": {
+      "domain": "electromagnetism",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "fieldGradient": 12.0,
+        "beamVelocity": 4.0
+      },
+      "description": "Collimated neutral atom beam passing shaped magnet pole pieces and splitting into 2 spots.",
+      "apparatusType": "stern_gerlach_apparatus"
+    }
+  },
+  {
+    "id": "pair-production-dirac-sea",
+    "title": "Pair Production & Positron-Electron Annihilation",
+    "branch": "modern",
+    "tag": "Quantum Electrodynamics",
+    "difficulty": "Advanced",
+    "formulaLatex": "h\\nu \\ge 2 m_e c^2 \\approx 1.022\\,\\text{MeV}, \\quad e^- + e^+ \\to 2\\gamma\\,(511\\,\\text{keV})",
+    "summary": "Direct conversion of photon energy into matter and antimatter in the vicinity of a heavy atomic nucleus for momentum conservation, and the reverse annihilation of an electron and positron into two back-to-back 511 keV gamma rays.",
+    "derivation": "In relativistic mechanics, the creation of an electron (rest mass m_e) and positron (rest mass m_e) from a single gamma-ray photon must satisfy conservation of four-momentum: P_\\gamma^\\mu = P_{e^-}^\\mu + P_{e^+}^\\mu. In the center-of-momentum frame of the electron-positron pair, the total spatial momentum is zero: \\mathbf{p}_{\\text{total}} = \\mathbf{0}, meaning total energy is at least the sum of their rest masses E_{\\text{cm}} \\ge 2 m_e c^2 = 2(0.510998\\,\\text{MeV}) = 1.022\\,\\text{MeV}. However, a single photon always has momentum p = E/c \\ne 0 in every reference frame, meaning pair production cannot occur in pure vacuum without violating simultaneous energy and momentum conservation. An atomic nucleus of mass M \\gg m_e must absorb the recoil momentum. In reverse, when a thermalized positron encounters an electron, they form positronium and annihilate into two 511 keV photons emitted at 180 degrees to conserve zero momentum.",
+    "realWorldApplication": "Positron Emission Tomography (PET scans): Cancer metastases are detected using fluorine-18 (FDG) radioactive tracers that emit positrons; surrounding detector rings capture collinear 511 keV annihilation photons to reconstruct 3D tumor images.",
+    "variables": [
+      {
+        "symbol": "h\\nu",
+        "label": "Incident Photon Energy",
+        "unit": "MeV"
+      },
+      {
+        "symbol": "m_e c^2",
+        "label": "Electron Rest Energy (511 keV)",
+        "unit": "J or keV"
+      },
+      {
+        "symbol": "E_\\gamma",
+        "label": "Annihilation Photon Energy",
+        "unit": "511 keV"
+      },
+      {
+        "symbol": "Z",
+        "label": "Recoil Nucleus Atomic Number",
+        "unit": "dimensionless"
+      }
+    ],
+    "presetConfig": {
+      "domain": "electromagnetism",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 0.8,
+      "parameters": {
+        "gammaEnergyMev": 1.5,
+        "nucleusZ": 82
+      },
+      "description": "High-energy gamma photon interacting with lead nucleus producing e- and e+ spiral tracks.",
+      "apparatusType": "pair_production_chamber"
+    }
+  },
+  {
+    "id": "zeeman-effect-spectral-splitting",
+    "title": "Normal & Anomalous Zeeman Effect",
+    "branch": "modern",
+    "tag": "Atomic Physics",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\Delta E = g_J \\mu_B B m_j, \\quad \\Delta \\nu = \\frac{e B}{4\\pi m_e} = \\frac{\\mu_B B}{h}",
+    "summary": "Pieter Zeeman's 1896 discovery that atomic emission spectral lines split into multiple polarized sub-components in the presence of an external static magnetic field B due to magnetic dipole coupling.",
+    "derivation": "An atomic electron possesses magnetic dipole moment \\mathbf{\\mu} = -\\frac{\\mu_B}{\\hbar}(g_L \\mathbf{L} + g_S \\mathbf{S}). In spin-orbit coupled states characterized by total angular momentum \\mathbf{J} = \\mathbf{L} + \\mathbf{S}, the effective magnetic moment is \\mathbf{\\mu}_J = -g_J \\frac{\\mu_B}{\\hbar}\\mathbf{J}, where the Landé g-factor is g_J = 1 + \\frac{j(j+1) + s(s+1) - l(l+1)}{2j(j+1)}. In an external magnetic field \\mathbf{B} = B \\hat{\\mathbf{z}}, the interaction perturbation Hamiltonian is H' = -\\mathbf{\\mu}_J \\cdot \\mathbf{B} = g_J \\frac{\\mu_B}{\\hbar} B J_z. The energy levels split according to the magnetic quantum number m_j \\in \\{-j, -j+1, \\dots, +j\\}: \\Delta E = g_J \\mu_B B m_j. For optical dipole transitions with selection rules \\Delta m_j \\in \\{0, \\pm 1\\}, spectral lines split into polarized triplets (normal Zeeman effect when S = 0, g_J = 1) or complex multiplet patterns (anomalous Zeeman effect when S \\ne 0).",
+    "realWorldApplication": "Solar magnetic field mapping: Helioseismology and NASA's Solar Dynamics Observatory (SDO) map sunspot magnetic field strengths up to 0.4 Tesla by measuring Zeeman splitting of iron absorption lines.",
+    "variables": [
+      {
+        "symbol": "\\Delta E",
+        "label": "Energy Level Shift",
+        "unit": "eV or J"
+      },
+      {
+        "symbol": "g_J",
+        "label": "Landé g-factor",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "\\mu_B",
+        "label": "Bohr Magneton",
+        "unit": "9.274e-24 J/T"
+      },
+      {
+        "symbol": "B",
+        "label": "External Magnetic Field",
+        "unit": "T"
+      }
+    ],
+    "presetConfig": {
+      "domain": "electromagnetism",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "bFieldT": 2.0,
+        "emissionNm": 589.0
+      },
+      "description": "Sodium atomic spectral line splitting into 3 distinct polarized wavelengths under B field.",
+      "apparatusType": "zeeman_spectrometer"
+    }
+  },
+  {
+    "id": "cherenkov-radiation-cone",
+    "title": "Cherenkov Radiation & Superluminal Shockwaves",
+    "branch": "modern",
+    "tag": "High-Energy Optics",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\cos \\theta_c = \\frac{1}{n \\beta} = \\frac{c}{n v}, \\quad \\frac{d^2N}{dx\\,d\\lambda} = \\frac{2\\pi \\alpha}{\\lambda^2}\\left(1 - \\frac{1}{n^2\\beta^2}\\right)",
+    "summary": "Coherent optical shockwave emitted when a relativistic charged particle travels through a dielectric medium (such as water or glass) at a speed exceeding the phase velocity of light in that medium (v > c/n), producing characteristic blue luminescence.",
+    "derivation": "In a dielectric medium with refractive index n > 1, light propagates at phase velocity c_m = c/n. When a charged particle moves at velocity v > c/n (meaning \\beta \\equiv v/c > 1/n), the polarization field induced in the surrounding atoms cannot propagate away faster than the particle advances. In analogy with an acoustic sonic boom, spherical electromagnetic wavelets emitted along the particle track constructively interfere along a conical wavefront. In time t, the particle travels distance v t while the wavefront expands to radius (c/n) t. The angle of the conical wavefront relative to the particle velocity vector satisfies \\cos\\theta_c = \\frac{(c/n)t}{v t} = \\frac{1}{n \\beta}. The Frank-Tamm formula gives the number of photons emitted per unit track length: \\frac{dN}{dx} = 2\\pi \\alpha \\int \\left(1 - \\frac{1}{n^2\\beta^2}\\right) \\frac{d\\lambda}{\\lambda^2}. The 1/\\lambda^2 spectral dependence heavily favors short wavelengths, producing intense blue and ultraviolet glow.",
+    "realWorldApplication": "Nuclear reactor spent fuel pools and neutrino detectors: The eerie blue glow in swimming-pool reactors is Cherenkov light from beta decay electrons; the Super-Kamiokande neutrino observatory uses 11,000 photomultiplier tubes to detect Cherenkov rings from muon and electron neutrino interactions.",
+    "variables": [
+      {
+        "symbol": "\\theta_c",
+        "label": "Cherenkov Emission Cone Angle",
+        "unit": "degrees"
+      },
+      {
+        "symbol": "n",
+        "label": "Medium Refractive Index",
+        "unit": "1.333 for water"
+      },
+      {
+        "symbol": "\\beta",
+        "label": "Particle Normalized Velocity (v / c)",
+        "unit": "dimensionless"
+      },
+      {
+        "symbol": "\\alpha",
+        "label": "Fine Structure Constant (~1/137)",
+        "unit": "dimensionless"
+      }
+    ],
+    "presetConfig": {
+      "domain": "electromagnetism",
+      "cameraPosition": [
+        0,
+        8,
+        16
+      ],
+      "timeDilation": 0.8,
+      "parameters": {
+        "refractiveIndex": 1.333,
+        "betaSpeed": 0.95
+      },
+      "description": "Relativistic particle traveling through water emitting brilliant cyan-blue Cherenkov cone.",
+      "apparatusType": "cherenkov_water_tank"
+    }
+  },
+  {
+    "id": "relativistic-time-dilation-lorentz",
+    "title": "Special Relativity Time Dilation & Proper Time",
+    "branch": "modern",
+    "tag": "Relativistic Kinematics",
+    "difficulty": "Intermediate",
+    "formulaLatex": "\\Delta t = \\gamma \\Delta \\tau = \\frac{\\Delta \\tau}{\\sqrt{1 - \\frac{v^2}{c^2}}}, \\quad \\Delta \\tau = \\int \\sqrt{1 - \\frac{v(t)^2}{c^2}}\\,dt",
+    "summary": "An interval of time measured by a clock moving at speed v relative to an inertial observer is dilated by the Lorentz factor gamma compared to the proper time tau measured by a co-moving clock.",
+    "derivation": "Consider a light clock consisting of two parallel mirrors separated by distance L_0 perpendicular to motion. In the clock's rest frame, a light pulse reflects back and forth with proper period \\Delta \\tau = \\frac{2 L_0}{c}. In an observer frame where the clock moves horizontally at speed v, light must traverse two diagonal hypotenuses of a right triangle while the mirrors advance distance v (\\Delta t / 2). By the Pythagorean theorem: \\left(c \\frac{\\Delta t}{2}\\right)^2 = L_0^2 + \\left(v \\frac{\\Delta t}{2}\\right)^2. Substituting L_0 = c \\Delta\\tau / 2: c^2 \\frac{\\Delta t^2}{4} = c^2 \\frac{\\Delta \\tau^2}{4} + v^2 \\frac{\\Delta t^2}{4}. Multiplying by 4 and rearranging: (c^2 - v^2)\\Delta t^2 = c^2 \\Delta \\tau^2 \\implies \\Delta t^2 \\left(1 - \\frac{v^2}{c^2}\\right) = \\Delta \\tau^2. Taking square roots yields time dilation: \\Delta t = \\frac{\\Delta \\tau}{\\sqrt{1 - v^2/c^2}} = \\gamma \\Delta \\tau.",
+    "realWorldApplication": "GPS satellite clocks and cosmic-ray atmospheric muons: Atmospheric muons created at 15 km altitude with rest lifetime \tau = 2.2 \\mu s survive to reach sea level because their speed (v = 0.9997 c, \\gamma \u0007pprox 40) dilates their lab lifetime to 88 \\mu s; GPS satellites correct atomic clocks by +38 microseconds/day for relativistic time dilation.",
+    "variables": [
+      {
+        "symbol": "\\Delta t",
+        "label": "Dilated Observer Elapsed Time",
+        "unit": "s"
+      },
+      {
+        "symbol": "\\Delta \\tau",
+        "label": "Invariant Proper Time",
+        "unit": "s"
+      },
+      {
+        "symbol": "\\gamma",
+        "label": "Lorentz Dilation Factor",
+        "unit": "dimensionless (>= 1)"
+      },
+      {
+        "symbol": "v",
+        "label": "Relative Clock Velocity",
+        "unit": "m/s"
+      }
+    ],
+    "presetConfig": {
+      "domain": "mechanics",
+      "cameraPosition": [
+        0,
+        6,
+        14
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "velocityFraction": 0.866,
+        "restLifetimeUs": 2.2
+      },
+      "description": "High-speed relativistic muon clock ticking 2x slower than stationary laboratory clock.",
+      "apparatusType": "relativistic_light_clock"
+    }
+  },
+  {
+    "id": "schwarzschild-radius-black-hole",
+    "title": "Schwarzschild Metric & Gravitational Singularity",
+    "branch": "modern",
+    "tag": "General Relativity",
+    "difficulty": "Advanced",
+    "formulaLatex": "R_s = \\frac{2GM}{c^2}, \\quad z_{\\text{grav}} = \\frac{1}{\\sqrt{1 - \\frac{R_s}{r}}} - 1, \\quad ds^2 = -\\left(1 - \\frac{R_s}{r}\\right)c^2 dt^2 + \\left(1 - \\frac{R_s}{r}\\right)^{-1} dr^2 + r^2 d\\Omega^2",
+    "summary": "Karl Schwarzschild's 1916 exact solution to Einstein's field equations for a spherically symmetric vacuum. Defines the event horizon radius R_s from within which not even light can escape, creating an absolute causal boundary.",
+    "derivation": "In General Relativity, Einstein's vacuum field equations are R_{\\mu\\nu} = 0. For a static, spherically symmetric spacetime, the metric has the general form ds^2 = -A(r) c^2 dt^2 + B(r) dr^2 + r^2 (d\\theta^2 + \\sin^2\\theta d\\phi^2). Calculating the Ricci tensor components R_{tt}, R_{rr}, R_{\\theta\\theta} and requiring R_{\\mu\\nu} = 0 yields the condition A(r) B(r) = 1. Matching the weak-field Newtonian limit g_{tt} = -(1 + 2\\Phi/c^2) with gravitational potential \\Phi(r) = -GM/r uniquely fixes A(r) = 1 - \\frac{2GM}{c^2 r}. Thus, the Schwarzschild metric is: ds^2 = -\\left(1 - \\frac{2GM}{c^2 r}\\right)c^2 dt^2 + \\left(1 - \\frac{2GM}{c^2 r}\\right)^{-1} dr^2 + r^2 d\\Omega^2. The coefficient of dt^2 vanishes and dr^2 diverges at the Schwarzschild radius R_s = \\frac{2GM}{c^2}. This represents an event horizon where light cones tilt completely inward, converting the radial spatial coordinate r into a time-like coordinate directed inevitably toward the singularity at r = 0.",
+    "realWorldApplication": "Event Horizon Telescope (EHT) and LIGO gravitational waves: EHT millimeter interferometry imaged the shadow of the M87* supermassive black hole (6.5 billion solar masses, R_s \u0007pprox 19 billion km); LIGO detects chirp waveforms from binary black hole mergers.",
+    "variables": [
+      {
+        "symbol": "R_s",
+        "label": "Schwarzschild Event Horizon Radius",
+        "unit": "m or km"
+      },
+      {
+        "symbol": "M",
+        "label": "Black Hole Mass",
+        "unit": "kg or Solar Masses"
+      },
+      {
+        "symbol": "G",
+        "label": "Newtonian Gravitational Constant",
+        "unit": "N·m²/kg²"
+      },
+      {
+        "symbol": "z_{\\text{grav}}",
+        "label": "Gravitational Redshift Factor",
+        "unit": "dimensionless"
+      }
+    ],
+    "presetConfig": {
+      "domain": "mechanics",
+      "cameraPosition": [
+        0,
+        12,
+        22
+      ],
+      "timeDilation": 1.0,
+      "parameters": {
+        "blackHoleMass": 50.0,
+        "photonRingRadius": 3.0
+      },
+      "description": "Gravitational lensing photon ring and black hole event horizon swallowing light.",
+      "apparatusType": "black_hole_horizon"
     }
   }
 ];

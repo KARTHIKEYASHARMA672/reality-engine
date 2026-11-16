@@ -8,12 +8,12 @@ import {
   type PhysicsBranch
 } from '../data/physicsConcepts';
 
-describe('REALITY ENGINE — Concept Compendium (84 Concepts)', () => {
-  it('contains exactly 84 curated physics concepts', () => {
-    expect(PHYSICS_CONCEPTS).toHaveLength(84);
+describe('REALITY ENGINE — Concept Compendium (120 Concepts)', () => {
+  it('contains exactly 120 curated physics concepts', () => {
+    expect(PHYSICS_CONCEPTS).toHaveLength(120);
   });
 
-  it('verifies all 84 concept IDs are distinct and non-empty', () => {
+  it('verifies all 120 concept IDs are distinct and non-empty', () => {
     const ids = new Set<string>();
     for (const c of PHYSICS_CONCEPTS) {
       expect(c.id).toBeTruthy();
@@ -21,17 +21,17 @@ describe('REALITY ENGINE — Concept Compendium (84 Concepts)', () => {
       expect(ids.has(c.id)).toBe(false);
       ids.add(c.id);
     }
-    expect(ids.size).toBe(84);
+    expect(ids.size).toBe(120);
   });
 
   it('verifies exact branch distributions across all 6 physics branches', () => {
     const branchExpectedCounts: Record<PhysicsBranch, number> = {
-      mechanics: 16,
-      collisions: 15,
-      electromagnetism: 18,
-      fluids: 13,
-      thermodynamics: 10,
-      modern: 12
+      mechanics: 22,
+      collisions: 20,
+      electromagnetism: 24,
+      fluids: 19,
+      thermodynamics: 16,
+      modern: 19
     };
 
     for (const [branch, count] of Object.entries(branchExpectedCounts) as [PhysicsBranch, number][]) {
@@ -93,6 +93,19 @@ describe('REALITY ENGINE — Concept Compendium (84 Concepts)', () => {
     const compton = getConceptById('compton-scattering-shift');
     expect(compton).toBeDefined();
     expect(compton?.branch).toBe('modern');
+
+    // Test new concepts
+    const eulerLagrange = getConceptById('euler-lagrange-action-principle');
+    expect(eulerLagrange).toBeDefined();
+    expect(eulerLagrange?.branch).toBe('mechanics');
+
+    const maxwell = getConceptById('maxwell-ampere-displacement-current');
+    expect(maxwell).toBeDefined();
+    expect(maxwell?.branch).toBe('electromagnetism');
+
+    const cherenkov = getConceptById('cherenkov-radiation-cone');
+    expect(cherenkov).toBeDefined();
+    expect(cherenkov?.branch).toBe('modern');
   });
 
   it('performs query searches effectively across titles and summaries', () => {
@@ -103,7 +116,10 @@ describe('REALITY ENGINE — Concept Compendium (84 Concepts)', () => {
     expect(entropySearch.length).toBeGreaterThanOrEqual(1);
     expect(entropySearch.some((c) => c.id === 'second-law-entropy')).toBe(true);
 
+    const tunnelingSearch = searchConcepts('tunneling');
+    expect(tunnelingSearch.length).toBeGreaterThanOrEqual(1);
+
     const emptySearch = searchConcepts('');
-    expect(emptySearch).toHaveLength(84);
+    expect(emptySearch).toHaveLength(120);
   });
 });

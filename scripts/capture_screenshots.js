@@ -77,7 +77,9 @@ async function run() {
   if (await conceptsBtn.count() > 0) {
     await conceptsBtn.click();
     await page.waitForTimeout(1500);
-    console.log('Capturing 05_concept_compendium_84_encyclopedia.png...');
+    console.log('Capturing 05_concept_compendium_120_encyclopedia.png...');
+    await page.screenshot({ path: path.join(screenshotsDir, '05_concept_compendium_120_encyclopedia.png') });
+    // Also save legacy name for backward compatibility
     await page.screenshot({ path: path.join(screenshotsDir, '05_concept_compendium_84_encyclopedia.png') });
     // Close drawer
     const closeBtn = page.locator('[data-testid="close-concepts"]');
