@@ -3,8 +3,6 @@
 > 📌 **REALITY ENGINE** is an interactive, authentic computational physics virtual laboratory engineered to bridge abstract mathematical physics formulas with tactile, real-time 3D experimental simulations. Built with **React 19, TypeScript 5.8+, Three.js WebGL2, and KaTeX**, it allows researchers, students, and engineers to observe, manipulate, and measure physical phenomena across four core numerical simulation engines, featuring an encyclopedia of **84 fundamental physics concepts** and synchronized real-time mathematical telemetry.
 > 
 > 🎨 **Color Identity:** Midnight Indigo & Warm Vanilla (`#30356F` Primary Accent / `#FBF5E6` Background / `#FFFCF4` Elevated Surface / `#E4DDC9` Sand Border / `#9B9FE3` Iris Accent) — Grounded, prestigious academic laboratory aesthetic with zero neon/sci-fi gimmicks.
-> 
-> 🌐 **Live Production Deployment (Vercel):** [https://reality-engine-orpin.vercel.app](https://reality-engine-orpin.vercel.app)
 
 ---
 
@@ -14,8 +12,6 @@
 | :--- | :--- |
 | **Project Code** | `REALITY-ENGINE-09` |
 | **Workspace Root** | `L:\pr 19` |
-| **Live Production URL** | [https://reality-engine-orpin.vercel.app](https://reality-engine-orpin.vercel.app) |
-| **GitHub Repository** | [`KARTHIKEYASHARMA672/reality-engine`](https://github.com/KARTHIKEYASHARMA672/reality-engine) |
 | **Target Deployment** | Vercel (`npx vercel --prod`) |
 | **Frontend Framework** | React 19 + TypeScript 5.8+ + Vite 6 + Tailwind CSS v3.4 |
 | **3D Rendering** | Three.js WebGL2 (`three@0.175.0`), OrbitControls, Instanced Arrow Meshes |

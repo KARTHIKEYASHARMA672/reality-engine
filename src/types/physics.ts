@@ -13,33 +13,44 @@ export interface PhysicsBody {
   position: Vector3D;
   velocity: Vector3D;
   acceleration: Vector3D;
-  mass: number;
-  charge: number;
-  radius: number;
-  restitution: number;
-  friction: number;
+  mass: number; // in kg
+  charge: number; // in Coulombs (or arbitrary micro-Coulombs)
+  radius: number; // in meters
+  restitution: number; // coefficient of restitution e (0.0 to 1.0)
+  friction: number; // friction coefficient mu
   color: string;
-  isFixed: boolean;
-  trail: Vector3D[];
+  isFixed: boolean; // if true, anchored in 3D space
+  trail: Vector3D[]; // decaying history of positions for trajectory ribbon
   maxTrailLength?: number;
-  density?: number;
-  submergedRatio?: number;
+  density?: number; // for fluid buoyancy
+  submergedRatio?: number; // 0 to 1
   metadata?: Record<string, any>;
 }
 
+export interface ElectricFieldPoint {
+  position: Vector3D;
+  vector: Vector3D;
+  magnitude: number;
+}
+
+export interface MagneticField {
+  strength: Vector3D; // uniform B field [Bx, By, Bz] in Tesla
+  gradient?: number;
+}
+
 export interface GlobalPhysicsParameters {
-  gravityConstant: number;
-  enableTerrestrialGravity?: boolean;
-  airDragCoefficient: number;
-  fluidDensity: number;
-  fluidViscosity: number;
-  electricPermittivity: number;
-  magneticFieldStrength: Vector3D;
-  electricFieldStrength: Vector3D;
-  globalRestitution: number;
-  globalFriction: number;
-  softeningEpsilon: number;
-  subSteps: number;
+  gravityConstant: number; // G or g (default 9.81 m/s^2 downwards, or G=6.674e-11 for celestial)
+  enableTerrestrialGravity?: boolean; // downward uniform gravity (false for orbital celestial mechanics)
+  airDragCoefficient: number; // drag damping
+  fluidDensity: number; // rho in kg/m^3 (e.g. 1000 for water)
+  fluidViscosity: number; // eta in Pa*s
+  electricPermittivity: number; // k_e Coulomb constant
+  magneticFieldStrength: Vector3D; // B vector in Tesla
+  electricFieldStrength: Vector3D; // E vector in N/C or V/m
+  globalRestitution: number; // default e
+  globalFriction: number; // default mu
+  softeningEpsilon: number; // to prevent 1/r^2 singularity at r -> 0
+  subSteps: number; // sub-steps per frame (default 8)
   domain: PhysicsDomain;
 }
 
@@ -47,7 +58,7 @@ export interface TelemetryPoint {
   time: number;
   kineticEnergy: number;
   potentialEnergy: number;
-  thermalEnergy: number;
+  thermalEnergy: number; // dissipated by friction / inelastic collisions
   totalEnergy: number;
   linearMomentumMagnitude: number;
   maxVelocity: number;
@@ -68,7 +79,7 @@ export interface PhysicsConcept {
   realWorldApplication: string;
   variables: { symbol: string; label: string; unit: string }[];
   presetConfig: {
-    domain: 'mechanics' | 'collisions' | 'electromagnetism' | 'fluids';
+    domain: PhysicsDomain;
     cameraPosition: [number, number, number];
     timeDilation: number;
     parameters: Record<string, number>;

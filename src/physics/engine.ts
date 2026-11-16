@@ -17,8 +17,8 @@ export const DEFAULT_PHYSICS_PARAMS: GlobalPhysicsParameters = {
   airDragCoefficient: 0.02,
   fluidDensity: 1000,
   fluidViscosity: 0.05,
-  electricPermittivity: 8.9875e4,
-  magneticFieldStrength: { x: 0, y: 0, z: 2.0 },
+  electricPermittivity: 8.9875e4, // Scaled for interactive visualization (k_e)
+  magneticFieldStrength: { x: 0, y: 0, z: 2.0 }, // 2.0 T in +Z
   electricFieldStrength: { x: 0, y: 0, z: 0 },
   globalRestitution: 0.85,
   globalFriction: 0.1,
@@ -53,7 +53,7 @@ export class PhysicsEngine {
     this.params.domain = domain;
     if (domain === 'electromagnetism') {
       this.params.enableTerrestrialGravity = false;
-      this.params.gravityConstant = 0;
+      this.params.gravityConstant = 0; // Disable heavy gravity so particles float and curve in E/B fields
       this.params.magneticFieldStrength = { x: 0, y: 0, z: 2.5 };
     } else if (domain === 'fluids') {
       this.params.enableTerrestrialGravity = true;
@@ -64,6 +64,7 @@ export class PhysicsEngine {
       this.params.enableTerrestrialGravity = true;
       this.params.gravityConstant = 9.81;
     } else {
+      // mechanics (celestial orbits default)
       this.params.enableTerrestrialGravity = false;
       this.params.gravityConstant = 8.0;
     }
@@ -89,13 +90,18 @@ export class PhysicsEngine {
     this.totalEnergyDissipated = 0;
   }
 
+  /**
+   * Main simulation step with fixed sub-stepping
+   */
   public step(dt: number): void {
     if (this.bodies.length === 0) return;
 
+    // Sub-stepping for maximum numerical stability
     const subSteps = Math.max(1, this.params.subSteps);
     const subDt = dt / subSteps;
 
     for (let s = 0; s < subSteps; s++) {
+      // 1. Domain-specific solver integration
       switch (this.params.domain) {
         case 'electromagnetism':
           LorentzSolver.step(this.bodies, this.params, subDt);
@@ -122,6 +128,7 @@ export class PhysicsEngine {
           break;
       }
 
+      // 2. Collision resolution (impulses, restitution, boundaries)
       const events = CollisionSolver.resolveCollisions(this.bodies, this.params, this.bounds);
       for (const ev of events) {
         this.totalEnergyDissipated += ev.energyDissipated;
@@ -132,6 +139,9 @@ export class PhysicsEngine {
     this.recordTelemetry();
   }
 
+  /**
+   * Calculates comprehensive physical energies and records telemetry point
+   */
   public recordTelemetry(): void {
     let ke = 0;
     let pe = 0;
@@ -144,13 +154,16 @@ export class PhysicsEngine {
       const speed = vec3.length(b.velocity);
       if (speed > maxV) maxV = speed;
 
+      // Kinetic Energy: 1/2 m v^2
       ke += 0.5 * b.mass * speed * speed;
 
+      // Terrestrial Potential Energy: m g h
       if (this.params.domain !== 'electromagnetism') {
         const height = Math.max(0, b.position.y - this.bounds.minY);
         pe += b.mass * this.params.gravityConstant * height;
       }
 
+      // Electrostatic Potential Energy: sum k_e * q1 * q2 / r
       if (this.params.domain === 'electromagnetism' && Math.abs(b.charge) > 1e-9) {
         for (let j = i + 1; j < n; j++) {
           const b2 = this.bodies[j];
@@ -161,6 +174,7 @@ export class PhysicsEngine {
         }
       }
 
+      // Momentum: p = m v
       momentum = vec3.add(momentum, vec3.scale(b.velocity, b.mass));
     }
 
