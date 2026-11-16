@@ -26,8 +26,8 @@
 ## 🧭 Table of Contents
 
 - [1. Executive Overview](#1-executive-overview)
-- [2. 🖼️ Verified Visual UI Gallery](#2-️-verified-visual-ui-gallery)
-- [3. The Four Numerical Physics Solvers](#3-the-four-numerical-physics-solvers)
+- [2. 🖼️ Verified Visual Verification Gallery](#2-️-verified-visual-verification-gallery)
+- [3. The Six Numerical Physics Solvers](#3-the-six-numerical-physics-solvers)
 - [4. The 120 Curated Physics Concepts Matrix](#4-the-120-curated-physics-concepts-matrix)
 - [5. Historic Guided Laboratory Walkthroughs](#5-historic-guided-laboratory-walkthroughs)
 - [6. Synchronized Telemetry Deck & Live Formula Inspector](#6-synchronized-telemetry-deck--live-formula-inspector)
@@ -51,7 +51,7 @@ Modern physics education often suffers from a cognitive disconnect between dry s
 
 ---
 
-## 2. 🖼️ Verified Visual UI Gallery
+## 2. 🖼️ Verified Visual Verification Gallery
 
 Every component, simulation state, and modal of REALITY ENGINE was visually audited and verified using automated headless Chromium WebGL2 tests. Below are the verified high-resolution captures:
 
