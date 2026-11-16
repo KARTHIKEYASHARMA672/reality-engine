@@ -173,6 +173,32 @@ export const TelemetryDeck: React.FC<TelemetryDeckProps> = ({
         latexString = `
           F_b = \\rho_{\\text{fluid}} V_{\\text{sub}} g = (${rho}\\,\\text{kg/m}^3)(${vol}\\,\\text{m}^3 \\cdot ${(targetBody.submergedRatio || 0).toFixed(2)})(${engine.params.gravityConstant}\\,\\text{m/s}^2) = ${fb}\\,\\text{N}
         `;
+      } else if (activeDomain === 'thermodynamics') {
+        const T = engine.params.temperature || 300;
+        const H = engine.params.chamberHeight || 6.0;
+        const vol = (8.0 * 8.0 * H).toFixed(1);
+        const N = engine.bodies.length;
+        const pressure = ((N * 1.38e-2 * T) / parseFloat(vol)).toFixed(2);
+        const vrms = Math.sqrt((3 * 8.314 * T) / (targetBody.mass * 10 || 1)).toFixed(2);
+
+        latexString = `
+          P = \\frac{N k_B T}{V} = \\frac{(${N})(${T}\\,\\text{K})}{${vol}\\,\\text{m}^3} = ${pressure}\\,\\text{kPa} 
+          \\qquad 
+          v_{\\text{rms}} = \\sqrt{\\frac{3 k_B T}{m}} = ${vrms}\\,\\text{m/s}
+        `;
+      } else if (activeDomain === 'modern') {
+        const c = engine.params.lightSpeedC || 15.0;
+        const vMag = vec3.length(targetBody.velocity);
+        const beta = Math.min(0.98, vMag / c);
+        const gamma = (1 / Math.sqrt(Math.max(0.001, 1 - beta * beta))).toFixed(2);
+        const lambda = (6.626 / (targetBody.mass * (vMag || 0.1))).toFixed(2);
+
+        latexString = `
+          \\lambda = \\frac{h}{p} = \\frac{h}{m v} = ${lambda}\\,\\text{nm} 
+          \\qquad 
+          \\gamma = \\frac{1}{\\sqrt{1 - v^2/c^2}} = ${gamma} 
+          \\quad (v = ${(beta * 100).toFixed(0)}\\%\\,c)
+        `;
       } else {
         latexString = `
           E_k = \\frac{1}{2}m v^2 = \\frac{1}{2}(${m}\\,\\text{kg})(${v}\\,\\text{m/s})^2 = ${ke}\\,\\text{J} 

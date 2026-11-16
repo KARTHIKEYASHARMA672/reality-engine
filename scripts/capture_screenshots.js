@@ -71,6 +71,26 @@ async function run() {
     await page.screenshot({ path: path.join(screenshotsDir, '04_archimedes_buoyancy_fluid_equilibrium.png') });
   }
 
+  // 4B. Switch to Thermal & Gas Domain
+  console.log('Switching to Thermal & Gas domain...');
+  const thermalButton = page.locator('button:has-text("Thermal")');
+  if (await thermalButton.count() > 0) {
+    await thermalButton.click();
+    await page.waitForTimeout(2000);
+    console.log('Capturing 09_thermal_kinetic_gas_chamber.png...');
+    await page.screenshot({ path: path.join(screenshotsDir, '09_thermal_kinetic_gas_chamber.png') });
+  }
+
+  // 4C. Switch to Waves & Quantum Domain
+  console.log('Switching to Waves & Quantum domain...');
+  const quantumButton = page.locator('button:has-text("Quantum")');
+  if (await quantumButton.count() > 0) {
+    await quantumButton.click();
+    await page.waitForTimeout(2000);
+    console.log('Capturing 10_quantum_matter_wave_diffraction.png...');
+    await page.screenshot({ path: path.join(screenshotsDir, '10_quantum_matter_wave_diffraction.png') });
+  }
+
   // 5. Open Concept Compendium
   console.log('Opening Concept Compendium Drawer...');
   const conceptsBtn = page.locator('button:has-text("Concepts")');

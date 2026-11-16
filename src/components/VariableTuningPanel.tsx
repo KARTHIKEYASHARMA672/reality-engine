@@ -1,7 +1,7 @@
 import React from 'react';
 import { PhysicsEngine } from '../physics/engine';
 import { PhysicsBody, PhysicsDomain } from '../types/physics';
-import { Sliders, Magnet, Droplets, Orbit, Sparkles, Trash2, Crosshair, Plus } from 'lucide-react';
+import { Sliders, Magnet, Droplets, Orbit, Sparkles, Trash2, Crosshair, Plus, Thermometer, Atom, Layers, Zap } from 'lucide-react';
 
 interface VariableTuningPanelProps {
   engine: PhysicsEngine;
@@ -10,6 +10,8 @@ interface VariableTuningPanelProps {
   onSelectBody: (body: PhysicsBody | null) => void;
   onParamsChanged: () => void;
   onOpenSpawner: () => void;
+  onSelectSetup?: (setupId: string) => void;
+  activeSetupId?: string;
 }
 
 export const VariableTuningPanel: React.FC<VariableTuningPanelProps> = ({
@@ -19,8 +21,45 @@ export const VariableTuningPanel: React.FC<VariableTuningPanelProps> = ({
   onSelectBody,
   onParamsChanged,
   onOpenSpawner,
+  onSelectSetup,
+  activeSetupId = 'default',
 }) => {
   const p = engine.params;
+
+  const domainSetups: Record<PhysicsDomain, { id: string; label: string; desc: string }[]> = {
+    mechanics: [
+      { id: 'sol_orbits', label: 'Sol & Planets', desc: 'Keplerian orbital resonance' },
+      { id: 'slingshot', label: 'Gravity Slingshot', desc: 'Hyperbolic velocity boost' },
+      { id: 'three_body', label: '3-Body Dance', desc: 'Chaotic Lagrange interactions' },
+    ],
+    collisions: [
+      { id: 'cradle', label: "Newton's Cradle", desc: 'Elastic momentum relay e=0.98' },
+      { id: 'inelastic', label: 'Clay Splat', desc: 'Complete inelastic dissipation' },
+      { id: 'oblique', label: 'Oblique Billiards', desc: '2D scattering angle & momentum' },
+    ],
+    electromagnetism: [
+      { id: 'cyclotron', label: 'Cyclotron Orbit', desc: 'Opposite ion helical rotation' },
+      { id: 'thomson', label: 'E x B Selector', desc: 'Crossed-field velocity filter' },
+      { id: 'dipole', label: 'Electric Dipole', desc: 'Dipole field line curvature' },
+    ],
+    fluids: [
+      { id: 'buoyancy', label: 'Archimedes Tank', desc: 'Flotation vs sinking equilibrium' },
+      { id: 'terminal', label: 'Stokes Viscous Drag', desc: 'Terminal settling velocity' },
+      { id: 'droplets', label: 'Fluid Droplet Jet', desc: 'SPH multi-droplet splashing' },
+    ],
+    thermodynamics: [
+      { id: 'ideal_gas', label: 'Maxwell-Boltzmann', desc: '28-particle thermal gas chamber' },
+      { id: 'brownian', label: 'Brownian Motion', desc: 'Suspended pollen diffusion' },
+      { id: 'compression', label: 'Piston Compression', desc: 'Adiabatic PV work & pressure' },
+    ],
+    modern: [
+      { id: 'double_slit', label: 'Double-Slit Beam', desc: 'Matter wave particle diffraction' },
+      { id: 'rutherford', label: 'Rutherford Alpha', desc: 'Coulomb nuclear backscattering' },
+      { id: 'relativistic', label: 'Relativistic Boost', desc: 'Lorentz mass dilation (v -> c)' },
+    ],
+  };
+
+  const currentSetups = domainSetups[activeDomain] || [];
 
   return (
     <div className="w-80 h-full bg-vanilla-100/90 backdrop-blur-md border-l border-vanilla-400 flex flex-col shadow-tactile text-indigo-950 overflow-hidden">
@@ -40,6 +79,41 @@ export const VariableTuningPanel: React.FC<VariableTuningPanelProps> = ({
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-5 text-xs">
+        
+        {/* Domain Apparatus Preset Quick-Selector */}
+        {currentSetups.length > 0 && (
+          <div className="space-y-1.5 pb-2 border-b border-vanilla-300">
+            <div className="flex items-center gap-1.5 font-bold text-indigo-900 text-[11px] uppercase tracking-wider">
+              <Layers className="w-3.5 h-3.5 text-indigo-700" />
+              <span>Apparatus Setups ({currentSetups.length})</span>
+            </div>
+            <div className="grid grid-cols-1 gap-1.5">
+              {currentSetups.map(setup => (
+                <button
+                  key={setup.id}
+                  onClick={() => onSelectSetup && onSelectSetup(setup.id)}
+                  className={`text-left p-2 rounded-lg border transition-all ${
+                    activeSetupId === setup.id
+                      ? 'bg-indigo-800 text-vanilla-50 border-indigo-900 shadow-sm'
+                      : 'bg-vanilla-50/80 hover:bg-vanilla-200 text-indigo-950 border-vanilla-300'
+                  }`}
+                >
+                  <div className="font-semibold text-xs flex items-center justify-between">
+                    <span>{setup.label}</span>
+                    {activeSetupId === setup.id && (
+                      <span className="text-[10px] bg-vanilla-200 text-indigo-950 px-1.5 py-0.2 rounded font-mono">
+                        Active
+                      </span>
+                    )}
+                  </div>
+                  <div className={`text-[10px] leading-tight mt-0.5 ${activeSetupId === setup.id ? 'text-vanilla-200' : 'text-muted'}`}>
+                    {setup.desc}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         
         {/* Selected Body Inspector (if clicked) */}
         {selectedBody ? (
@@ -290,6 +364,112 @@ export const VariableTuningPanel: React.FC<VariableTuningPanelProps> = ({
                   value={p.fluidViscosity}
                   onChange={e => {
                     p.fluidViscosity = parseFloat(e.target.value);
+                    onParamsChanged();
+                  }}
+                  className="w-full accent-indigo-800 cursor-pointer"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Thermodynamics Domain Controls */}
+          {activeDomain === 'thermodynamics' && (
+            <div className="pt-2 border-t border-vanilla-300 space-y-4">
+              <div className="font-bold text-indigo-900 tracking-wider text-[11px] uppercase flex items-center gap-1.5">
+                <Thermometer className="w-3.5 h-3.5 text-amber-700" />
+                <span>Thermal & Kinetic State</span>
+              </div>
+
+              <div>
+                <div className="flex justify-between text-muted mb-1">
+                  <span>Temperature T:</span>
+                  <span className="font-mono font-bold text-amber-800">{p.temperature || 300} K</span>
+                </div>
+                <input
+                  type="range"
+                  min="100"
+                  max="1200"
+                  step="25"
+                  value={p.temperature || 300}
+                  onChange={e => {
+                    const newT = parseFloat(e.target.value);
+                    const oldT = p.temperature || 300;
+                    const scale = Math.sqrt(newT / oldT);
+                    p.temperature = newT;
+                    for (const b of engine.bodies) {
+                      if (!b.isFixed) {
+                        b.velocity.x *= scale;
+                        b.velocity.y *= scale;
+                        b.velocity.z *= scale;
+                      }
+                    }
+                    onParamsChanged();
+                  }}
+                  className="w-full accent-indigo-800 cursor-pointer"
+                />
+              </div>
+
+              <div>
+                <div className="flex justify-between text-muted mb-1">
+                  <span>Piston Height H (m):</span>
+                  <span className="font-mono font-bold text-indigo-900">{(p.chamberHeight || 6.0).toFixed(1)} m</span>
+                </div>
+                <input
+                  type="range"
+                  min="2.0"
+                  max="8.0"
+                  step="0.2"
+                  value={p.chamberHeight || 6.0}
+                  onChange={e => {
+                    p.chamberHeight = parseFloat(e.target.value);
+                    onParamsChanged();
+                  }}
+                  className="w-full accent-indigo-800 cursor-pointer"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Modern & Quantum Domain Controls */}
+          {activeDomain === 'modern' && (
+            <div className="pt-2 border-t border-vanilla-300 space-y-4">
+              <div className="font-bold text-indigo-900 tracking-wider text-[11px] uppercase flex items-center gap-1.5">
+                <Atom className="w-3.5 h-3.5 text-purple-700" />
+                <span>Quantum & Relativistic State</span>
+              </div>
+
+              <div>
+                <div className="flex justify-between text-muted mb-1">
+                  <span>Wave Frequency ν:</span>
+                  <span className="font-mono font-bold text-indigo-900">{(p.waveFrequency || 4.0).toFixed(1)} Hz</span>
+                </div>
+                <input
+                  type="range"
+                  min="1.0"
+                  max="12.0"
+                  step="0.5"
+                  value={p.waveFrequency || 4.0}
+                  onChange={e => {
+                    p.waveFrequency = parseFloat(e.target.value);
+                    onParamsChanged();
+                  }}
+                  className="w-full accent-indigo-800 cursor-pointer"
+                />
+              </div>
+
+              <div>
+                <div className="flex justify-between text-muted mb-1">
+                  <span>Light Speed Parameter c:</span>
+                  <span className="font-mono font-bold text-indigo-900">{(p.lightSpeedC || 15.0).toFixed(1)} m/s</span>
+                </div>
+                <input
+                  type="range"
+                  min="8.0"
+                  max="30.0"
+                  step="1.0"
+                  value={p.lightSpeedC || 15.0}
+                  onChange={e => {
+                    p.lightSpeedC = parseFloat(e.target.value);
                     onParamsChanged();
                   }}
                   className="w-full accent-indigo-800 cursor-pointer"

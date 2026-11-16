@@ -58,6 +58,8 @@ export const HeaderBar: React.FC<HeaderBarProps> = ({
     { id: 'collisions', label: '3D Collisions' },
     { id: 'electromagnetism', label: 'E & B Fields' },
     { id: 'fluids', label: 'Fluid Dynamics' },
+    { id: 'thermodynamics', label: 'Thermal & Gas' },
+    { id: 'modern', label: 'Waves & Quantum' },
   ];
 
   const speeds = [0.2, 0.5, 1.0, 2.0, 4.0];

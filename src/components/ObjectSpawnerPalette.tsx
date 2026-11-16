@@ -217,6 +217,84 @@ export const ObjectSpawnerPalette: React.FC<ObjectSpawnerPaletteProps> = ({
             <span className="font-bold text-amber-900">Fixed Anchor Attractor</span>
             <span className="text-[11px] text-muted">M = 50kg | Gravitational center</span>
           </button>
+
+          {/* Thermal Gas Particles */}
+          <button
+            onClick={() => {
+              for (let i = 0; i < 8; i++) {
+                const id = `gas-${Date.now()}-${i}`;
+                engine.addBody({
+                  id,
+                  name: `Gas Molecule ${i + 1}`,
+                  type: 'sphere',
+                  position: {
+                    x: (Math.random() - 0.5) * 6,
+                    y: 1.0 + Math.random() * 4,
+                    z: (Math.random() - 0.5) * 6,
+                  },
+                  velocity: {
+                    x: (Math.random() - 0.5) * 8,
+                    y: (Math.random() - 0.5) * 8,
+                    z: (Math.random() - 0.5) * 8,
+                  },
+                  acceleration: { x: 0, y: 0, z: 0 },
+                  mass: 0.15,
+                  charge: 0,
+                  radius: 0.22,
+                  restitution: 1.0,
+                  friction: 0.0,
+                  color: '#D97706',
+                  isFixed: false,
+                  trail: [],
+                });
+              }
+              onBodyAdded();
+            }}
+            className="flex flex-col items-center justify-center p-4 rounded-xl bg-vanilla-50 border border-vanilla-400 hover:border-amber-500 hover:bg-amber-50 transition-all text-center gap-2"
+          >
+            <div className="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center text-white">
+              <Circle className="w-3.5 h-3.5" />
+            </div>
+            <span className="font-bold text-amber-900">Gas Molecules (x8)</span>
+            <span className="text-[11px] text-muted">Maxwell-Boltzmann thermal gas</span>
+          </button>
+
+          {/* Relativistic Quantum Wave Packet */}
+          <button
+            onClick={() => {
+              const id = `quantum-${Date.now()}`;
+              engine.addBody({
+                id,
+                name: 'Relativistic Wave Packet',
+                type: 'sphere',
+                position: {
+                  x: -7.0,
+                  y: 3.0 + (Math.random() - 0.5),
+                  z: (Math.random() - 0.5) * 2,
+                },
+                velocity: { x: 13.5, y: 0, z: 0 },
+                acceleration: { x: 0, y: 0, z: 0 },
+                mass: 0.5,
+                charge: 0,
+                radius: 0.35,
+                restitution: 0.9,
+                friction: 0.0,
+                color: '#8B5CF6',
+                isFixed: false,
+                trail: [],
+                maxTrailLength: 180,
+                metadata: { restMass: 0.5 },
+              });
+              onBodyAdded();
+            }}
+            className="flex flex-col items-center justify-center p-4 rounded-xl bg-vanilla-50 border border-vanilla-400 hover:border-purple-600 hover:bg-purple-50 transition-all text-center gap-2"
+          >
+            <div className="w-8 h-8 rounded-full bg-purple-700 flex items-center justify-center text-white">
+              <Atom className="w-4 h-4" />
+            </div>
+            <span className="font-bold text-purple-900">Quantum Wave Packet</span>
+            <span className="text-[11px] text-muted">v = 0.9c | Relativistic γ boost</span>
+          </button>
         </div>
 
         <div className="mt-4 pt-3 border-t border-vanilla-300 flex justify-end">

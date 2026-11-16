@@ -122,28 +122,36 @@ flowchart TD
 
 ---
 
-## 5. The Four Numerical Physics Engines
+## 5. The Six Numerical Physics Engines & 18 Apparatus Setups
 
 ### 1. Symplectic Velocity-Verlet (Orbital Gravity & Kinematics)
 $$\mathbf{x}(t + \Delta t) = \mathbf{x}(t) + \mathbf{v}(t)\Delta t + \frac{1}{2}\mathbf{a}(t)\Delta t^2$$
 $$\mathbf{a}(t + \Delta t) = -\sum_{j \ne i} \frac{G M_j (\mathbf{x}_i - \mathbf{x}_j)}{(|\mathbf{x}_i - \mathbf{x}_j|^2 + \epsilon^2)^{3/2}}$$
 $$\mathbf{v}(t + \Delta t) = \mathbf{v}(t) + \frac{1}{2}(\mathbf{a}(t) + \mathbf{a}(t + \Delta t))\Delta t$$
-*Guarantees exact phase-space volume conservation (symplectic) without false orbital spiral decay.*
+*Guarantees exact phase-space volume conservation (symplectic) without false orbital spiral decay. Apparatus setups: Sol & Planets, Gravity Slingshot, 3-Body Dance.*
 
 ### 2. Impulse-Momentum Collision Engine
 $$J = \frac{-(1 + e)(\mathbf{v}_{\text{rel}} \cdot \hat{\mathbf{n}})}{\frac{1}{m_1} + \frac{1}{m_2}}$$
 $$\mathbf{v}_1' = \mathbf{v}_1 + \frac{J}{m_1}\hat{\mathbf{n}}, \quad \mathbf{v}_2' = \mathbf{v}_2 - \frac{J}{m_2}\hat{\mathbf{n}}$$
-*Handles variable elasticity ($e = 1.0$ for billiard balls, $e = 0.0$ for putty), preserving linear momentum $\sum \mathbf{p}_i = \sum \mathbf{p}_f$.*
+*Handles variable elasticity ($e = 1.0$ for billiard balls, $e = 0.0$ for putty), preserving linear momentum $\sum \mathbf{p}_i = \sum \mathbf{p}_f$. Apparatus setups: Newton's Cradle, Clay Splat Inelastic, 2D Oblique Billiards.*
 
 ### 3. Runge-Kutta 4th-Order (Lorentz Field Integration)
 $$\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$$
 $$\frac{d\mathbf{v}}{dt} = \frac{q}{m}(\mathbf{E} + \mathbf{v} \times \mathbf{B})$$
-*Evaluates 4 sub-step slopes per frame ($k_1, k_2, k_3, k_4$) to calculate curvature accurately in strong magnetic fields without artificial energy gain.*
+*Evaluates 4 sub-step slopes per frame ($k_1, k_2, k_3, k_4$) to calculate curvature accurately in strong magnetic fields without artificial energy gain. Apparatus setups: Magnetic Cyclotron, Thomson $E \times B$ Velocity Selector, Coulomb Electric Dipole.*
 
 ### 4. SPH Fluid & Archimedes Buoyancy Engine
 $$F_b = \rho_{\text{fluid}} V_{\text{submerged}} g$$
 $$\mathbf{F}_{\text{net}} = \mathbf{F}_g + \mathbf{F}_b - 6\pi \eta r \mathbf{v}$$
-*Submerged bodies displace fluid particles, experiencing buoyant lift proportional to density differential $(\rho_{\text{body}} - \rho_{\text{fluid}})$.*
+*Submerged bodies displace fluid particles, experiencing buoyant lift proportional to density differential $(\rho_{\text{body}} - \rho_{\text{fluid}})$. Apparatus setups: Archimedes Flotation Tank, Stokes Viscous Drag, SPH Droplet Jet.*
+
+### 5. Maxwell-Boltzmann Thermal Enclosure (Thermodynamics)
+$$P = \frac{N k_B T}{V}, \qquad v_{\text{rms}} = \sqrt{\frac{3 k_B T}{m}}$$
+*3D glass gas containment chamber with movable piston plate and specular elastic boundary collision reflection. Temperature scrubbing ($T \in [100\text{ K}, 1200\text{ K}]$) dynamically rescales particle velocity distributions according to kinetic theory. Apparatus setups: Maxwell-Boltzmann Kinetic Chamber, Brownian Motion Diffusion, Adiabatic Piston Compression.*
+
+### 6. Relativistic Quantum & Wave Mechanics Engine (Modern Physics)
+$$\lambda = \frac{h}{p} = \frac{h}{m v}, \qquad \gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$$
+*Integrates high-speed particle dynamics with Lorentz factor mass scaling and matter wave propagation through physical double-slit apertures. Apparatus setups: Double-Slit Matter Wave Beam, Rutherford Alpha Nuclear Scattering (+79e), Special Relativity Lorentz Boost.*
 
 ---
 

@@ -40,6 +40,9 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
   const trailsMapRef = useRef<Map<string, THREE.Line>>(new Map());
   const vectorArrowsGroupRef = useRef<THREE.Group | null>(null);
   const fluidSurfaceMeshRef = useRef<THREE.Mesh | null>(null);
+  const thermalChamberGroupRef = useRef<THREE.Group | null>(null);
+  const modernApparatusGroupRef = useRef<THREE.Group | null>(null);
+  const pistonMeshRef = useRef<THREE.Mesh | null>(null);
 
   // Dragging & raycasting
   const raycasterRef = useRef<THREE.Raycaster>(new THREE.Raycaster());
@@ -142,6 +145,76 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
     scene.add(fluidMesh);
     fluidSurfaceMeshRef.current = fluidMesh;
 
+    // 9. Thermal Gas Chamber Group (shown when domain is 'thermodynamics')
+    const thermalGroup = new THREE.Group();
+    const chamberHeight = engine.params.chamberHeight || 6.0;
+    const glassGeo = new THREE.BoxGeometry(8, chamberHeight, 8);
+    const glassMat = new THREE.MeshPhysicalMaterial({
+      color: '#E1CDBB',
+      transparent: true,
+      opacity: 0.18,
+      roughness: 0.1,
+      transmission: 0.85,
+    });
+    const chamberGlass = new THREE.Mesh(glassGeo, glassMat);
+    chamberGlass.position.set(0, chamberHeight / 2, 0);
+    thermalGroup.add(chamberGlass);
+
+    const frameEdges = new THREE.EdgesGeometry(glassGeo);
+    const frameLineMat = new THREE.LineBasicMaterial({ color: '#76283B' });
+    const frameLines = new THREE.LineSegments(frameEdges, frameLineMat);
+    frameLines.position.set(0, chamberHeight / 2, 0);
+    thermalGroup.add(frameLines);
+
+    const pistonGeo = new THREE.BoxGeometry(7.9, 0.25, 7.9);
+    const pistonMat = new THREE.MeshStandardMaterial({
+      color: '#B78A63',
+      metalness: 0.6,
+      roughness: 0.3,
+    });
+    const piston = new THREE.Mesh(pistonGeo, pistonMat);
+    piston.position.set(0, chamberHeight, 0);
+    thermalGroup.add(piston);
+    pistonMeshRef.current = piston;
+
+    thermalGroup.visible = false;
+    scene.add(thermalGroup);
+    thermalChamberGroupRef.current = thermalGroup;
+
+    // 10. Quantum / Modern Double-Slit Barrier (shown when domain is 'modern')
+    const modernGroup = new THREE.Group();
+    const barrierMat = new THREE.MeshStandardMaterial({
+      color: '#321922',
+      roughness: 0.5,
+      metalness: 0.3,
+    });
+    const leftWall = new THREE.Mesh(new THREE.BoxGeometry(2.8, 6.0, 0.2), barrierMat);
+    leftWall.position.set(-2.0, 3.0, 0);
+    modernGroup.add(leftWall);
+
+    const rightWall = new THREE.Mesh(new THREE.BoxGeometry(2.8, 6.0, 0.2), barrierMat);
+    rightWall.position.set(2.0, 3.0, 0);
+    modernGroup.add(rightWall);
+
+    const centerPillar = new THREE.Mesh(new THREE.BoxGeometry(0.8, 6.0, 0.2), barrierMat);
+    centerPillar.position.set(0, 3.0, 0);
+    modernGroup.add(centerPillar);
+
+    const screenGeo = new THREE.PlaneGeometry(8, 6);
+    const screenMat = new THREE.MeshStandardMaterial({
+      color: '#FFF9F2',
+      emissive: '#76283B',
+      emissiveIntensity: 0.15,
+      side: THREE.DoubleSide,
+    });
+    const detectorScreen = new THREE.Mesh(screenGeo, screenMat);
+    detectorScreen.position.set(0, 3.0, 5.5);
+    modernGroup.add(detectorScreen);
+
+    modernGroup.visible = false;
+    scene.add(modernGroup);
+    modernApparatusGroupRef.current = modernGroup;
+
     // Resize listener
     const handleResize = () => {
       if (!containerRef.current || !renderer || !camera) return;
@@ -160,12 +233,21 @@ export const LaboratoryCanvas: React.FC<LaboratoryCanvasProps> = ({
     };
   }, []);
 
-  // Update fluid tank visibility based on domain
+  // Update domain-specific 3D apparatus visibility
   useEffect(() => {
     if (fluidSurfaceMeshRef.current) {
       fluidSurfaceMeshRef.current.visible = activeDomain === 'fluids';
     }
-  }, [activeDomain]);
+    if (thermalChamberGroupRef.current) {
+      thermalChamberGroupRef.current.visible = activeDomain === 'thermodynamics';
+    }
+    if (modernApparatusGroupRef.current) {
+      modernApparatusGroupRef.current.visible = activeDomain === 'modern';
+    }
+    if (pistonMeshRef.current && engine.params.chamberHeight) {
+      pistonMeshRef.current.position.y = engine.params.chamberHeight;
+    }
+  }, [activeDomain, engine.params.chamberHeight]);
 
   // Raycasting click to select body
   const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {

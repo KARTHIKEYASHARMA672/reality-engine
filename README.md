@@ -15,7 +15,7 @@
 | **Target Deployment** | Vercel (`npx vercel --prod`) |
 | **Frontend Framework** | React 19 + TypeScript 5.8+ + Vite 6 + Tailwind CSS v3.4 |
 | **3D Rendering** | Three.js WebGL2 (`three@0.175.0`), OrbitControls, Instanced Arrow Meshes |
-| **Numerical Solvers** | Symplectic Velocity-Verlet, Continuous Impulse-Momentum, Runge-Kutta 4th Order (RK4), SPH Fluid Engine |
+| **Numerical Solvers** | Symplectic Velocity-Verlet, Continuous Impulse-Momentum, Runge-Kutta 4th Order (RK4), SPH Fluid Engine, Maxwell-Boltzmann Gas Solver, Relativistic Quantum Engine |
 | **Live Formula Math** | KaTeX (`katex@0.16.21`) with real-time numeric variable substitution |
 | **Telemetry System** | Canvas 2D 120-Frame Sliding Ring Buffer (Energy Conservation & Momentum) |
 | **Concepts Catalog** | **120 Curated Academic Physics Concepts** with derivations and 1-click 3D apparatus presets |
@@ -65,12 +65,14 @@ Every component, simulation state, and modal of REALITY ENGINE was visually audi
 | **06. Historic Guided Labs Dossier** | ![Historic Guided Labs](./screenshots/06_guided_historic_labs_dossier.png)<br><sub>*Interactive laboratory walkthrough modal with historical context, objectives, step-by-step procedures, and expected scientific observations for classic experiments.*</sub> |
 | **07. Live KaTeX Formula & Telemetry Deck** | ![Live Formula Telemetry](./screenshots/07_live_katex_formula_telemetry.png)<br><sub>*Dynamic mathematical formula inspector substituting real-time variables into KaTeX equations at 60 FPS, alongside rolling-buffer energy conservation curves.*</sub> |
 | **08. Laboratory Observation Report** | ![Laboratory Observation Report](./screenshots/08_laboratory_observation_report.png)<br><sub>*Institutional-grade experimental report with environmental parameter tables, active entity manifests, and 1-click Print / PDF and JSON state export.*</sub> |
+| **09. Thermal & Kinetic Gas Chamber** | ![Thermal Gas Chamber](./screenshots/09_thermal_kinetic_gas_chamber.png)<br><sub>*Sealed 3D glass containment chamber with brass frame and movable piston plate, simulating 28 gas molecules colliding with Maxwell-Boltzmann velocity distribution and live $P = \frac{N k_B T}{V}$ calculation.*</sub> |
+| **10. Quantum Matter Wave Diffraction** | ![Quantum Wave Diffraction](./screenshots/10_quantum_matter_wave_diffraction.png)<br><sub>*Double-slit barrier aperture with dual slit channels and phosphorescent detector screen, demonstrating de Broglie matter wave beam propagation ($\lambda = h/p$) and relativistic time dilation ($\gamma = 1/\sqrt{1 - v^2/c^2}$).*</sub> |
 
 ---
 
-## 3. The Four Numerical Physics Solvers
+## 3. The Six Numerical Physics Solvers & Simulation Domains
 
-REALITY ENGINE avoids generic monolithic game physics in favor of four domain-specialized numerical integrators:
+REALITY ENGINE avoids generic monolithic game physics in favor of six domain-specialized numerical integrators:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -83,6 +85,10 @@ REALITY ENGINE avoids generic monolithic game physics in favor of four domain-sp
 │ 3. Lorentz Fields  │ F = q(E + v × B)   │ Runge-Kutta 4th Order (RK4)  │
 ├────────────────────┼────────────────────┼──────────────────────────────┤
 │ 4. SPH Fluid       │ ρ, P, μ ∇²v + F_b  │ Smoothed Particle Hydro (SPH)│
+├────────────────────┼────────────────────┼──────────────────────────────┤
+│ 5. Thermal Gas     │ PV = N k_B T, v_rms│ Maxwell-Boltzmann Enclosure  │
+├────────────────────┼────────────────────┼──────────────────────────────┤
+│ 6. Quantum & Waves │ λ = h/p, γ(v)      │ Relativistic Wave Engine     │
 └────────────────────┴────────────────────┴──────────────────────────────┘
 ```
 
@@ -90,20 +96,28 @@ REALITY ENGINE avoids generic monolithic game physics in favor of four domain-sp
 $$\mathbf{x}(t + \Delta t) = \mathbf{x}(t) + \mathbf{v}(t)\Delta t + \frac{1}{2}\mathbf{a}(t)\Delta t^2$$
 $$\mathbf{a}(t + \Delta t) = -\sum_{j \ne i} \frac{G M_j (\mathbf{x}_i - \mathbf{x}_j)}{(|\mathbf{x}_i - \mathbf{x}_j|^2 + \epsilon^2)^{3/2}}$$
 $$\mathbf{v}(t + \Delta t) = \mathbf{v}(t) + \frac{1}{2}(\mathbf{a}(t) + \mathbf{a}(t + \Delta t))\Delta t$$
-* **Symplectic Phase-Space Conservation:** Conserves the Hamiltonian $\mathcal{H}$ over thousands of orbits without artificial energy gain or spiral decay.
+* **Symplectic Phase-Space Conservation:** Conserves the Hamiltonian $\mathcal{H}$ over thousands of orbits without artificial energy gain or spiral decay. Includes 3 dedicated apparatus setups: *Sol & Planets*, *Gravity Slingshot*, and *3-Body Chaotic Dance*.
 
 ### 2. Impulse-Momentum Collision Engine (Collisions & Restitution)
 $$J = \frac{-(1 + e)(\mathbf{v}_{\text{rel}} \cdot \hat{\mathbf{n}})}{\frac{1}{m_1} + \frac{1}{m_2}}$$
 $$\mathbf{v}_1' = \mathbf{v}_1 + \frac{J}{m_1}\hat{\mathbf{n}}, \qquad \mathbf{v}_2' = \mathbf{v}_2 - \frac{J}{m_2}\hat{\mathbf{n}}$$
-* **Restitution Tunability:** Supports elastic ($e = 1.0$), partially inelastic ($0 < e < 1$), and completely inelastic ($e = 0.0$) impacts with positional correction to eliminate interpenetration.
+* **Restitution Tunability:** Supports elastic ($e = 1.0$), partially inelastic ($0 < e < 1$), and completely inelastic ($e = 0.0$) impacts with positional correction to eliminate interpenetration. Includes 3 dedicated apparatus setups: *Newton's Cradle*, *Clay Splat Inelastic*, and *2D Oblique Billiards*.
 
 ### 3. Runge-Kutta 4th-Order (Lorentz Electromagnetism)
 $$\frac{d\mathbf{v}}{dt} = \frac{q}{m}\left(\mathbf{E}(\mathbf{x}) + \mathbf{v} \times \mathbf{B}\right)$$
-* Evaluates 4 sub-step slopes ($k_1, k_2, k_3, k_4$) per frame, accurately integrating magnetic curvature where pure centripetal forces perform zero net work ($\Delta W = 0$).
+* Evaluates 4 sub-step slopes ($k_1, k_2, k_3, k_4$) per frame, accurately integrating magnetic curvature where pure centripetal forces perform zero net work ($\Delta W = 0$). Includes 3 dedicated apparatus setups: *Magnetic Cyclotron*, *Thomson $E \times B$ Velocity Selector*, and *Coulomb Electric Dipole*.
 
 ### 4. SPH Fluid & Archimedes Buoyancy Engine (Fluids & Hydrodynamics)
 $$F_b = \rho_{\text{fluid}} V_{\text{submerged}} g, \qquad \mathbf{F}_{\text{net}} = \mathbf{F}_g + \mathbf{F}_b - 6\pi \eta r \mathbf{v}$$
-* Particle pressure computed via Poly6 kernel and Spiky gradient, supporting fluid buoyancy, surface equilibrium, and Stokes viscous damping.
+* Particle pressure computed via Poly6 kernel and Spiky gradient, supporting fluid buoyancy, surface equilibrium, and Stokes viscous damping. Includes 3 dedicated apparatus setups: *Archimedes Flotation Tank*, *Stokes Terminal Sinking*, and *SPH Fluid Droplet Jet*.
+
+### 5. Maxwell-Boltzmann Thermal Enclosure (Thermodynamics & Kinetic Theory)
+$$P = \frac{N k_B T}{V}, \qquad v_{\text{rms}} = \sqrt{\frac{3 k_B T}{m}}$$
+* 3D glass containment chamber with movable piston plate and specular elastic boundary collision reflection. Temperature scrubbing ($T \in [100\text{ K}, 1200\text{ K}]$) dynamically rescales particle velocity distributions according to kinetic theory. Includes 3 dedicated apparatus setups: *Maxwell-Boltzmann Kinetic Chamber*, *Brownian Motion Colloidal Diffusion*, and *Adiabatic Piston Compression*.
+
+### 6. Relativistic Quantum & Wave Mechanics Engine (Modern Physics)
+$$\lambda = \frac{h}{p} = \frac{h}{m v}, \qquad \gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$$
+* Integrates high-speed particle dynamics with Lorentz factor mass scaling and matter wave propagation through physical double-slit apertures. Includes 3 dedicated apparatus setups: *Double-Slit Matter Wave Beam*, *Rutherford Alpha Nuclear Scattering (+79e)*, and *Special Relativity Lorentz Boost*.
 
 ---
 

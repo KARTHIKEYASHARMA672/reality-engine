@@ -52,6 +52,12 @@ export interface GlobalPhysicsParameters {
   softeningEpsilon: number; // to prevent 1/r^2 singularity at r -> 0
   subSteps: number; // sub-steps per frame (default 8)
   domain: PhysicsDomain;
+  temperature?: number; // Kelvin (for thermodynamics domain, e.g. 300K)
+  chamberHeight?: number; // Piston height in meters (for gas compression)
+  waveFrequency?: number; // Wave frequency in Hz
+  slitSeparation?: number; // Slit separation distance in meters
+  quantumPlanckH?: number; // Scaled Planck constant for de Broglie visualizer
+  lightSpeedC?: number; // Scaled speed of light for relativistic visualizer
 }
 
 export interface TelemetryPoint {

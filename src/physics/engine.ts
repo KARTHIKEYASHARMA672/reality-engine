@@ -25,6 +25,12 @@ export const DEFAULT_PHYSICS_PARAMS: GlobalPhysicsParameters = {
   softeningEpsilon: 0.08,
   subSteps: 8,
   domain: 'mechanics',
+  temperature: 300,
+  chamberHeight: 6.0,
+  waveFrequency: 4.0,
+  slitSeparation: 1.2,
+  quantumPlanckH: 6.626,
+  lightSpeedC: 15.0,
 };
 
 export const DEFAULT_BOUNDS = {
@@ -63,10 +69,26 @@ export class PhysicsEngine {
     } else if (domain === 'collisions') {
       this.params.enableTerrestrialGravity = true;
       this.params.gravityConstant = 9.81;
+      this.params.globalRestitution = 0.95;
+    } else if (domain === 'thermodynamics') {
+      this.params.enableTerrestrialGravity = false;
+      this.params.gravityConstant = 0.0;
+      this.params.airDragCoefficient = 0.0;
+      this.params.globalRestitution = 1.0;
+      this.params.temperature = 300;
+      this.params.chamberHeight = 6.0;
+    } else if (domain === 'modern') {
+      this.params.enableTerrestrialGravity = false;
+      this.params.gravityConstant = 0.0;
+      this.params.airDragCoefficient = 0.0;
+      this.params.waveFrequency = 4.0;
+      this.params.lightSpeedC = 15.0;
+      this.params.quantumPlanckH = 6.626;
     } else {
       // mechanics (celestial orbits default)
       this.params.enableTerrestrialGravity = false;
       this.params.gravityConstant = 8.0;
+      this.params.airDragCoefficient = 0.0;
     }
   }
 
@@ -118,6 +140,58 @@ export class PhysicsEngine {
           if (rigidBodies.length > 0) {
             VerletSolver.step(rigidBodies, this.params, subDt);
           }
+          break;
+        }
+
+        case 'thermodynamics': {
+          const chamberHeight = this.params.chamberHeight || 6.0;
+          const chamberBounds = {
+            minX: -4.0,
+            maxX: 4.0,
+            minY: 0.1,
+            maxY: chamberHeight,
+            minZ: -4.0,
+            maxZ: 4.0,
+          };
+          VerletSolver.step(this.bodies, this.params, subDt);
+          // Specular elastic bounce on sealed chamber walls
+          for (const b of this.bodies) {
+            if (b.position.x - b.radius < chamberBounds.minX) {
+              b.position.x = chamberBounds.minX + b.radius;
+              b.velocity.x = Math.abs(b.velocity.x);
+            } else if (b.position.x + b.radius > chamberBounds.maxX) {
+              b.position.x = chamberBounds.maxX - b.radius;
+              b.velocity.x = -Math.abs(b.velocity.x);
+            }
+            if (b.position.y - b.radius < chamberBounds.minY) {
+              b.position.y = chamberBounds.minY + b.radius;
+              b.velocity.y = Math.abs(b.velocity.y);
+            } else if (b.position.y + b.radius > chamberBounds.maxY) {
+              b.position.y = chamberBounds.maxY - b.radius;
+              b.velocity.y = -Math.abs(b.velocity.y);
+            }
+            if (b.position.z - b.radius < chamberBounds.minZ) {
+              b.position.z = chamberBounds.minZ + b.radius;
+              b.velocity.z = Math.abs(b.velocity.z);
+            } else if (b.position.z + b.radius > chamberBounds.maxZ) {
+              b.position.z = chamberBounds.maxZ - b.radius;
+              b.velocity.z = -Math.abs(b.velocity.z);
+            }
+          }
+          break;
+        }
+
+        case 'modern': {
+          const c = this.params.lightSpeedC || 15.0;
+          for (const b of this.bodies) {
+            const vMag = vec3.length(b.velocity);
+            const beta = Math.min(0.96, vMag / c);
+            const gamma = 1 / Math.sqrt(Math.max(0.01, 1 - beta * beta));
+            if (!b.metadata) b.metadata = {};
+            if (!b.metadata.restMass) b.metadata.restMass = b.mass;
+            b.mass = b.metadata.restMass * gamma;
+          }
+          VerletSolver.step(this.bodies, this.params, subDt);
           break;
         }
 
