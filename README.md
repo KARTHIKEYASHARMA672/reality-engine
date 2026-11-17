@@ -1,6 +1,9 @@
 # 🔬 REALITY ENGINE — Physics-Based Virtual Laboratory
 
-> 📌 **REALITY ENGINE** is an interactive, authentic computational physics virtual laboratory engineered to bridge abstract mathematical physics formulas with tactile, real-time 3D experimental simulations. Built with **React 19, TypeScript 5.8+, Three.js WebGL2, and KaTeX**, it allows researchers, students, and engineers to observe, manipulate, and measure physical phenomena across four core numerical simulation engines, featuring an encyclopedia of **120 fundamental physics concepts** and synchronized real-time mathematical telemetry.
+> 🌐 **Live Web Laboratory:** [https://reality-engine-orpin.vercel.app](https://reality-engine-orpin.vercel.app)  
+> 📦 **GitHub Repository:** [https://github.com/KARTHIKEYASHARMA672/reality-engine](https://github.com/KARTHIKEYASHARMA672/reality-engine)  
+> 
+> 📌 **REALITY ENGINE** is an interactive, authentic computational physics virtual laboratory engineered to bridge abstract mathematical physics formulas with tactile, real-time 3D experimental simulations. Built with **React 19, TypeScript 5.8+, Three.js WebGL2, and KaTeX**, it allows researchers, students, and engineers to observe, manipulate, and measure physical phenomena across six core numerical simulation engines, featuring an encyclopedia of **120 fundamental physics concepts** and synchronized real-time mathematical telemetry.
 > 
 > 🎨 **Color Identity:** Wine & Warm Sandal (`#76283B` Primary Accent / `#F4E7D7` Background / `#FFF9F2` Elevated Surface / `#E1CDBB` Sandal Border / `#B78A63` Sandal Gold Accent) — Grounded, prestigious academic laboratory aesthetic with zero neon/sci-fi gimmicks.
 > 
@@ -20,6 +23,8 @@
 | :--- | :--- |
 | **Project Code** | `REALITY-ENGINE-09` |
 | **Workspace Root** | `L:\pr 19` |
+| **Live Production URL** | [https://reality-engine-orpin.vercel.app](https://reality-engine-orpin.vercel.app) |
+| **GitHub Repository** | [https://github.com/KARTHIKEYASHARMA672/reality-engine](https://github.com/KARTHIKEYASHARMA672/reality-engine) |
 | **Pushed to GitHub** | `2026-11-16` |
 | **Scheduled LinkedIn Date** | `2026-11-17` at 23:00 IST |
 | **Target Deployment** | Vercel (`npx vercel --prod`) |
